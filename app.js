@@ -601,86 +601,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   };
 
-  const exportAndShareData = async (dataObj, filename, title, overrideMode = null) => {
-    const mode = overrideMode || window.EXPORT_TEST_MODE || "TEST_D";
+  const exportAndShareData = async (dataObj, filename, title) => {
     const jsonStr = typeof dataObj === "string" ? dataObj : JSON.stringify(dataObj, null, 2);
-
-    let content = jsonStr;
-    let shareFilename = filename;
-    let mimeType = "application/json";
-
-    if (mode === "TEST_A") {
-      content = "Hello World";
-      shareFilename = "test.txt";
-      mimeType = "text/plain";
-    } else if (mode === "TEST_B") {
-      content = "Hello World";
-      shareFilename = "test.json";
-      mimeType = "application/json";
-    } else if (mode === "TEST_C") {
-      content = jsonStr;
-      shareFilename = "test.txt";
-      mimeType = "text/plain";
-    } else if (mode === "TEST_D") {
-      content = jsonStr;
-      shareFilename = filename;
-      mimeType = "application/json";
-    } else if (mode === "TEST_EMPTY_MIME") {
-      content = jsonStr;
-      shareFilename = "backup.json";
-      mimeType = "";
-    } else if (mode === "TEST_OCTET_STREAM") {
-      content = jsonStr;
-      shareFilename = "backup.bin";
-      mimeType = "application/octet-stream";
-    }
+    const txtFilename = filename.replace(/\.json$/, ".txt");
 
     if (navigator.share) {
       try {
-        const file = new File([content], shareFilename, { type: mimeType });
-        console.log(`[Mode: ${mode}] Single Share Attempt:`, {
-          filename: shareFilename,
-          mimeType,
-          size: file.size,
-          userActive: navigator.userActivation?.isActive,
-          canShare: navigator.canShare ? navigator.canShare({ files: [file] }) : "N/A"
-        });
+        const txtFile = new File([jsonStr], txtFilename, { type: "text/plain" });
 
-        // Exactly ONE navigator.share call per click event
+        if (navigator.canShare && navigator.canShare({ files: [txtFile] })) {
+          await navigator.share({
+            title: title,
+            files: [txtFile]
+          });
+          return;
+        }
+
         await navigator.share({
-          files: [file]
+          title: title,
+          text: jsonStr
         });
-
-        console.log(`[Mode: ${mode}] SUCCESS - Native Share Sheet Opened!`);
         return;
       } catch (err) {
         if (err.name === "AbortError") {
-          console.log(`[Mode: ${mode}] User cancelled share dialog.`);
           return;
         }
-        console.error(`[Mode: ${mode}] FAILED:`, err.name, "-", err.message);
-        // Fallback to direct file download
-        downloadBlobFallback(jsonStr, filename);
-        return;
+        console.warn("Native sharing failed, falling back to direct download:", err);
       }
     }
 
     downloadBlobFallback(jsonStr, filename);
   };
-
-  window.runExportTest = (mode) => {
-    const filename = `quickfacts_one_liners_backup_${new Date().toISOString().slice(0, 10)}.json`;
-    exportAndShareData(state, filename, "QuickFacts One-Liners Backup", mode);
-  };
-
-  const testBtns = document.querySelectorAll(".test-share-btn");
-  testBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const mode = btn.getAttribute("data-test");
-      const filename = `quickfacts_one_liners_backup_${new Date().toISOString().slice(0, 10)}.json`;
-      exportAndShareData(state, filename, "QuickFacts One-Liners Backup", mode);
-    });
-  });
 
   if (exportProgressBtn) {
     exportProgressBtn.addEventListener("click", () => {
