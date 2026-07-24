@@ -2376,6 +2376,7 @@ Instructions:
   const printableWorksheetArea = document.getElementById("printableWorksheetArea");
 
   const printSourceSelect = document.getElementById("printSourceSelect");
+  const printOptionTopic = document.getElementById("printOptionTopic");
   const printCountSelect = document.getElementById("printCountSelect");
   const printIncludeHeader = document.getElementById("printIncludeHeader");
   const printIncludeAnswerKey = document.getElementById("printIncludeAnswerKey");
@@ -2383,6 +2384,13 @@ Instructions:
 
   if (btnPrintWorksheet) {
     btnPrintWorksheet.addEventListener("click", () => {
+      if (printOptionTopic) {
+        if (state.selectedTopic && state.selectedTopic !== "ALL") {
+          printOptionTopic.textContent = `Active Topic Only (${state.selectedTopic})`;
+        } else {
+          printOptionTopic.textContent = `Active Topic Only (All Topics)`;
+        }
+      }
       if (printWorksheetModal) printWorksheetModal.style.display = "flex";
     });
   }
@@ -2418,7 +2426,16 @@ Instructions:
     let pool = [];
     let titleSubject = state.activeSubject;
 
-    if (sourceVal === "bookmarks") {
+    if (sourceVal === "topic") {
+      const activeTopicName = (state.selectedTopic && state.selectedTopic !== "ALL") ? state.selectedTopic : "All Topics";
+      titleSubject = `${state.activeSubject} (${activeTopicName})`;
+      const allMCQs = getActiveSubjectMCQs();
+      if (state.selectedTopic && state.selectedTopic !== "ALL") {
+        pool = allMCQs.filter(m => m.category === state.selectedTopic);
+      } else {
+        pool = allMCQs;
+      }
+    } else if (sourceVal === "bookmarks") {
       titleSubject = `${state.activeSubject} (Bookmarked MCQs)`;
       const bmList = state.bookmarks[state.activeSubject] || [];
       const allMCQs = getActiveSubjectMCQs();
