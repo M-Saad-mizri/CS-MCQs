@@ -30935,6 +30935,396 @@ const DSD_MCQS = [
     ],
     "answerIndex": 3,
     "explanation": "Synchronous counters clock all flip-flops simultaneously."
+  },
+  {
+    "id": 401,
+    "category": "Binary Addition",
+    "question": "The binary sum of 1010 + 0011 is:",
+    "options": [
+      "1100",
+      "1101",
+      "1110",
+      "1011"
+    ],
+    "answerIndex": 1,
+    "explanation": "1010 + 0011 = 1101 (10 + 3 = 13 in decimal)."
+  },
+  {
+    "id": 402,
+    "category": "Binary Addition",
+    "question": "What is 1101 + 0010?",
+    "options": [
+      "1100",
+      "1110",
+      "1111",
+      "10000"
+    ],
+    "answerIndex": 2,
+    "explanation": "1101 + 0010 = 1111 (13 + 2 = 15 in decimal)."
+  },
+  {
+    "id": 403,
+    "category": "Binary Addition",
+    "question": "The binary addition rule 1 + 1 gives:",
+    "options": [
+      "0",
+      "1",
+      "Sum = 0, Carry = 1",
+      "Sum = 1, Carry = 1"
+    ],
+    "answerIndex": 2,
+    "explanation": "In binary addition, 1 + 1 = 10 in binary, which means Sum = 0 and Carry = 1."
+  },
+  {
+    "id": 404,
+    "category": "Binary Addition",
+    "question": "The binary addition rule 1 + 1 + 1 gives:",
+    "options": [
+      "Sum = 0, Carry = 1",
+      "Sum = 1, Carry = 1",
+      "Sum = 1, Carry = 0",
+      "Sum = 0, Carry = 0"
+    ],
+    "answerIndex": 1,
+    "explanation": "In binary addition, 1 + 1 + 1 = 11 in binary (decimal 3), which gives Sum = 1 and Carry = 1."
+  },
+  {
+    "id": 405,
+    "category": "Binary Addition",
+    "question": "The result of 1111 + 0001 is:",
+    "options": [
+      "1111",
+      "0000",
+      "10000",
+      "10001"
+    ],
+    "answerIndex": 2,
+    "explanation": "1111 (15) + 0001 (1) = 10000 (16 in decimal)."
+  },
+  {
+    "id": 406,
+    "category": "Binary Addition",
+    "question": "Binary addition follows the same principle as:",
+    "options": [
+      "Decimal multiplication",
+      "Decimal addition",
+      "Hexadecimal subtraction",
+      "Gray code conversion"
+    ],
+    "answerIndex": 1,
+    "explanation": "Binary addition operates on positional place values with carries, following the same fundamental principles as decimal addition."
+  },
+  {
+    "id": 407,
+    "category": "Binary Addition",
+    "question": "Which circuit performs binary addition?",
+    "options": [
+      "Decoder",
+      "Multiplexer",
+      "Adder",
+      "Comparator"
+    ],
+    "answerIndex": 2,
+    "explanation": "An adder (such as a half adder or full adder) is a digital circuit that performs binary addition."
+  },
+  {
+    "id": 408,
+    "category": "Binary Addition",
+    "question": "Which output indicates an overflow beyond the most significant bit in unsigned addition?",
+    "options": [
+      "Borrow",
+      "Carry",
+      "Difference",
+      "Complement"
+    ],
+    "answerIndex": 1,
+    "explanation": "In unsigned binary addition, a Carry generated from the most significant bit (MSB) indicates an overflow beyond the available bit width."
+  },
+  {
+    "id": 409,
+    "category": "Binary Addition",
+    "question": "Which adder can add two bits along with a carry input?",
+    "options": [
+      "Half Adder",
+      "Full Adder",
+      "Half Subtractor",
+      "Comparator"
+    ],
+    "answerIndex": 1,
+    "explanation": "A Full Adder takes three inputs: two operand bits and a carry input (Cin)."
+  },
+  {
+    "id": 410,
+    "category": "Binary Addition",
+    "question": "The binary sum of 1001 + 0101 is:",
+    "options": [
+      "1100",
+      "1110",
+      "1110",
+      "10010"
+    ],
+    "answerIndex": 2,
+    "explanation": "1001 (9) + 0101 (5) = 1110 (14 in decimal)."
+  },
+  {
+    "id": 411,
+    "category": "Binary Subtraction",
+    "question": "The binary result of 1010 − 0011 is:",
+    "options": [
+      "0100",
+      "0111",
+      "1001",
+      "0101"
+    ],
+    "answerIndex": 1,
+    "explanation": "1010 (10) - 0011 (3) = 0111 (7 in decimal)."
+  },
+  {
+    "id": 412,
+    "category": "Binary Subtraction",
+    "question": "The binary result of 1101 − 0101 is:",
+    "options": [
+      "0111",
+      "1000",
+      "0100",
+      "1010"
+    ],
+    "answerIndex": 1,
+    "explanation": "1101 (13) - 0101 (5) = 1000 (8 in decimal)."
+  },
+  {
+    "id": 413,
+    "category": "Binary Subtraction",
+    "question": "Which circuit performs subtraction of two single-bit numbers?",
+    "options": [
+      "Half Adder",
+      "Half Subtractor",
+      "Decoder",
+      "Encoder"
+    ],
+    "answerIndex": 1,
+    "explanation": "A Half Subtractor is a combinational circuit used to subtract two single-bit binary numbers."
+  },
+  {
+    "id": 414,
+    "category": "Binary Subtraction",
+    "question": "A full subtractor has:",
+    "options": [
+      "Two inputs",
+      "Three inputs",
+      "Four inputs",
+      "One input"
+    ],
+    "answerIndex": 1,
+    "explanation": "A Full Subtractor has three inputs: Minuend (A), Subtrahend (B), and Borrow-in (Bin)."
+  },
+  {
+    "id": 415,
+    "category": "Binary Subtraction",
+    "question": "The outputs of a half subtractor are:",
+    "options": [
+      "Sum and Carry",
+      "Difference and Borrow",
+      "Difference and Carry",
+      "Borrow and Sum"
+    ],
+    "answerIndex": 1,
+    "explanation": "The outputs of a half subtractor are Difference (D) and Borrow (B)."
+  },
+  {
+    "id": 416,
+    "category": "Binary Subtraction",
+    "question": "Binary subtraction can also be performed using:",
+    "options": [
+      "Gray code",
+      "BCD",
+      "Two's complement",
+      "ASCII"
+    ],
+    "answerIndex": 2,
+    "explanation": "Binary subtraction is commonly implemented by adding the two's complement of the subtrahend."
+  },
+  {
+    "id": 417,
+    "category": "Binary Subtraction",
+    "question": "In binary subtraction, borrowing occurs when:",
+    "options": [
+      "Minuend ≥ Subtrahend",
+      "A smaller bit is subtracted from a larger required value",
+      "Both bits are equal",
+      "Carry is generated"
+    ],
+    "answerIndex": 1,
+    "explanation": "Borrowing occurs when the minuend bit is smaller than the subtrahend bit (e.g., 0 - 1)."
+  },
+  {
+    "id": 418,
+    "category": "Binary Subtraction",
+    "question": "The binary result of 1000 − 0001 is:",
+    "options": [
+      "0110",
+      "0111",
+      "1001",
+      "1111"
+    ],
+    "answerIndex": 1,
+    "explanation": "1000 (8) - 0001 (1) = 0111 (7 in decimal)."
+  },
+  {
+    "id": 419,
+    "category": "Binary Subtraction",
+    "question": "Which output indicates borrowing during subtraction?",
+    "options": [
+      "Carry",
+      "Borrow",
+      "Sum",
+      "Complement"
+    ],
+    "answerIndex": 1,
+    "explanation": "The Borrow output indicates that a higher order bit was borrowed during binary subtraction."
+  },
+  {
+    "id": 420,
+    "category": "Binary Subtraction",
+    "question": "Which statement is TRUE?",
+    "options": [
+      "Binary subtraction cannot use complements.",
+      "Two's complement is commonly used for binary subtraction.",
+      "Borrow is used in addition.",
+      "Carry is used only in subtraction."
+    ],
+    "answerIndex": 1,
+    "explanation": "Two's complement is commonly used for binary subtraction in digital systems."
+  },
+  {
+    "id": 421,
+    "category": "Signed Numbers & Overflow",
+    "question": "In signed binary numbers, the MSB usually represents the:",
+    "options": [
+      "Magnitude",
+      "Sign",
+      "Carry",
+      "Overflow"
+    ],
+    "answerIndex": 1,
+    "explanation": "In signed binary number systems, the Most Significant Bit (MSB) serves as the sign bit (0 for positive, 1 for negative)."
+  },
+  {
+    "id": 422,
+    "category": "Signed Numbers & Overflow",
+    "question": "In two's complement representation, MSB = 1 generally indicates:",
+    "options": [
+      "Positive number",
+      "Negative number",
+      "Zero",
+      "Overflow"
+    ],
+    "answerIndex": 1,
+    "explanation": "An MSB of 1 in two's complement representation indicates a negative number."
+  },
+  {
+    "id": 423,
+    "category": "Signed Numbers & Overflow",
+    "question": "Which representation is most commonly used in modern computers?",
+    "options": [
+      "Sign-Magnitude",
+      "One's Complement",
+      "Two's Complement",
+      "Gray Code"
+    ],
+    "answerIndex": 2,
+    "explanation": "Two's complement is the standard system used in modern digital computers for signed integer arithmetic."
+  },
+  {
+    "id": 424,
+    "category": "Signed Numbers & Overflow",
+    "question": "In an 8-bit signed two's complement system, the largest positive number is:",
+    "options": [
+      "128",
+      "127",
+      "255",
+      "256"
+    ],
+    "answerIndex": 1,
+    "explanation": "For an 8-bit signed two's complement system, the maximum positive integer value is 2^7 - 1 = 127."
+  },
+  {
+    "id": 425,
+    "category": "Signed Numbers & Overflow",
+    "question": "In an 8-bit signed two's complement system, the smallest number is:",
+    "options": [
+      "–127",
+      "–128",
+      "–255",
+      "–256"
+    ],
+    "answerIndex": 1,
+    "explanation": "For an 8-bit signed two's complement system, the minimum negative integer value is -2^7 = -128."
+  },
+  {
+    "id": 426,
+    "category": "Signed Numbers & Overflow",
+    "question": "Overflow occurs when:",
+    "options": [
+      "A borrow is generated.",
+      "The result cannot be represented using the available number of bits.",
+      "A carry is always produced.",
+      "Two negative numbers are subtracted."
+    ],
+    "answerIndex": 1,
+    "explanation": "Arithmetic overflow occurs when the result of a calculation exceeds the maximum range representable by the designated number of bits."
+  },
+  {
+    "id": 427,
+    "category": "Signed Numbers & Overflow",
+    "question": "In signed arithmetic, overflow occurs when:",
+    "options": [
+      "Two positive numbers produce a negative result.",
+      "Two negative numbers produce a positive result.",
+      "The result exceeds the representable range.",
+      "All of the above"
+    ],
+    "answerIndex": 3,
+    "explanation": "In signed arithmetic, adding two positive numbers producing a negative result, two negative numbers producing a positive result, or the result exceeding range all indicate overflow."
+  },
+  {
+    "id": 428,
+    "category": "Signed Numbers & Overflow",
+    "question": "Which statement is TRUE regarding carry and overflow?",
+    "options": [
+      "Carry and overflow always mean the same thing.",
+      "Overflow occurs only in unsigned numbers.",
+      "Carry and overflow are different concepts.",
+      "Overflow occurs after every addition."
+    ],
+    "answerIndex": 2,
+    "explanation": "Carry and overflow are different concepts: Carry applies to unsigned arithmetic while overflow applies to signed arithmetic."
+  },
+  {
+    "id": 429,
+    "category": "Signed Numbers & Overflow",
+    "question": "Which operation is most commonly used to represent negative integers in digital systems?",
+    "options": [
+      "Gray Code",
+      "BCD",
+      "Two's Complement",
+      "ASCII"
+    ],
+    "answerIndex": 2,
+    "explanation": "Two's complement is the primary encoding used to represent negative integers in digital processing hardware."
+  },
+  {
+    "id": 430,
+    "category": "Signed Numbers & Overflow",
+    "question": "Sign extension is used to:",
+    "options": [
+      "Convert binary to decimal.",
+      "Remove the sign bit.",
+      "Preserve the value of a signed number when increasing its bit width.",
+      "Detect parity."
+    ],
+    "answerIndex": 2,
+    "explanation": "Sign extension copies the sign bit (MSB) to higher-order bit positions when extending a signed binary number to a wider bit width, preserving its numeric value."
   }
 ];
 

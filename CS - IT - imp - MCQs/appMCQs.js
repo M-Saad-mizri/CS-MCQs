@@ -1871,8 +1871,8 @@ Instructions:
           <span class="subject-name">${subject}</span>
           <span class="subject-count">${count} MCQs</span>
         </div>
-        <div class="subject-mini-bar-track">
-          <div class="subject-mini-bar-fill" style="width: ${percent}%"></div>
+        <div class="subject-bottom-progress-track">
+          <div class="subject-bottom-progress-fill" style="width: ${percent}%"></div>
         </div>
       `;
       button.addEventListener("click", () => {
