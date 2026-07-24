@@ -179,33 +179,103 @@
     <section class="quiz-container" id="quizContainer" style="display: none;">
       <!-- Setup Panel -->
       <div class="quiz-setup-card" id="quizSetupCard">
-        <h2>Practice Quiz Generator</h2>
-        <p>Configure your customized quiz session to test your knowledge.</p>
+        <h2>Practice & Mock Exam Generator</h2>
+        <p>Configure a single-subject practice quiz or build a custom multi-subject mock exam paper.</p>
 
-        <div class="form-group">
-          <label>Select Category</label>
-          <select id="quizTopicSelect" class="form-select">
-            <!-- Dynamically populated topics -->
-          </select>
+        <!-- Quiz Mode Selection Tabs -->
+        <div class="quiz-type-tabs">
+          <button class="quiz-type-tab active" id="tabSingleSubjectQuiz">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            Single Subject Quiz
+          </button>
+          <button class="quiz-type-tab" id="tabMultiSubjectMock">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Custom Mock Exam (Multi-Subject)
+          </button>
         </div>
 
-        <div id="quizOptionsWrapper" style="display: none; flex-direction: column; gap: 18px;">
+        <!-- Single Subject Panel -->
+        <div id="singleSubjectPanel">
           <div class="form-group">
-            <label>Question Pool</label>
-            <div class="pool-selector" id="quizPoolSelector">
-              <!-- Dynamically populated pool chips -->
+            <label>Select Category</label>
+            <select id="quizTopicSelect" class="form-select">
+              <!-- Dynamically populated topics -->
+            </select>
+          </div>
+
+          <div id="quizOptionsWrapper" style="display: none; flex-direction: column; gap: 18px;">
+            <div class="form-group">
+              <label>Question Pool</label>
+              <div class="pool-selector" id="quizPoolSelector">
+                <!-- Dynamically populated pool chips -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Number of Questions</label>
+              <div class="count-selector" id="quizCountSelector">
+                <!-- Dynamically populated count chips -->
+              </div>
+            </div>
+
+            <button class="primary-btn start-quiz-btn" id="startQuizBtn">
+              Start Quiz Test
+            </button>
+          </div>
+        </div>
+
+        <!-- Multi-Subject Mock Exam Panel -->
+        <div id="multiSubjectMockPanel" style="display: none; flex-direction: column; gap: 20px;">
+          <!-- Presets -->
+          <div class="form-group">
+            <label>One-Click Exam Presets</label>
+            <div class="mock-preset-grid">
+              <button class="preset-card" id="presetFullMockBtn">
+                <div class="preset-header">
+                  <span class="preset-title">⚡ 100-Mark Full Mock</span>
+                  <span class="preset-badge">90 Mins</span>
+                </div>
+                <p class="preset-desc">20 questions from each subject, fully shuffled (100 total MCQs).</p>
+              </button>
+              <button class="preset-card" id="presetMiniMockBtn">
+                <div class="preset-header">
+                  <span class="preset-title">🚀 50-Mark Mini Paper</span>
+                  <span class="preset-badge">45 Mins</span>
+                </div>
+                <p class="preset-desc">10 questions from each subject evenly distributed (50 total MCQs).</p>
+              </button>
             </div>
           </div>
 
+          <!-- Custom Subject Distribution Grid -->
           <div class="form-group">
-            <label>Number of Questions</label>
-            <div class="count-selector" id="quizCountSelector">
-              <!-- Dynamically populated count chips -->
+            <div class="dist-header">
+              <label>Custom Subject Distribution</label>
+              <span class="total-mcq-counter" id="mockTotalCounter">Total: 0 MCQs</span>
+            </div>
+            <div class="subject-dist-container" id="subjectDistContainer">
+              <!-- Dynamically populated subject rows -->
             </div>
           </div>
 
-          <button class="primary-btn start-quiz-btn" id="startQuizBtn">
-            Start Quiz Test
+          <!-- Timer Configuration -->
+          <div class="form-group">
+            <label>Timer Mode & Duration</label>
+            <div class="timer-config-row">
+              <div class="timer-chip-selector" id="mockTimerSelector">
+                <button class="timer-chip" data-seconds="900">15 Mins</button>
+                <button class="timer-chip" data-seconds="1800">30 Mins</button>
+                <button class="timer-chip active" data-seconds="2700">45 Mins</button>
+                <button class="timer-chip" data-seconds="3600">60 Mins</button>
+                <button class="timer-chip" data-seconds="5400">90 Mins</button>
+                <button class="timer-chip" data-seconds="7200">120 Mins</button>
+                <button class="timer-chip" data-seconds="0">Stopwatch</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="primary-btn start-quiz-btn" id="startMockExamBtn">
+            🚀 Launch Custom Mock Exam
           </button>
         </div>
       </div>
@@ -248,7 +318,10 @@
         </div>
 
         <div class="quiz-question-body">
-          <span class="quiz-topic-badge" id="quizQuestionCategory">OSI Model</span>
+          <div class="quiz-badge-group">
+            <span class="quiz-subject-badge" id="quizQuestionSubject" style="display: none;">DSD</span>
+            <span class="quiz-topic-badge" id="quizQuestionCategory">OSI Model</span>
+          </div>
           <h3 class="quiz-question-statement" id="quizQuestionStatement">Question Statement</h3>
           <div class="quiz-options-grid" id="quizOptionsGrid">
             <!-- Dynamic A, B, C, D option buttons -->
@@ -311,6 +384,10 @@
             <span class="res-val" id="modalTimeSpent">00:00</span>
             <span class="res-lbl">Time Taken</span>
           </div>
+        </div>
+        <div id="modalSubjectBreakdownBox" style="display: none;" class="subject-breakdown-card">
+          <span class="breakdown-title">Subject Accuracy Breakdown</span>
+          <div class="breakdown-grid" id="modalSubjectBreakdownGrid"></div>
         </div>
       </div>
       <div class="modal-footer">

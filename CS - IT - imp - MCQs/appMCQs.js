@@ -81,6 +81,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const quizTopicSelect = document.getElementById("quizTopicSelect");
   const startQuizBtn = document.getElementById("startQuizBtn");
 
+  // Custom Mock Exam Builder DOM
+  const tabSingleSubjectQuiz = document.getElementById("tabSingleSubjectQuiz");
+  const tabMultiSubjectMock = document.getElementById("tabMultiSubjectMock");
+  const singleSubjectPanel = document.getElementById("singleSubjectPanel");
+  const multiSubjectMockPanel = document.getElementById("multiSubjectMockPanel");
+  const presetFullMockBtn = document.getElementById("presetFullMockBtn");
+  const presetMiniMockBtn = document.getElementById("presetMiniMockBtn");
+  const subjectDistContainer = document.getElementById("subjectDistContainer");
+  const mockTotalCounter = document.getElementById("mockTotalCounter");
+  const mockTimerSelector = document.getElementById("mockTimerSelector");
+  const startMockExamBtn = document.getElementById("startMockExamBtn");
+  const quizQuestionSubject = document.getElementById("quizQuestionSubject");
+  const modalSubjectBreakdownBox = document.getElementById("modalSubjectBreakdownBox");
+  const modalSubjectBreakdownGrid = document.getElementById("modalSubjectBreakdownGrid");
+
   // Active Quiz DOM
   const quizActiveCard = document.getElementById("quizActiveCard");
   const quizQuestionCounter = document.getElementById("quizQuestionCounter");
@@ -916,6 +931,245 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  let activeQuizTab = "single"; // "single" | "mock"
+  let selectedMockTimerSeconds = 2700; // default 45 mins
+
+  // Setup Tab Switchers
+  if (tabSingleSubjectQuiz && tabMultiSubjectMock) {
+    tabSingleSubjectQuiz.addEventListener("click", () => {
+      activeQuizTab = "single";
+      tabSingleSubjectQuiz.classList.add("active");
+      tabMultiSubjectMock.classList.remove("active");
+      if (singleSubjectPanel) singleSubjectPanel.style.display = "block";
+      if (multiSubjectMockPanel) multiSubjectMockPanel.style.display = "none";
+    });
+
+    tabMultiSubjectMock.addEventListener("click", () => {
+      activeQuizTab = "mock";
+      tabMultiSubjectMock.classList.add("active");
+      tabSingleSubjectQuiz.classList.remove("active");
+      if (singleSubjectPanel) singleSubjectPanel.style.display = "none";
+      if (multiSubjectMockPanel) multiSubjectMockPanel.style.display = "flex";
+      renderSubjectDistList();
+    });
+  }
+
+  function renderSubjectDistList() {
+    if (!subjectDistContainer) return;
+    subjectDistContainer.innerHTML = "";
+
+    const subjects = getAllSubjects();
+    subjects.forEach(subj => {
+      let totalAvailable = 0;
+      if (state.customSubjects[subj]) totalAvailable = state.customSubjects[subj].length;
+      else if (window.factsData && window.factsData[subj]) totalAvailable = window.factsData[subj].length;
+
+      const row = document.createElement("div");
+      row.className = "subject-dist-row";
+
+      const defaultCount = Math.min(10, totalAvailable);
+
+      row.innerHTML = `
+        <div class="subject-dist-info">
+          <input type="checkbox" class="subject-dist-checkbox" data-subj="${subj}" checked>
+          <div>
+            <div class="subject-dist-label">${subj}</div>
+            <div class="subject-dist-max">${totalAvailable} MCQs available</div>
+          </div>
+        </div>
+        <div class="subject-dist-controls">
+          <button class="dist-quick-btn" data-subj="${subj}" data-add="5">+5</button>
+          <button class="dist-quick-btn" data-subj="${subj}" data-add="10">+10</button>
+          <button class="dist-quick-btn" data-subj="${subj}" data-add="20">+20</button>
+          <input type="number" class="dist-count-input" data-subj="${subj}" min="0" max="${totalAvailable}" value="${defaultCount}">
+        </div>
+      `;
+
+      const cb = row.querySelector(".subject-dist-checkbox");
+      const numInput = row.querySelector(".dist-count-input");
+
+      cb.addEventListener("change", () => {
+        if (!cb.checked) numInput.value = 0;
+        else numInput.value = Math.min(10, totalAvailable);
+        updateMockTotalCounter();
+      });
+
+      numInput.addEventListener("input", () => {
+        let val = parseInt(numInput.value, 10) || 0;
+        if (val < 0) val = 0;
+        if (val > totalAvailable) val = totalAvailable;
+        numInput.value = val;
+        cb.checked = val > 0;
+        updateMockTotalCounter();
+      });
+
+      row.querySelectorAll(".dist-quick-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const addVal = parseInt(btn.getAttribute("data-add"), 10);
+          let curr = parseInt(numInput.value, 10) || 0;
+          let newCount = Math.min(curr + addVal, totalAvailable);
+          numInput.value = newCount;
+          cb.checked = newCount > 0;
+          updateMockTotalCounter();
+        });
+      });
+
+      subjectDistContainer.appendChild(row);
+    });
+
+    updateMockTotalCounter();
+  }
+
+  function updateMockTotalCounter() {
+    if (!mockTotalCounter) return;
+    let total = 0;
+    const inputs = document.querySelectorAll(".dist-count-input");
+    const checkboxes = document.querySelectorAll(".subject-dist-checkbox");
+
+    inputs.forEach((inp, i) => {
+      if (checkboxes[i] && checkboxes[i].checked) {
+        total += parseInt(inp.value, 10) || 0;
+      }
+    });
+
+    mockTotalCounter.textContent = `Total: ${total} MCQs`;
+  }
+
+  if (presetFullMockBtn) {
+    presetFullMockBtn.addEventListener("click", () => {
+      setMockPreset(20, 5400);
+    });
+  }
+
+  if (presetMiniMockBtn) {
+    presetMiniMockBtn.addEventListener("click", () => {
+      setMockPreset(10, 2700);
+    });
+  }
+
+  function setMockPreset(countPerSubj, durationSecs) {
+    const rows = document.querySelectorAll(".subject-dist-row");
+    rows.forEach(row => {
+      const cb = row.querySelector(".subject-dist-checkbox");
+      const numInput = row.querySelector(".dist-count-input");
+      const maxAvailable = parseInt(numInput.getAttribute("max"), 10) || 0;
+      const count = Math.min(countPerSubj, maxAvailable);
+      numInput.value = count;
+      cb.checked = count > 0;
+    });
+
+    updateMockTotalCounter();
+    setTimerDuration(durationSecs);
+  }
+
+  function setTimerDuration(durationSecs) {
+    selectedMockTimerSeconds = durationSecs;
+    if (mockTimerSelector) {
+      mockTimerSelector.querySelectorAll(".timer-chip").forEach(chip => {
+        const secs = parseInt(chip.getAttribute("data-seconds"), 10);
+        if (secs === durationSecs) chip.classList.add("active");
+        else chip.classList.remove("active");
+      });
+    }
+  }
+
+  if (mockTimerSelector) {
+    mockTimerSelector.querySelectorAll(".timer-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        const secs = parseInt(chip.getAttribute("data-seconds"), 10);
+        setTimerDuration(secs);
+      });
+    });
+  }
+
+  if (startMockExamBtn) {
+    startMockExamBtn.addEventListener("click", () => {
+      let sampledQuestions = [];
+
+      const rows = document.querySelectorAll(".subject-dist-row");
+      rows.forEach(row => {
+        const cb = row.querySelector(".subject-dist-checkbox");
+        const numInput = row.querySelector(".dist-count-input");
+        const subjName = numInput.getAttribute("data-subj");
+
+        if (cb && cb.checked) {
+          const reqCount = parseInt(numInput.value, 10) || 0;
+          if (reqCount > 0) {
+            let subjMCQs = [];
+            if (state.customSubjects[subjName]) subjMCQs = [...state.customSubjects[subjName]];
+            else if (window.factsData && window.factsData[subjName]) subjMCQs = [...window.factsData[subjName]];
+
+            subjMCQs = subjMCQs.sort(() => Math.random() - 0.5);
+            const picked = subjMCQs.slice(0, reqCount).map(m => ({
+              ...m,
+              subject: subjName
+            }));
+            sampledQuestions.push(...picked);
+          }
+        }
+      });
+
+      if (sampledQuestions.length === 0) {
+        alert("Please select at least 1 MCQ across any subject to launch the Mock Exam!");
+        return;
+      }
+
+      sampledQuestions = sampledQuestions.sort(() => Math.random() - 0.5);
+
+      const isCountdown = selectedMockTimerSeconds > 0;
+      let timerVal = isCountdown ? selectedMockTimerSeconds : 0;
+
+      if (quizSession && quizSession.timerInterval) {
+        clearInterval(quizSession.timerInterval);
+      }
+
+      quizSession = {
+        active: true,
+        isMockExam: true,
+        questions: sampledQuestions,
+        currentIndex: 0,
+        userAnswers: {},
+        checked: {},
+        timerMode: isCountdown ? "countdown" : "stopwatch",
+        timerSeconds: timerVal,
+        countdownDuration: selectedMockTimerSeconds,
+        timerInterval: setInterval(() => {
+          if (quizSession.timerMode === "countdown") {
+            quizSession.timerSeconds--;
+
+            const mins = String(Math.floor(Math.max(0, quizSession.timerSeconds) / 60)).padStart(2, '0');
+            const secs = String(Math.max(0, quizSession.timerSeconds) % 60).padStart(2, '0');
+            quizTimer.textContent = `Time: ${mins}:${secs}`;
+
+            if (quizSession.timerSeconds <= 300 && quizSession.timerSeconds > 0) {
+              quizTimer.classList.add("warning-pulse");
+            } else {
+              quizTimer.classList.remove("warning-pulse");
+            }
+
+            if (quizSession.timerSeconds <= 0) {
+              clearInterval(quizSession.timerInterval);
+              alert("⏰ Time is up! Submitting your Mock Exam now.");
+              finishQuizTest();
+            }
+          } else {
+            quizSession.timerSeconds++;
+            const mins = String(Math.floor(quizSession.timerSeconds / 60)).padStart(2, '0');
+            const secs = String(quizSession.timerSeconds % 60).padStart(2, '0');
+            quizTimer.textContent = `Time: ${mins}:${secs}`;
+          }
+        }, 1000)
+      };
+
+      quizTimer.classList.remove("warning-pulse");
+      quizSetupCard.style.display = "none";
+      const quizHistoryCard = document.getElementById("quizHistoryCard");
+      if (quizHistoryCard) quizHistoryCard.style.display = "none";
+      quizActiveCard.style.display = "flex";
+      renderActiveQuizQuestion();
+    });
+  }
+
   function initQuizSetup() {
     const quizHistoryCard = document.getElementById("quizHistoryCard");
     quizSetupCard.style.display = "flex";
@@ -1040,6 +1294,15 @@ document.addEventListener("DOMContentLoaded", () => {
     quizQuestionCounter.textContent = `Question ${quizSession.currentIndex + 1} of ${total}`;
     quizProgressFill.style.width = `${((quizSession.currentIndex + 1) / total) * 100}%`;
 
+    if (quizQuestionSubject) {
+      if (q.subject || quizSession.isMockExam) {
+        quizQuestionSubject.style.display = "inline-block";
+        quizQuestionSubject.textContent = q.subject || state.activeSubject;
+      } else {
+        quizQuestionSubject.style.display = "none";
+      }
+    }
+
     quizQuestionCategory.textContent = q.category || "General";
     quizQuestionStatement.textContent = q.question;
 
@@ -1150,62 +1413,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function finishQuizTest() {
     clearInterval(quizSession.timerInterval);
+    quizTimer.classList.remove("warning-pulse");
 
     let correct = 0;
-    if (!state.covered[state.activeSubject]) state.covered[state.activeSubject] = [];
-    if (!state.attempts[state.activeSubject]) state.attempts[state.activeSubject] = {};
+    let subjectBreakdown = {};
 
     quizSession.questions.forEach(q => {
+      const qSubj = q.subject || state.activeSubject;
+      if (!state.covered[qSubj]) state.covered[qSubj] = [];
+      if (!state.attempts[qSubj]) state.attempts[qSubj] = {};
+
+      if (!subjectBreakdown[qSubj]) subjectBreakdown[qSubj] = { total: 0, correct: 0 };
+      subjectBreakdown[qSubj].total++;
+
       const sel = quizSession.userAnswers[q.id];
       const isCorrect = sel === q.answerIndex;
-      let att = state.attempts[state.activeSubject][q.id] || { wrongOptions: [], isCorrect: false };
+      let att = state.attempts[qSubj][q.id] || { wrongOptions: [], isCorrect: false };
 
       if (isCorrect) {
         correct++;
+        subjectBreakdown[qSubj].correct++;
         att.isCorrect = true;
-        if (!state.covered[state.activeSubject].includes(q.id)) {
-          state.covered[state.activeSubject].push(q.id);
+        if (!state.covered[qSubj].includes(q.id)) {
+          state.covered[qSubj].push(q.id);
         }
       } else if (sel !== undefined && sel !== null) {
         if (!att.wrongOptions.includes(sel)) {
           att.wrongOptions.push(sel);
         }
       }
-      state.attempts[state.activeSubject][q.id] = att;
+      state.attempts[qSubj][q.id] = att;
     });
 
     const total = quizSession.questions.length;
     const wrong = total - correct;
     const percent = Math.round((correct / total) * 100);
-    const mins = String(Math.floor(quizSession.timerSeconds / 60)).padStart(2, '0');
-    const secs = String(quizSession.timerSeconds % 60).padStart(2, '0');
 
-    // Accumulate Quiz Test stats for global Accuracy metric
+    let elapsedSecs = quizSession.timerSeconds;
+    if (quizSession.timerMode === "countdown") {
+      elapsedSecs = Math.max(0, (quizSession.countdownDuration || selectedMockTimerSeconds) - quizSession.timerSeconds);
+    }
+    const mins = String(Math.floor(elapsedSecs / 60)).padStart(2, '0');
+    const secs = String(elapsedSecs % 60).padStart(2, '0');
+
     if (!state.quizStats) state.quizStats = {};
-    const subStats = state.quizStats[state.activeSubject] || { totalAttempted: 0, totalCorrect: 0 };
+    const primarySubj = quizSession.isMockExam ? "Multi-Subject Mock Exam" : state.activeSubject;
+    const subStats = state.quizStats[primarySubj] || { totalAttempted: 0, totalCorrect: 0 };
     subStats.totalAttempted += total;
     subStats.totalCorrect += correct;
-    state.quizStats[state.activeSubject] = subStats;
+    state.quizStats[primarySubj] = subStats;
 
-    // Save Complete Attempt History Entry with Details
     if (!state.quizHistory) state.quizHistory = [];
     const historyItem = {
       id: "qhist_" + Date.now(),
       timestamp: new Date().toISOString(),
       dateFormatted: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      subject: state.activeSubject,
-      category: quizTopicSelect ? quizTopicSelect.value : "ALL",
-      poolFilter: selectedQuizPool,
+      subject: primarySubj,
+      category: quizSession.isMockExam ? "Custom Mock Exam" : (quizTopicSelect ? quizTopicSelect.value : "ALL"),
+      poolFilter: quizSession.isMockExam ? "MULTI-SUBJECT" : selectedQuizPool,
       totalQuestions: total,
       correctCount: correct,
       wrongCount: wrong,
       scorePercent: percent,
-      timeSpentSeconds: quizSession.timerSeconds,
+      timeSpentSeconds: elapsedSecs,
       timeSpentFormatted: `${mins}:${secs}`,
+      isMockExam: !!quizSession.isMockExam,
+      subjectBreakdown: subjectBreakdown,
       questions: quizSession.questions.map(q => ({
         id: q.id,
         question: q.question,
         category: q.category || "General",
+        subject: q.subject || state.activeSubject,
         userAnswer: quizSession.userAnswers[q.id],
         correctAnswer: q.answerIndex,
         isCorrect: quizSession.userAnswers[q.id] === q.answerIndex,
@@ -1225,6 +1503,25 @@ document.addEventListener("DOMContentLoaded", () => {
     modalCorrectCount.textContent = correct;
     modalWrongCount.textContent = wrong;
     modalTimeSpent.textContent = `${mins}:${secs}`;
+
+    if (modalSubjectBreakdownBox && modalSubjectBreakdownGrid) {
+      const breakKeys = Object.keys(subjectBreakdown);
+      if (breakKeys.length > 1 || quizSession.isMockExam) {
+        modalSubjectBreakdownBox.style.display = "flex";
+        modalSubjectBreakdownGrid.innerHTML = breakKeys.map(sbj => {
+          const stats = subjectBreakdown[sbj];
+          const pct = Math.round((stats.correct / stats.total) * 100);
+          return `
+            <div class="subject-score-chip">
+              <span class="chip-name">${sbj}:</span>
+              <span class="chip-score">${stats.correct}/${stats.total} (${pct}%)</span>
+            </div>
+          `;
+        }).join("");
+      } else {
+        modalSubjectBreakdownBox.style.display = "none";
+      }
+    }
 
     quizResultsModal.style.display = "flex";
   }
@@ -1272,7 +1569,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!quizHistoryList) return;
     quizHistoryList.innerHTML = "";
 
-    const history = (state.quizHistory || []).filter(h => h.subject === state.activeSubject);
+    const history = (state.quizHistory || []).filter(h => h.subject === state.activeSubject || h.isMockExam);
 
     if (history.length === 0) {
       quizHistoryList.innerHTML = `
@@ -1298,7 +1595,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="history-date">${item.dateFormatted}</span>
             <div class="history-tags">
               <span class="history-tag category">${item.category}</span>
-              <span class="history-tag pool">${item.poolFilter.toUpperCase()}</span>
+              <span class="history-tag pool">${item.poolFilter ? item.poolFilter.toUpperCase() : 'PRACTICE'}</span>
             </div>
           </div>
           <div class="history-item-right">
@@ -1324,8 +1621,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (clearQuizHistoryBtn) {
     clearQuizHistoryBtn.addEventListener("click", () => {
-      if (!confirm("Are you sure you want to clear quiz attempt history for this subject?")) return;
-      state.quizHistory = (state.quizHistory || []).filter(h => h.subject !== state.activeSubject);
+      if (!confirm("Are you sure you want to clear quiz attempt history?")) return;
+      state.quizHistory = (state.quizHistory || []).filter(h => h.subject !== state.activeSubject && !h.isMockExam);
       saveState();
       renderQuizHistoryList();
       renderTopicPills();
@@ -1336,7 +1633,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const historyItem = (state.quizHistory || []).find(h => h.id === historyId);
     if (!historyItem) return;
 
-    historyDetailTitle.textContent = `${historyItem.category} Quiz Details (${historyItem.scorePercent}%)`;
+    historyDetailTitle.textContent = `${historyItem.category} Details (${historyItem.scorePercent}%)`;
+
+    let breakdownHtml = "";
+    if (historyItem.subjectBreakdown) {
+      const keys = Object.keys(historyItem.subjectBreakdown);
+      if (keys.length > 0) {
+        breakdownHtml = `
+          <div class="subject-breakdown-card" style="margin-bottom: 14px;">
+            <span class="breakdown-title">Subject Performance Breakdown</span>
+            <div class="breakdown-grid">
+              ${keys.map(sbj => {
+                const s = historyItem.subjectBreakdown[sbj];
+                const pct = Math.round((s.correct / s.total) * 100);
+                return `
+                  <div class="subject-score-chip">
+                    <span class="chip-name">${sbj}:</span>
+                    <span class="chip-score">${s.correct}/${s.total} (${pct}%)</span>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `;
+      }
+    }
 
     historyDetailModalBody.innerHTML = `
       <div class="history-summary-box">
@@ -1344,22 +1665,23 @@ document.addEventListener("DOMContentLoaded", () => {
         <div><strong>Time Taken:</strong> ${historyItem.timeSpentFormatted}</div>
         <div><strong>Date:</strong> ${historyItem.dateFormatted}</div>
       </div>
+      ${breakdownHtml}
       <div class="history-questions-breakdown">
         ${historyItem.questions.map((q, idx) => `
           <div class="history-q-card ${q.isCorrect ? 'q-correct' : 'q-wrong'}">
             <div class="history-q-header">
-              <span class="history-q-num">Q${idx + 1} (${q.category})</span>
+              <span class="history-q-num">Q${idx + 1} (${q.subject ? q.subject + ' • ' : ''}${q.category})</span>
               <span class="history-q-status">${q.isCorrect ? '✓ Correct' : '✕ Incorrect'}</span>
             </div>
             <p class="history-q-text">${q.question}</p>
             <div class="history-q-options">
               ${q.options.map((opt, optIdx) => {
-      let optClass = "";
-      if (optIdx === q.correctAnswer) optClass = "opt-correct";
-      else if (optIdx === q.userAnswer) optClass = "opt-user-wrong";
-      const letter = String.fromCharCode(65 + optIdx);
-      return `<div class="history-opt ${optClass}">${letter}. ${opt}</div>`;
-    }).join("")}
+                let optClass = "";
+                if (optIdx === q.correctAnswer) optClass = "opt-correct";
+                else if (optIdx === q.userAnswer) optClass = "opt-user-wrong";
+                const letter = String.fromCharCode(65 + optIdx);
+                return `<div class="history-opt ${optClass}">${letter}. ${opt}</div>`;
+              }).join("")}
             </div>
             ${q.explanation ? `<div class="history-q-explanation"><strong>Explanation:</strong> ${formatExplanation(q.explanation)}</div>` : ''}
           </div>
