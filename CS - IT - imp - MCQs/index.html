@@ -62,8 +62,10 @@
 
     <div class="header-actions">
       <!-- PWA Install Application Button (shows when Chrome install prompt is ready) -->
-      <button class="icon-btn pwa-install-btn" id="pwaInstallBtn" aria-label="Install App" title="Install Site as Application" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="icon-btn pwa-install-btn" id="pwaInstallBtn" aria-label="Install App"
+        title="Install Site as Application" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
           <line x1="8" y1="21" x2="16" y2="21"></line>
           <line x1="12" y1="17" x2="12" y2="21"></line>
@@ -171,7 +173,7 @@
       <!-- Loading state / fallback -->
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Loading Networking MCQ bank...</p>
+        <p>Wait a while, Loading MCQ...</p>
       </div>
     </section>
 
@@ -179,18 +181,15 @@
     <section class="quiz-container" id="quizContainer" style="display: none;">
       <!-- Setup Panel -->
       <div class="quiz-setup-card" id="quizSetupCard">
-        <h2>Practice & Mock Exam Generator</h2>
-        <p>Configure a single-subject practice quiz or build a custom multi-subject mock exam paper.</p>
+        <h2>Quiz & Mock Exam</h2>
 
         <!-- Quiz Mode Selection Tabs -->
         <div class="quiz-type-tabs">
           <button class="quiz-type-tab active" id="tabSingleSubjectQuiz">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-            Single Subject Quiz
+            Single Quiz
           </button>
           <button class="quiz-type-tab" id="tabMultiSubjectMock">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Custom Mock Exam (Multi-Subject)
+            Custom Exam
           </button>
         </div>
 
@@ -232,14 +231,14 @@
             <div class="mock-preset-grid">
               <button class="preset-card" id="presetFullMockBtn">
                 <div class="preset-header">
-                  <span class="preset-title">⚡ 100-Mark Full Mock</span>
+                  <span class="preset-title">100-Mark Full Mock</span>
                   <span class="preset-badge">90 Mins</span>
                 </div>
                 <p class="preset-desc">20 questions from each subject, fully shuffled (100 total MCQs).</p>
               </button>
               <button class="preset-card" id="presetMiniMockBtn">
                 <div class="preset-header">
-                  <span class="preset-title">🚀 50-Mark Mini Paper</span>
+                  <span class="preset-title">50-Mark Mini Paper</span>
                   <span class="preset-badge">45 Mins</span>
                 </div>
                 <p class="preset-desc">10 questions from each subject evenly distributed (50 total MCQs).</p>
@@ -250,7 +249,7 @@
           <!-- Custom Subject Distribution Grid -->
           <div class="form-group">
             <div class="dist-header">
-              <label>Custom Subject Distribution</label>
+              <label>Customization</label>
               <span class="total-mcq-counter" id="mockTotalCounter">Total: 0 MCQs</span>
             </div>
             <div class="subject-dist-container" id="subjectDistContainer">
@@ -275,7 +274,7 @@
           </div>
 
           <button class="primary-btn start-quiz-btn" id="startMockExamBtn">
-            🚀 Launch Custom Mock Exam
+            Start Exam
           </button>
         </div>
       </div>
@@ -285,12 +284,16 @@
         <div class="quiz-history-header">
           <div class="quiz-history-title-group">
             <h3>Attempt History</h3>
-            <button class="icon-btn-subtle toggle-history-vis-btn" id="toggleQuizHistoryVisBtn" title="Hide History" aria-label="Toggle Attempt History Visibility">
-              <svg class="eye-open-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button class="icon-btn-subtle toggle-history-vis-btn" id="toggleQuizHistoryVisBtn" title="Hide History"
+              aria-label="Toggle Attempt History Visibility">
+              <svg class="eye-open-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
-              <svg class="eye-closed-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <svg class="eye-closed-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="display: none;">
                 <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
                 <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
                 <path d="M6.61 6.61A13.52 13.52 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
@@ -423,26 +426,35 @@
         </p>
 
         <div class="import-options-group" style="display: flex; flex-direction: column; gap: 12px;">
-          <label class="import-option-card" style="display: flex; gap: 12px; padding: 14px; border: 2px solid var(--accent-color, #6366F1); border-radius: 14px; background: rgba(99, 102, 241, 0.08); cursor: pointer; transition: all 0.2s ease;">
-            <input type="radio" name="importModeChoice" value="merge" checked style="margin-top: 3px; accent-color: #6366F1;">
+          <label class="import-option-card"
+            style="display: flex; gap: 12px; padding: 14px; border: 2px solid var(--accent-color, #6366F1); border-radius: 14px; background: rgba(99, 102, 241, 0.08); cursor: pointer; transition: all 0.2s ease;">
+            <input type="radio" name="importModeChoice" value="merge" checked
+              style="margin-top: 3px; accent-color: #6366F1;">
             <div>
-              <strong style="display: flex; align-items: center; color: var(--text-main, #f8fafc); font-size: 0.98rem; gap: 6px;">
+              <strong
+                style="display: flex; align-items: center; color: var(--text-main, #f8fafc); font-size: 0.98rem; gap: 6px;">
                 Merge with Current Data
-                <span style="font-size: 0.72rem; background: rgba(99, 102, 241, 0.25); color: #818cf8; padding: 2px 8px; border-radius: 10px; font-weight: 600;">Recommended</span>
+                <span
+                  style="font-size: 0.72rem; background: rgba(99, 102, 241, 0.25); color: #818cf8; padding: 2px 8px; border-radius: 10px; font-weight: 600;">Recommended</span>
               </strong>
-              <span style="font-size: 0.84rem; color: var(--text-muted, #94a3b8); margin-top: 4px; display: block; line-height: 1.4;">
-                Combines covered MCQs, bookmarks, attempts, checkpoints, and quiz history from both devices so no data is lost.
+              <span
+                style="font-size: 0.84rem; color: var(--text-muted, #94a3b8); margin-top: 4px; display: block; line-height: 1.4;">
+                Combines covered MCQs, bookmarks, attempts, checkpoints, and quiz history from both devices so no data
+                is lost.
               </span>
             </div>
           </label>
 
-          <label class="import-option-card" style="display: flex; gap: 12px; padding: 14px; border: 2px solid var(--border-color, rgba(255,255,255,0.1)); border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
-            <input type="radio" name="importModeChoice" value="overwrite" style="margin-top: 3px; accent-color: #ef4444;">
+          <label class="import-option-card"
+            style="display: flex; gap: 12px; padding: 14px; border: 2px solid var(--border-color, rgba(255,255,255,0.1)); border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
+            <input type="radio" name="importModeChoice" value="overwrite"
+              style="margin-top: 3px; accent-color: #ef4444;">
             <div>
               <strong style="display: block; color: #F87171; font-size: 0.98rem;">
                 Replace / Overwrite Current Data
               </strong>
-              <span style="font-size: 0.84rem; color: var(--text-muted, #94a3b8); margin-top: 4px; display: block; line-height: 1.4;">
+              <span
+                style="font-size: 0.84rem; color: var(--text-muted, #94a3b8); margin-top: 4px; display: block; line-height: 1.4;">
                 Deletes existing data on this device completely and restores strictly from the imported backup file.
               </span>
             </div>
