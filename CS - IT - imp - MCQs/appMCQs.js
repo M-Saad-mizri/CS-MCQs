@@ -2545,7 +2545,20 @@ Instructions:
       ${answerKeyHtml}
     `;
 
+    const originalTitle = document.title;
+    let pdfFileName = state.activeSubject;
+    if (state.selectedTopic && state.selectedTopic !== "ALL") {
+      pdfFileName += ` - ${state.selectedTopic}`;
+    }
+    pdfFileName += " - Practice Worksheet";
+
+    document.title = pdfFileName;
+
     window.print();
+
+    setTimeout(() => {
+      document.title = originalTitle;
+    }, 500);
   }
 
   window.addEventListener('appinstalled', () => {
