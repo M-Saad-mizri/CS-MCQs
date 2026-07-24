@@ -151,6 +151,15 @@
           <button class="filter-chip chip-mistakes" id="filterMistakes" data-active="false">
             Mistakes
           </button>
+
+          <button class="filter-chip chip-print" id="btnPrintWorksheet" title="Generate PDF Practice Worksheet" aria-label="Generate PDF Practice Worksheet">
+            <svg class="chip-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            PDF Sheet
+          </button>
         </div>
       </div>
 
@@ -412,6 +421,66 @@
       </div>
     </div>
   </div>
+
+  <!-- Printable PDF Worksheet Modal -->
+  <div class="modal-overlay" id="printWorksheetModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>🖨️ PDF Practice Sheet Generator</h2>
+        <button class="close-btn" id="printModalClose">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: left;">
+        <p class="modal-desc" style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.9rem;">
+          Generate a formatted, ink-friendly printable worksheet with an Answer Key & Explanations at the bottom.
+        </p>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Question Source</label>
+          <select id="printSourceSelect" class="form-select">
+            <option value="subject" selected>Current Subject (Active MCQs)</option>
+            <option value="bookmarks">Bookmarked MCQs Only</option>
+            <option value="mistakes">Mistakes / Missed Questions Only</option>
+            <option value="uncovered">Uncovered Questions Only</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Number of Questions</label>
+          <select id="printCountSelect" class="form-select">
+            <option value="25" selected>25 MCQs (Compact 2-Page Sheet)</option>
+            <option value="50">50 MCQs (Standard Practice Sheet)</option>
+            <option value="100">100 MCQs (Full Exam Sheet)</option>
+            <option value="ALL">All Available MCQs</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Worksheet Options</label>
+          <div class="control-card" style="display: flex; flex-direction: column; gap: 10px; padding: 12px 14px;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 500;">
+              <input type="checkbox" id="printIncludeHeader" checked style="accent-color: var(--accent-color);">
+              <span>Include Student Name, Date & Score Header</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 500;">
+              <input type="checkbox" id="printIncludeAnswerKey" checked style="accent-color: var(--accent-color);">
+              <span>Include Answer Key Table at Bottom</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 500;">
+              <input type="checkbox" id="printIncludeExplanations" checked style="accent-color: var(--accent-color);">
+              <span>Include Explanations in Answer Key</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" id="printModalCancelBtn">Cancel</button>
+        <button class="primary-btn" id="printConfirmBtn">🖨️ Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Printable Worksheet Container -->
+  <div id="printableWorksheetArea" class="printable-area"></div>
 
   <!-- Backup Import Selection Modal -->
   <div class="modal-overlay" id="importBackupModal" style="display: none;">

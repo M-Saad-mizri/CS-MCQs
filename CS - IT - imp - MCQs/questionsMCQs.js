@@ -22661,7 +22661,7 @@ const DSP_MCQS = [
     "category": "FIR Filters",
     "question": "FIR filters are primarily used in:",
     "options": [
-      "Digital signal processing",
+      "DSP",
       "Audio processing",
       "Image processing",
       "All of them"
@@ -23920,7 +23920,7 @@ const DSP_MCQS = [
   {
     "id": 400,
     "category": "IIR Filters & Mixed",
-    "question": "Which statement best summarizes Digital Signal Processing?",
+    "question": "Which statement best summarizes DSP?",
     "options": [
       "DSP is limited to audio applications only.",
       "DSP is used only for analog communication systems.",
@@ -31333,7 +31333,7 @@ const builtInSubjects = {
   "Digital System Design": DSD_MCQS,
   "Computer Networking": NETWORKING_MCQS,
   "DBMS": DBMS_MCQS,
-  "Digital Signal Processing": DSP_MCQS,
+  "DSP": DSP_MCQS,
   "Operating Systems": OPERATING_SYSTEMS_MCQS,
   "Microprocessor": MICROPROCESSOR_MCQS,
   "Software Engineering": SOFTWARE_ENGINEERING_MCQS

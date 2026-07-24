@@ -2367,6 +2367,170 @@ Instructions:
     });
   }
 
+  // --- PRINTABLE PDF WORKSHEET GENERATOR ---
+  const btnPrintWorksheet = document.getElementById("btnPrintWorksheet");
+  const printWorksheetModal = document.getElementById("printWorksheetModal");
+  const printModalClose = document.getElementById("printModalClose");
+  const printModalCancelBtn = document.getElementById("printModalCancelBtn");
+  const printConfirmBtn = document.getElementById("printConfirmBtn");
+  const printableWorksheetArea = document.getElementById("printableWorksheetArea");
+
+  const printSourceSelect = document.getElementById("printSourceSelect");
+  const printCountSelect = document.getElementById("printCountSelect");
+  const printIncludeHeader = document.getElementById("printIncludeHeader");
+  const printIncludeAnswerKey = document.getElementById("printIncludeAnswerKey");
+  const printIncludeExplanations = document.getElementById("printIncludeExplanations");
+
+  if (btnPrintWorksheet) {
+    btnPrintWorksheet.addEventListener("click", () => {
+      if (printWorksheetModal) printWorksheetModal.style.display = "flex";
+    });
+  }
+
+  if (printModalClose) {
+    printModalClose.addEventListener("click", () => {
+      if (printWorksheetModal) printWorksheetModal.style.display = "none";
+    });
+  }
+
+  if (printModalCancelBtn) {
+    printModalCancelBtn.addEventListener("click", () => {
+      if (printWorksheetModal) printWorksheetModal.style.display = "none";
+    });
+  }
+
+  if (printConfirmBtn) {
+    printConfirmBtn.addEventListener("click", () => {
+      generateAndPrintWorksheet();
+      if (printWorksheetModal) printWorksheetModal.style.display = "none";
+    });
+  }
+
+  function generateAndPrintWorksheet() {
+    if (!printableWorksheetArea) return;
+
+    const sourceVal = printSourceSelect ? printSourceSelect.value : "subject";
+    const countVal = printCountSelect ? printCountSelect.value : "25";
+    const incHeader = printIncludeHeader ? printIncludeHeader.checked : true;
+    const incKey = printIncludeAnswerKey ? printIncludeAnswerKey.checked : true;
+    const incExp = printIncludeExplanations ? printIncludeExplanations.checked : true;
+
+    let pool = [];
+    let titleSubject = state.activeSubject;
+
+    if (sourceVal === "bookmarks") {
+      titleSubject = `${state.activeSubject} (Bookmarked MCQs)`;
+      const bmList = state.bookmarks[state.activeSubject] || [];
+      const allMCQs = getActiveSubjectMCQs();
+      pool = allMCQs.filter(m => bmList.includes(m.id));
+    } else if (sourceVal === "mistakes") {
+      titleSubject = `${state.activeSubject} (Mistakes)`;
+      const attempts = state.attempts[state.activeSubject] || {};
+      const allMCQs = getActiveSubjectMCQs();
+      pool = allMCQs.filter(m => {
+        const att = attempts[m.id];
+        return att && !att.isCorrect && att.wrongOptions && att.wrongOptions.length > 0;
+      });
+    } else if (sourceVal === "uncovered") {
+      titleSubject = `${state.activeSubject} (Uncovered MCQs)`;
+      const coveredList = state.covered[state.activeSubject] || [];
+      const allMCQs = getActiveSubjectMCQs();
+      pool = allMCQs.filter(m => !coveredList.includes(m.id));
+    } else {
+      pool = getActiveSubjectMCQs();
+    }
+
+    if (pool.length === 0) {
+      alert("No MCQs found matching your selected criteria!");
+      return;
+    }
+
+    if (countVal !== "ALL") {
+      const limit = parseInt(countVal, 10);
+      pool = pool.slice(0, limit);
+    }
+
+    const todayStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    let headerHtml = `
+      <div class="print-header">
+        <div class="print-header-top">
+          <div>
+            <h1 class="print-title">${titleSubject}</h1>
+            <div class="print-subtitle">QuickFacts CS & IT MCQs Practice Worksheet • ${pool.length} Questions</div>
+          </div>
+          <div style="text-align: right; font-size: 0.85rem; font-weight: 600;">Date: ${todayStr}</div>
+        </div>
+        ${incHeader ? `
+          <div class="print-student-fields">
+            <span>Name: _______________________________</span>
+            <span>Roll / ID No: _________________</span>
+            <span>Score: _______ / ${pool.length}</span>
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    let questionsHtml = pool.map((q, idx) => {
+      return `
+        <div class="print-q-block">
+          <div class="print-q-text">Q${idx + 1}. ${q.question}</div>
+          <div class="print-q-options">
+            ${q.options.map((opt, optIdx) => {
+              const letter = String.fromCharCode(65 + optIdx);
+              return `
+                <div class="print-opt-item">
+                  <span class="print-bubble"></span>
+                  <strong>${letter}.</strong> ${opt}
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    let answerKeyHtml = "";
+    if (incKey) {
+      answerKeyHtml = `
+        <div class="print-answer-key-section">
+          <h2 class="print-key-title">Answer Key</h2>
+          <div class="print-key-grid">
+            ${pool.map((q, idx) => {
+              const letter = String.fromCharCode(65 + q.answerIndex);
+              return `<div class="print-key-cell"><strong>Q${idx + 1}:</strong> ${letter}</div>`;
+            }).join("")}
+          </div>
+
+          ${incExp ? `
+            <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; margin-top: 20px;">Explanations & Solutions</h3>
+            <div class="print-explanations-list">
+              ${pool.map((q, idx) => {
+                const letter = String.fromCharCode(65 + q.answerIndex);
+                return `
+                  <div class="print-exp-item">
+                    <strong>Q${idx + 1} (${letter}): ${q.options[q.answerIndex]}</strong><br>
+                    <span>${formatExplanation(q.explanation || 'No detailed explanation required.')}</span>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    printableWorksheetArea.innerHTML = `
+      ${headerHtml}
+      <div class="print-questions-grid">
+        ${questionsHtml}
+      </div>
+      ${answerKeyHtml}
+    `;
+
+    window.print();
+  }
+
   window.addEventListener('appinstalled', () => {
     if (pwaInstallBtn) pwaInstallBtn.style.display = "none";
     deferredPrompt = null;
