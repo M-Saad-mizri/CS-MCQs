@@ -1947,6 +1947,7 @@ document.addEventListener("DOMContentLoaded", () => {
       checkpoints: dataObj.checkpoints || {},
       attempts: dataObj.attempts || {},
       revealedAnswers: dataObj.revealedAnswers || {},
+      comments: dataObj.comments || {},
       quizStats: dataObj.quizStats || {},
       quizHistory: Array.isArray(dataObj.quizHistory) ? dataObj.quizHistory : []
     };
