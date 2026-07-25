@@ -307,10 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="action-left">
             <!-- Covered toggle -->
             <button class="card-action-btn btn-cover" data-id="${fact.id}" data-covered="${isCovered}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>${isCovered ? 'Covered' : 'Mark Covered'}</span>
+              <span>${isCovered ? 'Covered' : 'Covered'}</span>
             </button>
             
             <!-- Bookmark toggle -->
@@ -366,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Uncover
           covered = covered.filter(id => id !== fact.id);
           coverBtn.setAttribute("data-covered", "false");
-          coverBtn.querySelector("span").textContent = "Mark Covered";
+          coverBtn.querySelector("span").textContent = "Covered";
         } else {
           // Cover
           covered.push(fact.id);

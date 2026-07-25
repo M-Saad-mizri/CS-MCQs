@@ -700,6 +700,138 @@ body.light-mode .mcq-opt-letter {
   animation: fadeIn 0.3s ease;
 }
 
+/* Comments Mini Text Editor Container */
+.fact-comments-box {
+  margin-top: 6px;
+  padding: 14px 16px;
+  background: rgba(16, 185, 129, 0.07);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-left: 4px solid #10B981;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.25s ease;
+}
+
+body.light-mode .fact-comments-box {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.comment-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #10B981;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comment-save-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.comment-save-status.status-idle {
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.light-mode .comment-save-status.status-idle {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.comment-save-status.status-saving {
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.comment-save-status.status-saved {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+/* Spin animation for auto-save icon */
+@keyframes spin-auto-save {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-icon {
+  animation: spin-auto-save 1s linear infinite;
+}
+
+.mcq-comment-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.light-mode .mcq-comment-textarea {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
+.mcq-comment-textarea:focus {
+  border-color: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Comment button active state & dot badge */
+.btn-comment-mcq {
+  position: relative;
+}
+
+.btn-comment-mcq.has-comment {
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10B981;
+  background-color: rgba(16, 185, 129, 0.12);
+}
+
+.btn-comment-mcq .comment-dot-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  background-color: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #10B981;
+}
+
 /* Actions Toolbar */
 .fact-actions {
   display: flex;
@@ -1364,12 +1496,12 @@ body.light-mode .slider:before {
   box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background: var(--accent-color);
   border-color: var(--accent-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(22px);
 }
 
@@ -2546,8 +2678,15 @@ body.light-mode .back-to-top-btn:hover {
 }
 
 @keyframes pulseTimer {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.08); opacity: 0.8; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
 }
 
 /* Subject Score Breakdown in Results */
@@ -2606,7 +2745,7 @@ body.light-mode .back-to-top-btn:hover {
 }
 
 @media print {
-  body > *:not(#printableWorksheetArea) {
+  body>*:not(#printableWorksheetArea) {
     display: none !important;
   }
 

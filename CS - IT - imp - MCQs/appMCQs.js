@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     checkpoints: {},        // { [subjectName]: id }
     attempts: {},           // { [subjectName]: { [mcqId]: { wrongOptions: [0, 1], isCorrect: boolean } } }
     revealedAnswers: {},    // { [subjectName]: [id1, id2, ...] }
+    comments: {},           // { [subjectName]: { [mcqId]: string } }
     quizStats: {},          // { [subjectName]: { totalAttempted: number, totalCorrect: number } }
     quizHistory: []         // Array of past quiz attempt objects
   };
@@ -180,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         state = {
           ...state,
           ...parsed,
+          comments: parsed.comments || {},
           hideQuizHistory: !!parsed.hideQuizHistory
         };
       }
@@ -461,7 +463,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const inOptions = mcq.options.some(opt => opt.toLowerCase().includes(query));
         const expStr = formatExplanation(mcq.explanation);
         const inExplanation = expStr.toLowerCase().includes(query);
-        if (!inQuestion && !inCategory && !inOptions && !inExplanation) return false;
+        const userComment = (state.comments && state.comments[state.activeSubject] && state.comments[state.activeSubject][mcq.id]) || "";
+        const inComments = userComment.toLowerCase().includes(query);
+        if (!inQuestion && !inCategory && !inOptions && !inExplanation && !inComments) return false;
       }
 
       // Chip Filters
@@ -497,6 +501,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const att = attempts[mcq.id] || { wrongOptions: [], isCorrect: false };
       const isRevealed = state.showAllAnswers || revealedList.includes(mcq.id);
+
+      const userSubjectComments = (state.comments && state.comments[state.activeSubject]) || {};
+      const existingComment = userSubjectComments[mcq.id] || "";
+      const hasComment = Boolean(existingComment && existingComment.trim());
 
       const card = document.createElement("article");
       card.className = `fact-card ${isCheckpoint ? 'is-checkpoint' : ''}`;
@@ -538,13 +546,22 @@ document.addEventListener("DOMContentLoaded", () => {
           <span style="opacity: 0.9;">${formatExplanation(mcq.explanation)}</span>
         </div>
 
+        <div class="fact-comments-box" id="fact-comments-${mcq.id}" style="display: none;">
+          <div class="comment-header">
+            <div class="comment-title">
+              <span>your Notes</span>
+            </div>
+            <div class="comment-save-status status-idle" id="comment-status-${mcq.id}">
+<span>Auto-saves</span>
+            </div>
+          </div>
+          <textarea class="mcq-comment-textarea" data-id="${mcq.id}" placeholder="Write personal notes, key concepts, or memory tricks for MCQ #${absoluteIndex}...">${existingComment}</textarea>
+        </div>
+
         <div class="fact-actions">
           <div class="action-left">
             <button class="card-action-btn btn-cover" data-id="${mcq.id}" data-covered="${isCovered}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>${isCovered ? 'Covered' : 'Mark Covered'}</span>
+              <span>${isCovered ? 'Covered' : 'Covered'}</span>
             </button>
             
             <button class="card-action-btn btn-bookmark" data-id="${mcq.id}" data-bookmarked="${isBookmarked}" title="Add to Revision Bookmarks">
@@ -573,6 +590,12 @@ document.addEventListener("DOMContentLoaded", () => {
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+
+            <button class="card-action-btn btn-comment-mcq ${hasComment ? 'has-comment' : ''}" data-id="${mcq.id}" title="${hasComment ? 'View / Edit Personal Note' : 'Add Personal Note / Comment'}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
             </button>
           </div>
@@ -612,6 +635,87 @@ document.addEventListener("DOMContentLoaded", () => {
           }).catch(err => {
             alert("Copy failed: " + err);
           });
+        });
+      }
+
+      // Comments Mini Text Editor & Auto-Save Logic
+      const commentBtn = card.querySelector(".btn-comment-mcq");
+      const commentsBox = card.querySelector(".fact-comments-box");
+      const commentTextarea = card.querySelector(".mcq-comment-textarea");
+      const commentStatus = card.querySelector(`#comment-status-${mcq.id}`);
+      let autoSaveTimer = null;
+
+      if (commentBtn && commentsBox) {
+        commentBtn.addEventListener("click", () => {
+          const isHidden = commentsBox.style.display === "none";
+          commentsBox.style.display = isHidden ? "flex" : "none";
+          if (isHidden && commentTextarea) {
+            commentTextarea.focus();
+          }
+        });
+      }
+
+      if (commentTextarea) {
+        const saveComment = () => {
+          const val = commentTextarea.value;
+          if (!state.comments) state.comments = {};
+          if (!state.comments[state.activeSubject]) {
+            state.comments[state.activeSubject] = {};
+          }
+
+          if (val.trim() === "") {
+            delete state.comments[state.activeSubject][mcq.id];
+          } else {
+            state.comments[state.activeSubject][mcq.id] = val;
+          }
+
+          saveState();
+
+          const hasNoteNow = Boolean(val && val.trim());
+          if (commentBtn) {
+            if (hasNoteNow) {
+              commentBtn.classList.add("has-comment");
+              if (!commentBtn.querySelector(".comment-dot-badge")) {
+                commentBtn.insertAdjacentHTML("beforeend", ` `);
+              }
+            } else {
+              commentBtn.classList.remove("has-comment");
+              const dot = commentBtn.querySelector(".comment-dot-badge");
+              if (dot) dot.remove();
+            }
+          }
+
+          if (commentStatus) {
+            commentStatus.className = "comment-save-status status-saved";
+            commentStatus.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Saved</span>
+            `;
+            setTimeout(() => {
+              if (commentStatus.classList.contains("status-saved")) {
+                commentStatus.className = "comment-save-status status-idle";
+                commentStatus.innerHTML = `
+<span>Auto-saves</span>
+                `;
+              }
+            }, 2000);
+          }
+        };
+
+        commentTextarea.addEventListener("input", () => {
+          if (commentStatus) {
+            commentStatus.className = "comment-save-status status-saving";
+            commentStatus.innerHTML = `
+              <svg class="spin-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+            `;
+          }
+          clearTimeout(autoSaveTimer);
+          autoSaveTimer = setTimeout(saveComment, 400);
+        });
+
+        commentTextarea.addEventListener("blur", () => {
+          clearTimeout(autoSaveTimer);
+          saveComment();
         });
       }
 
@@ -715,7 +819,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (covered.includes(mcq.id)) {
           covered = covered.filter(id => id !== mcq.id);
           coverBtn.setAttribute("data-covered", "false");
-          coverBtn.querySelector("span").textContent = "Mark Covered";
+          coverBtn.querySelector("span").textContent = "Covered";
         } else {
           covered.push(mcq.id);
           coverBtn.setAttribute("data-covered", "true");
@@ -1644,15 +1748,15 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="breakdown-title">Subject Performance Breakdown</span>
             <div class="breakdown-grid">
               ${keys.map(sbj => {
-                const s = historyItem.subjectBreakdown[sbj];
-                const pct = Math.round((s.correct / s.total) * 100);
-                return `
+          const s = historyItem.subjectBreakdown[sbj];
+          const pct = Math.round((s.correct / s.total) * 100);
+          return `
                   <div class="subject-score-chip">
                     <span class="chip-name">${sbj}:</span>
                     <span class="chip-score">${s.correct}/${s.total} (${pct}%)</span>
                   </div>
                 `;
-              }).join("")}
+        }).join("")}
             </div>
           </div>
         `;
@@ -1676,12 +1780,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <p class="history-q-text">${q.question}</p>
             <div class="history-q-options">
               ${q.options.map((opt, optIdx) => {
-                let optClass = "";
-                if (optIdx === q.correctAnswer) optClass = "opt-correct";
-                else if (optIdx === q.userAnswer) optClass = "opt-user-wrong";
-                const letter = String.fromCharCode(65 + optIdx);
-                return `<div class="history-opt ${optClass}">${letter}. ${opt}</div>`;
-              }).join("")}
+      let optClass = "";
+      if (optIdx === q.correctAnswer) optClass = "opt-correct";
+      else if (optIdx === q.userAnswer) optClass = "opt-user-wrong";
+      const letter = String.fromCharCode(65 + optIdx);
+      return `<div class="history-opt ${optClass}">${letter}. ${opt}</div>`;
+    }).join("")}
             </div>
             ${q.explanation ? `<div class="history-q-explanation"><strong>Explanation:</strong> ${formatExplanation(q.explanation)}</div>` : ''}
           </div>
@@ -1953,13 +2057,6 @@ Instructions:
     });
   });
 
-  if (exportProgressBtn) {
-    exportProgressBtn.addEventListener("click", () => {
-      const filename = `quickfacts_mcq_backup_${new Date().toISOString().slice(0, 10)}.json`;
-      exportAndShareData(state, filename, "QuickFacts MCQs Backup");
-    });
-  }
-
   const importBackupModal = document.getElementById("importBackupModal");
   const importModalClose = document.getElementById("importModalClose");
   const importModalCancelBtn = document.getElementById("importModalCancelBtn");
@@ -1983,7 +2080,7 @@ Instructions:
           if (!parsed || typeof parsed !== "object") {
             throw new Error("Invalid JSON file format.");
           }
-          if (!parsed.covered && !parsed.attempts && !parsed.quizHistory && !parsed.customSubjects) {
+          if (!parsed.covered && !parsed.attempts && !parsed.quizHistory && !parsed.customSubjects && !parsed.comments) {
             throw new Error("File does not appear to contain valid QuickFacts MCQ backup data.");
           }
           pendingImportData = parsed;
@@ -2130,6 +2227,20 @@ Instructions:
       return timeB - timeA;
     });
 
+    // 8. Merge Comments
+    const mergedComments = { ...state.comments };
+    if (incoming.comments && typeof incoming.comments === "object") {
+      Object.keys(incoming.comments).forEach(subj => {
+        if (!mergedComments[subj]) mergedComments[subj] = {};
+        const incomingSubjComments = incoming.comments[subj] || {};
+        Object.keys(incomingSubjComments).forEach(mcqId => {
+          if (incomingSubjComments[mcqId] !== undefined) {
+            mergedComments[subj][mcqId] = incomingSubjComments[mcqId];
+          }
+        });
+      });
+    }
+
     state = {
       ...state,
       covered: mergedCovered,
@@ -2138,6 +2249,7 @@ Instructions:
       attempts: mergedAttempts,
       revealedAnswers: mergedRevealed,
       customSubjects: mergedCustom,
+      comments: mergedComments,
       quizHistory: mergedHistory
     };
 
@@ -2153,6 +2265,7 @@ Instructions:
     state = {
       ...state,
       ...incoming,
+      comments: incoming.comments || {},
       hideQuizHistory: typeof incoming.hideQuizHistory === "boolean" ? incoming.hideQuizHistory : !!state.hideQuizHistory
     };
     saveState();
@@ -2262,6 +2375,7 @@ Instructions:
       state.checkpoints[state.activeSubject] = null;
       state.attempts[state.activeSubject] = {};
       state.revealedAnswers[state.activeSubject] = [];
+      if (state.comments) state.comments[state.activeSubject] = {};
       if (state.quizStats) state.quizStats[state.activeSubject] = { totalAttempted: 0, totalCorrect: 0 };
       saveState();
       initSubjectView();
@@ -2494,14 +2608,14 @@ Instructions:
           <div class="print-q-text">Q${idx + 1}. ${q.question}</div>
           <div class="print-q-options">
             ${q.options.map((opt, optIdx) => {
-              const letter = String.fromCharCode(65 + optIdx);
-              return `
+        const letter = String.fromCharCode(65 + optIdx);
+        return `
                 <div class="print-opt-item">
                   <span class="print-bubble"></span>
                   <strong>${letter}.</strong> ${opt}
                 </div>
               `;
-            }).join("")}
+      }).join("")}
           </div>
         </div>
       `;
@@ -2514,23 +2628,23 @@ Instructions:
           <h2 class="print-key-title">Answer Key</h2>
           <div class="print-key-grid">
             ${pool.map((q, idx) => {
-              const letter = String.fromCharCode(65 + q.answerIndex);
-              return `<div class="print-key-cell"><strong>Q${idx + 1}:</strong> ${letter}</div>`;
-            }).join("")}
+        const letter = String.fromCharCode(65 + q.answerIndex);
+        return `<div class="print-key-cell"><strong>Q${idx + 1}:</strong> ${letter}</div>`;
+      }).join("")}
           </div>
 
           ${incExp ? `
             <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; margin-top: 20px;">Explanations & Solutions</h3>
             <div class="print-explanations-list">
               ${pool.map((q, idx) => {
-                const letter = String.fromCharCode(65 + q.answerIndex);
-                return `
+        const letter = String.fromCharCode(65 + q.answerIndex);
+        return `
                   <div class="print-exp-item">
                     <strong>Q${idx + 1} (${letter}): ${q.options[q.answerIndex]}</strong><br>
                     <span>${formatExplanation(q.explanation || 'No detailed explanation required.')}</span>
                   </div>
                 `;
-              }).join("")}
+      }).join("")}
             </div>
           ` : ''}
         </div>
