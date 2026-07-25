@@ -1955,6 +1955,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const jsonStr = JSON.stringify(exportPayload, null, 2);
     const txtFilename = filename.replace(/\.json$/, ".txt");
 
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia("(max-width: 768px)").matches);
+
+    // On laptop/desktop, always trigger a direct file download
+    if (!isMobileDevice) {
+      downloadBlobFallback(jsonStr, filename);
+    }
+
     if (navigator.share) {
       try {
         const txtFile = new File([jsonStr], txtFilename, { type: "text/plain" });
@@ -1980,7 +1987,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    downloadBlobFallback(jsonStr, filename);
+    if (isMobileDevice) {
+      downloadBlobFallback(jsonStr, filename);
+    }
   };
 
   if (exportProgressBtn) {

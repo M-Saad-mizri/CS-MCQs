@@ -601,6 +601,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const jsonStr = typeof dataObj === "string" ? dataObj : JSON.stringify(dataObj, null, 2);
     const txtFilename = filename.replace(/\.json$/, ".txt");
 
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia("(max-width: 768px)").matches);
+
+    if (!isMobileDevice) {
+      downloadBlobFallback(jsonStr, filename);
+    }
+
     if (navigator.share) {
       try {
         const txtFile = new File([jsonStr], txtFilename, { type: "text/plain" });
@@ -626,7 +632,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    downloadBlobFallback(jsonStr, filename);
+    if (isMobileDevice) {
+      downloadBlobFallback(jsonStr, filename);
+    }
   };
 
   if (exportProgressBtn) {
