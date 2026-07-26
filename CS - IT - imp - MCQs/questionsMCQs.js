@@ -13670,7 +13670,332 @@ const DBMS_MCQS = [
     "explanation": "MS Excel is a spreadsheet application, whereas Oracle, PostgreSQL, and SQL Server are full DBMS software."
   },
   {
-    "id": 12,
+    "category": "DBMS Functions",
+    "question": "Which DBMS feature allows changes to the database structure without affecting application programs?",
+    "options": [
+      "Data Security",
+      "Data Integrity",
+      "Data Independence",
+      "Data Availability"
+    ],
+    "answerIndex": 2,
+    "explanation": "Data Independence decouples database structure modifications (physical or logical) from application programs.",
+    "id": 12
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which of the following refers to protecting data from unauthorized access?",
+    "options": [
+      "Data Consistency",
+      "Data Security",
+      "Data Independence",
+      "Reduced Redundancy"
+    ],
+    "answerIndex": 1,
+    "explanation": "Data Security enforces authorization and access control rules to prevent unauthorized database access.",
+    "id": 13
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which DBMS feature ensures that data remains accurate and valid throughout its lifecycle?",
+    "options": [
+      "Data Availability",
+      "Multi-user Access",
+      "Data Integrity",
+      "Centralized Control"
+    ],
+    "answerIndex": 2,
+    "explanation": "Data Integrity enforces constraints and domain rules to maintain data accuracy and validity.",
+    "id": 14
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "The ability of authorized users to access data whenever needed is known as:",
+    "options": [
+      "Data Security",
+      "Data Consistency",
+      "Data Availability",
+      "Data Independence"
+    ],
+    "answerIndex": 2,
+    "explanation": "Data Availability guarantees that system resources and data remain accessible to authorized users when required.",
+    "id": 15
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which DBMS feature allows multiple users to access the same database simultaneously?",
+    "options": [
+      "Centralized Control",
+      "Data Integrity",
+      "Multi-user Access",
+      "Reduced Redundancy"
+    ],
+    "answerIndex": 2,
+    "explanation": "Multi-user Access enables concurrent database interactions while maintaining isolation and consistency.",
+    "id": 16
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Managing all organizational data from a single location is known as:",
+    "options": [
+      "Data Availability",
+      "Data Independence",
+      "Centralized Control",
+      "Data Consistency"
+    ],
+    "answerIndex": 2,
+    "explanation": "Centralized Control allows a DBA to manage administration, security, and standards from a unified repository.",
+    "id": 17
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which DBMS feature minimizes duplicate copies of the same data?",
+    "options": [
+      "Data Integrity",
+      "Reduced Redundancy",
+      "Data Availability",
+      "Data Security"
+    ],
+    "answerIndex": 1,
+    "explanation": "Reduced Redundancy eliminates unnecessary data duplicates by centralizing data storage.",
+    "id": 18
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which feature ensures that all users see the same accurate and up-to-date data?",
+    "options": [
+      "Data Independence",
+      "Multi-user Access",
+      "Data Consistency",
+      "Centralized Control"
+    ],
+    "answerIndex": 2,
+    "explanation": "Data Consistency guarantees all users observe a consistent, synchronized state of data across transactions.",
+    "id": 19
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "A major advantage of data independence is that:",
+    "options": [
+      "It increases data redundancy.",
+      "It removes data security.",
+      "Changes in database structure have minimal impact on application programs.",
+      "It prevents multiple users from accessing the database."
+    ],
+    "answerIndex": 2,
+    "explanation": "Data independence ensures changes to internal or conceptual schemas do not require rewriting application programs.",
+    "id": 20
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which DBMS feature is primarily responsible for preventing unauthorized modification of data?",
+    "options": [
+      "Reduced Redundancy",
+      "Data Availability",
+      "Data Security",
+      "Multi-user Access"
+    ],
+    "answerIndex": 2,
+    "explanation": "Data Security provides user authentication, roles, and privileges to block unauthorized updates.",
+    "id": 21
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Reduced data redundancy directly helps improve:",
+    "options": [
+      "Data Availability only",
+      "Multi-user Access only",
+      "Data Consistency",
+      "Data Independence only"
+    ],
+    "answerIndex": 2,
+    "explanation": "Minimizing duplicate copies directly prevents data anomalies and improves overall Data Consistency.",
+    "id": 22
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which DBMS feature ensures that data remains accessible even during hardware or software failures?",
+    "options": [
+      "Data Integrity",
+      "Centralized Control",
+      "Data Availability",
+      "Reduced Redundancy"
+    ],
+    "answerIndex": 2,
+    "explanation": "High Data Availability mechanisms like backups, replication, and failover keep data accessible during outages.",
+    "id": 23
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "In a university database, many teachers updating students' records at the same time is an example of:",
+    "options": [
+      "Data Integrity",
+      "Centralized Control",
+      "Multi-user Access",
+      "Data Independence"
+    ],
+    "answerIndex": 2,
+    "explanation": "Multiple concurrent transactions executing simultaneously represent Multi-user Access.",
+    "id": 24
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "Which DBMS feature enables an organization to enforce common policies and standards for all stored data?",
+    "options": [
+      "Data Security",
+      "Data Availability",
+      "Centralized Control",
+      "Reduced Redundancy"
+    ],
+    "answerIndex": 2,
+    "explanation": "Centralized Control gives administrators full oversight to apply uniform governance policies across all enterprise data.",
+    "id": 25
+  },
+  {
+    "category": "DBMS Functions",
+    "question": "A DBMS reduces duplicate data primarily to:",
+    "options": [
+      "Increase storage requirements",
+      "Reduce database speed",
+      "Improve consistency and efficient data management",
+      "Eliminate data security"
+    ],
+    "answerIndex": 2,
+    "explanation": "Eliminating redundant storage ensures single-source truth, prevents update anomalies, and optimizes data management.",
+    "id": 26
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "In which DBMS architecture does the user interact directly with the database without any intermediate application?",
+    "options": [
+      "2-Tier Architecture",
+      "3-Tier Architecture",
+      "1-Tier Architecture",
+      "Client-Server Architecture"
+    ],
+    "answerIndex": 2,
+    "explanation": "In 1-Tier Architecture, the user interface, application program, and database reside directly on the local machine.",
+    "id": 27
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "A university management system where students use a web browser, requests are processed by a web server, and data is stored in a database server is an example of:",
+    "options": [
+      "1-Tier Architecture",
+      "2-Tier Architecture",
+      "3-Tier Architecture",
+      "File Processing System"
+    ],
+    "answerIndex": 2,
+    "explanation": "A 3-Tier Architecture separates Presentation Layer (web browser), Application Layer (web/app server), and Database Layer.",
+    "id": 28
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "In a 2-Tier architecture, the client communicates directly with the:",
+    "options": [
+      "Web Server",
+      "Database Server",
+      "File Server",
+      "Application Server"
+    ],
+    "answerIndex": 1,
+    "explanation": "In 2-Tier client-server architecture, client applications establish direct connection interfaces with the database server.",
+    "id": 29
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "Which layer in a 3-Tier architecture contains the business logic of an application?",
+    "options": [
+      "Presentation Layer",
+      "Database Layer",
+      "Application (Business Logic) Layer",
+      "Physical Layer"
+    ],
+    "answerIndex": 2,
+    "explanation": "The Application (Middle) Layer processes rules, logic, and data transformations between UI and Database.",
+    "id": 30
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "Which DBMS architecture provides the highest level of security because users cannot access the database directly?",
+    "options": [
+      "1-Tier Architecture",
+      "2-Tier Architecture",
+      "3-Tier Architecture",
+      "Flat File Architecture"
+    ],
+    "answerIndex": 2,
+    "explanation": "3-Tier Architecture isolates the database behind an application server, preventing direct public client connections.",
+    "id": 31
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "A desktop application installed on a single computer that stores and accesses its own local database is best described as:",
+    "options": [
+      "1-Tier Architecture",
+      "2-Tier Architecture",
+      "3-Tier Architecture",
+      "Distributed Architecture"
+    ],
+    "answerIndex": 0,
+    "explanation": "Single-user standalone desktop applications with local storage constitute a 1-Tier Architecture.",
+    "id": 32
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "Which statement correctly distinguishes 2-Tier and 3-Tier architectures?",
+    "options": [
+      "Both require users to access the database directly.",
+      "3-Tier architecture has no database server.",
+      "2-Tier connects the client directly to the database, whereas 3-Tier uses an application server between them.",
+      "Both architectures process business logic inside the database only."
+    ],
+    "answerIndex": 2,
+    "explanation": "2-Tier connects clients directly to DB; 3-Tier inserts an application server layer between presentation and database.",
+    "id": 33
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "Which of the following is the primary advantage of 3-Tier architecture over 2-Tier architecture?",
+    "options": [
+      "Simpler implementation",
+      "Direct database access",
+      "Better scalability, security, and maintainability",
+      "Lower memory usage on the database server"
+    ],
+    "answerIndex": 2,
+    "explanation": "Decoupling business logic and database access vastly improves system scalability, security, and modular maintenance.",
+    "id": 34
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "In a 3-Tier architecture, if business rules need to be changed, the modification is usually made in the:",
+    "options": [
+      "Client Layer",
+      "Database Layer",
+      "Application (Middle) Layer",
+      "Network Layer"
+    ],
+    "answerIndex": 2,
+    "explanation": "Centralized business rules reside in the Middle/Application Layer, allowing single-point modifications.",
+    "id": 35
+  },
+  {
+    "category": "DBMS 1,2,3 tier Architecture",
+    "question": "An organization has hundreds of employees using the same database through a web application. Which architecture is most suitable and why?",
+    "options": [
+      "1-Tier, because it stores all data on one computer.",
+      "2-Tier, because every client should connect directly to the database.",
+      "3-Tier, because it separates presentation, business logic, and database management, improving security and scalability.",
+      "1-Tier, because it eliminates the need for a server."
+    ],
+    "answerIndex": 2,
+    "explanation": "3-Tier architecture scales efficiently for high client volume by offloading processing to application server tiers.",
+    "id": 36
+  },
+  {
+    "id": 37,
     "category": "Advantages & Disadvantages",
     "question": "Which of the following is an advantage of DBMS?",
     "options": [
@@ -13683,7 +14008,7 @@ const DBMS_MCQS = [
     "explanation": "DBMS minimizes data redundancy by centralizing data storage."
   },
   {
-    "id": 13,
+    "id": 38,
     "category": "Advantages & Disadvantages",
     "question": "Data redundancy means:",
     "options": [
@@ -13696,7 +14021,7 @@ const DBMS_MCQS = [
     "explanation": "Data redundancy refers to storing duplicate copies of the same data across multiple files or tables."
   },
   {
-    "id": 14,
+    "id": 39,
     "category": "Advantages & Disadvantages",
     "question": "Data inconsistency occurs when:",
     "options": [
@@ -13709,7 +14034,7 @@ const DBMS_MCQS = [
     "explanation": "Inconsistency arises when redundant copies of data contain conflicting or non-matching values."
   },
   {
-    "id": 15,
+    "id": 40,
     "category": "Advantages & Disadvantages",
     "question": "Which of the following is a disadvantage of file processing systems?",
     "options": [
@@ -13722,7 +14047,7 @@ const DBMS_MCQS = [
     "explanation": "Traditional file processing systems suffer from high data redundancy and inconsistency."
   },
   {
-    "id": 16,
+    "id": 41,
     "category": "Advantages & Disadvantages",
     "question": "Compared to file systems, DBMS provides:",
     "options": [
@@ -13735,7 +14060,7 @@ const DBMS_MCQS = [
     "explanation": "DBMS supports multi-user data sharing, central access control, and high data integrity."
   },
   {
-    "id": 17,
+    "id": 42,
     "category": "Advantages & Disadvantages",
     "question": "Which feature allows multiple users to access the same database simultaneously?",
     "options": [
@@ -13748,7 +14073,7 @@ const DBMS_MCQS = [
     "explanation": "Concurrent data sharing mechanisms allow multiple users and applications to read/write data simultaneously."
   },
   {
-    "id": 18,
+    "id": 43,
     "category": "DBMS Basics",
     "question": "The collection of programs used to manage databases is called:",
     "options": [
@@ -13761,7 +14086,7 @@ const DBMS_MCQS = [
     "explanation": "DBMS is a suite of programs that manages database creation, maintenance, querying, and access control."
   },
   {
-    "id": 19,
+    "id": 44,
     "category": "Database Users",
     "question": "Which database user is responsible for database maintenance?",
     "options": [
@@ -13774,7 +14099,7 @@ const DBMS_MCQS = [
     "explanation": "The Database Administrator (DBA) manages maintenance, performance, backups, security, and schema changes."
   },
   {
-    "id": 20,
+    "id": 45,
     "category": "Database Users",
     "question": "Who controls user authorization in a database?",
     "options": [
@@ -13787,7 +14112,7 @@ const DBMS_MCQS = [
     "explanation": "The DBA grants and revokes access permissions and user authorizations."
   },
   {
-    "id": 21,
+    "id": 46,
     "category": "Database Users",
     "question": "Who is mainly responsible for database backup and recovery?",
     "options": [
@@ -13800,7 +14125,7 @@ const DBMS_MCQS = [
     "explanation": "DBA configures, tests, and executes database backup and disaster recovery plans."
   },
   {
-    "id": 22,
+    "id": 47,
     "category": "Database Users",
     "question": "Physical database implementation is mainly the responsibility of:",
     "options": [
@@ -13813,7 +14138,7 @@ const DBMS_MCQS = [
     "explanation": "Physical storage allocation, indexing, and implementation are managed by the DBA."
   },
   {
-    "id": 23,
+    "id": 48,
     "category": "Database Users",
     "question": "Who identifies data requirements before database creation?",
     "options": [
@@ -13826,7 +14151,7 @@ const DBMS_MCQS = [
     "explanation": "Database Designers gather requirements, create conceptual models (ER diagrams), and design logical schemas."
   },
   {
-    "id": 24,
+    "id": 49,
     "category": "Database Users",
     "question": "Which database user writes application programs?",
     "options": [
@@ -13839,7 +14164,7 @@ const DBMS_MCQS = [
     "explanation": "Application Programmers develop software modules (web/desktop apps) that query and interact with the DBMS."
   },
   {
-    "id": 25,
+    "id": 50,
     "category": "Database Users",
     "question": "Which database user interacts with the database through applications?",
     "options": [
@@ -13852,7 +14177,7 @@ const DBMS_MCQS = [
     "explanation": "End Users interact with databases indirectly via user interfaces of application software."
   },
   {
-    "id": 26,
+    "id": 51,
     "category": "Database Users",
     "question": "Which database user defines relationships among tables?",
     "options": [
@@ -13865,7 +14190,7 @@ const DBMS_MCQS = [
     "explanation": "Database Designers define entity sets, attributes, keys, and table relationships."
   },
   {
-    "id": 27,
+    "id": 52,
     "category": "Database Users",
     "question": "Which of the following is NOT a type of database user?",
     "options": [
@@ -13878,7 +14203,7 @@ const DBMS_MCQS = [
     "explanation": "A Compiler is system translation software, not a category of database user."
   },
   {
-    "id": 28,
+    "id": 53,
     "category": "Three-Schema Architecture",
     "question": "Which level of database architecture interacts directly with users?",
     "options": [
@@ -13891,7 +14216,7 @@ const DBMS_MCQS = [
     "explanation": "The External Level (View Level) presents customized views directly to end users and applications."
   },
   {
-    "id": 29,
+    "id": 54,
     "category": "Three-Schema Architecture",
     "question": "The conceptual level describes:",
     "options": [
@@ -13904,7 +14229,7 @@ const DBMS_MCQS = [
     "explanation": "The Conceptual Level defines the entire database schema, entity structures, relationships, and constraints."
   },
   {
-    "id": 30,
+    "id": 55,
     "category": "Three-Schema Architecture",
     "question": "The internal level describes:",
     "options": [
@@ -13917,7 +14242,7 @@ const DBMS_MCQS = [
     "explanation": "The Internal Level (Physical Level) details how data is physically stored on disk, including data structures and access paths."
   },
   {
-    "id": 31,
+    "id": 56,
     "category": "Three-Schema Architecture",
     "question": "The ANSI-SPARC architecture consists of:",
     "options": [
@@ -13930,7 +14255,7 @@ const DBMS_MCQS = [
     "explanation": "The ANSI-SPARC architecture consists of 3 levels: External (View), Conceptual (Logical), and Internal (Physical)."
   },
   {
-    "id": 32,
+    "id": 57,
     "category": "Three-Schema Architecture",
     "question": "Which level hides physical storage details from users?",
     "options": [
@@ -13943,7 +14268,7 @@ const DBMS_MCQS = [
     "explanation": "The Conceptual Level provides abstraction by hiding physical storage mechanisms from the view layer."
   },
   {
-    "id": 33,
+    "id": 58,
     "category": "Three-Schema Architecture",
     "question": "External level is also known as:",
     "options": [
@@ -13956,7 +14281,7 @@ const DBMS_MCQS = [
     "explanation": "The External Level is commonly called the View Level as it contains individual user views."
   },
   {
-    "id": 34,
+    "id": 59,
     "category": "Data Independence",
     "question": "Physical storage details are hidden through:",
     "options": [
@@ -13969,7 +14294,7 @@ const DBMS_MCQS = [
     "explanation": "Data Abstraction suppresses low-level technical details across internal, conceptual, and external levels."
   },
   {
-    "id": 35,
+    "id": 60,
     "category": "Three-Schema Architecture",
     "question": "Which of the following is NOT one of the three-schema architecture levels?",
     "options": [
@@ -13982,7 +14307,7 @@ const DBMS_MCQS = [
     "explanation": "The three levels are External, Conceptual, and Internal. Network is a data model type, not an architecture level."
   },
   {
-    "id": 36,
+    "id": 61,
     "category": "Data Independence",
     "question": "Logical data independence refers to:",
     "options": [
@@ -13995,7 +14320,7 @@ const DBMS_MCQS = [
     "explanation": "Logical Data Independence is the capacity to modify the conceptual schema without altering external schemas or application programs."
   },
   {
-    "id": 37,
+    "id": 62,
     "category": "Data Independence",
     "question": "Physical data independence means:",
     "options": [
@@ -14008,7 +14333,7 @@ const DBMS_MCQS = [
     "explanation": "Physical Data Independence is the ability to change physical storage structures (e.g. indexes, file organizations) without changing the conceptual schema."
   },
   {
-    "id": 38,
+    "id": 63,
     "category": "Data Independence",
     "question": "Which type of data independence is easier to achieve?",
     "options": [
@@ -14021,7 +14346,7 @@ const DBMS_MCQS = [
     "explanation": "Physical data independence is easier to achieve because user applications depend primarily on the logical schema."
   },
   {
-    "id": 39,
+    "id": 64,
     "category": "Data Models",
     "question": "Which data model is most widely used today?",
     "options": [
@@ -14034,7 +14359,7 @@ const DBMS_MCQS = [
     "explanation": "The Relational Model (RDBMS) remains the most widely adopted database model in industry."
   },
   {
-    "id": 40,
+    "id": 65,
     "category": "Data Models",
     "question": "The relational model was proposed by:",
     "options": [
@@ -14047,7 +14372,7 @@ const DBMS_MCQS = [
     "explanation": "E. F. Codd proposed the Relational Model in his landmark 1970 paper."
   },
   {
-    "id": 41,
+    "id": 66,
     "category": "Data Models",
     "question": "Which data model organizes data into tables?",
     "options": [
@@ -14060,7 +14385,7 @@ const DBMS_MCQS = [
     "explanation": "The Relational Model stores all data as two-dimensional tables (relations) of rows and columns."
   },
   {
-    "id": 42,
+    "id": 67,
     "category": "Data Models",
     "question": "In the hierarchical model, each child has:",
     "options": [
@@ -14073,7 +14398,7 @@ const DBMS_MCQS = [
     "explanation": "Hierarchical models use tree structures where each child node can have only one parent node."
   },
   {
-    "id": 43,
+    "id": 68,
     "category": "Data Models",
     "question": "The network model allows:",
     "options": [
@@ -14086,7 +14411,7 @@ const DBMS_MCQS = [
     "explanation": "The Network Model represents data using graph structures allowing a record to have multiple parent records."
   },
   {
-    "id": 44,
+    "id": 69,
     "category": "Data Models",
     "question": "Which data model represents real-world objects?",
     "options": [
@@ -14099,7 +14424,7 @@ const DBMS_MCQS = [
     "explanation": "Object-Oriented database models combine object-oriented programming concepts (encapsulation, objects, classes) with database features."
   },
   {
-    "id": 45,
+    "id": 70,
     "category": "Data Models",
     "question": "Which data model came after the hierarchical model?",
     "options": [
@@ -14112,7 +14437,7 @@ const DBMS_MCQS = [
     "explanation": "The Network model was developed to overcome the rigid single-parent limitation of the Hierarchical model."
   },
   {
-    "id": 46,
+    "id": 71,
     "category": "Data Models",
     "question": "Which database model is based on parent-child relationships?",
     "options": [
@@ -14125,7 +14450,7 @@ const DBMS_MCQS = [
     "explanation": "The Hierarchical model explicitly uses parent-child tree links to represent data relationships."
   },
   {
-    "id": 47,
+    "id": 72,
     "category": "Data Models",
     "question": "Which database model supports many-to-many relationships naturally?",
     "options": [
@@ -14138,7 +14463,7 @@ const DBMS_MCQS = [
     "explanation": "The Network model naturally represents N:M relationships through graph nodes and set types."
   },
   {
-    "id": 48,
+    "id": 73,
     "category": "Data Models",
     "question": "Which of the following is NOT a traditional database model?",
     "options": [
@@ -14151,7 +14476,7 @@ const DBMS_MCQS = [
     "explanation": "Compiler Model is not a database model."
   },
   {
-    "id": 49,
+    "id": 74,
     "category": "Data Models",
     "question": "Which database model is the foundation of modern SQL databases?",
     "options": [
@@ -14164,7 +14489,7 @@ const DBMS_MCQS = [
     "explanation": "Modern SQL databases (MySQL, PostgreSQL, Oracle, SQL Server) are built on the Relational Database Model."
   },
   {
-    "id": 50,
+    "id": 75,
     "category": "DBMS Basics",
     "question": "Which of the following is the primary objective of a DBMS?",
     "options": [
@@ -14177,7 +14502,7 @@ const DBMS_MCQS = [
     "explanation": "The core objective of a DBMS is efficient, secure, and reliable storage, retrieval, and management of data."
   },
   {
-    "id": 51,
+    "id": 76,
     "category": "Relational Model",
     "question": "The Relational Database Model was proposed by:",
     "options": [
@@ -14190,7 +14515,7 @@ const DBMS_MCQS = [
     "explanation": "E. F. Codd introduced the relational database model in 1970."
   },
   {
-    "id": 52,
+    "id": 77,
     "category": "Relational Model",
     "question": "In the relational model, data is organized into:",
     "options": [
@@ -14203,7 +14528,7 @@ const DBMS_MCQS = [
     "explanation": "Relational model organizes all structured data into two-dimensional tables."
   },
   {
-    "id": 53,
+    "id": 78,
     "category": "Relational Model",
     "question": "A table in the relational model is called a:",
     "options": [
@@ -14216,7 +14541,7 @@ const DBMS_MCQS = [
     "explanation": "In formal database terminology, a table is called a Relation."
   },
   {
-    "id": 54,
+    "id": 79,
     "category": "Relational Model",
     "question": "A row in a relation is called:",
     "options": [
@@ -14229,7 +14554,7 @@ const DBMS_MCQS = [
     "explanation": "A row of data in a table is formally known as a Tuple."
   },
   {
-    "id": 55,
+    "id": 80,
     "category": "Relational Model",
     "question": "A column in a relation is called:",
     "options": [
@@ -14242,7 +14567,7 @@ const DBMS_MCQS = [
     "explanation": "A column header representing a property is called an Attribute."
   },
   {
-    "id": 56,
+    "id": 81,
     "category": "Relational Model",
     "question": "The set of permissible values for an attribute is called:",
     "options": [
@@ -14255,7 +14580,7 @@ const DBMS_MCQS = [
     "explanation": "A Domain is the pool of valid, legal values permitted for a given attribute."
   },
   {
-    "id": 57,
+    "id": 82,
     "category": "Relational Model",
     "question": "The number of attributes in a relation is called:",
     "options": [
@@ -14268,7 +14593,7 @@ const DBMS_MCQS = [
     "explanation": "Degree refers to the total count of columns/attributes in a relation."
   },
   {
-    "id": 58,
+    "id": 83,
     "category": "Relational Model",
     "question": "The number of tuples in a relation is called:",
     "options": [
@@ -14281,7 +14606,7 @@ const DBMS_MCQS = [
     "explanation": "Cardinality refers to the total count of rows/tuples present in a relation."
   },
   {
-    "id": 59,
+    "id": 84,
     "category": "Relational Model",
     "question": "If a table has 8 columns and 50 rows, its degree is:",
     "options": [
@@ -14294,7 +14619,7 @@ const DBMS_MCQS = [
     "explanation": "Degree equals column count (8), whereas cardinality equals row count (50)."
   },
   {
-    "id": 60,
+    "id": 85,
     "category": "Relational Model",
     "question": "If a relation contains 12 tuples, its cardinality is:",
     "options": [
@@ -14307,7 +14632,7 @@ const DBMS_MCQS = [
     "explanation": "Cardinality is defined directly as the total number of tuples (12)."
   },
   {
-    "id": 61,
+    "id": 86,
     "category": "Schema & Instance",
     "question": "The overall logical design of a database is called:",
     "options": [
@@ -14320,7 +14645,7 @@ const DBMS_MCQS = [
     "explanation": "The overall logical design and description of a database structure is called Schema."
   },
   {
-    "id": 62,
+    "id": 87,
     "category": "Schema & Instance",
     "question": "Database schema changes:",
     "options": [
@@ -14333,7 +14658,7 @@ const DBMS_MCQS = [
     "explanation": "A database schema represents fixed structural design and changes very infrequently."
   },
   {
-    "id": 63,
+    "id": 88,
     "category": "Schema & Instance",
     "question": "Database instance refers to:",
     "options": [
@@ -14346,7 +14671,7 @@ const DBMS_MCQS = [
     "explanation": "An instance is the collection of information/data stored in the database at a specific moment in time."
   },
   {
-    "id": 64,
+    "id": 89,
     "category": "Schema & Instance",
     "question": "Which changes more frequently?",
     "options": [
@@ -14359,7 +14684,7 @@ const DBMS_MCQS = [
     "explanation": "Database instances change dynamically with every INSERT, UPDATE, or DELETE operation."
   },
   {
-    "id": 65,
+    "id": 90,
     "category": "Schema & Instance",
     "question": "A relation schema defines:",
     "options": [
@@ -14372,7 +14697,7 @@ const DBMS_MCQS = [
     "explanation": "A relation schema defines table name, column attributes, and data types."
   },
   {
-    "id": 66,
+    "id": 91,
     "category": "Keys & Integrity",
     "question": "A key is mainly used to:",
     "options": [
@@ -14385,7 +14710,7 @@ const DBMS_MCQS = [
     "explanation": "Keys uniquely identify tuples (records) within a table and establish entity relationships."
   },
   {
-    "id": 67,
+    "id": 92,
     "category": "Keys & Integrity",
     "question": "Which key uniquely identifies each tuple?",
     "options": [
@@ -14398,7 +14723,7 @@ const DBMS_MCQS = [
     "explanation": "A Primary Key uniquely identifies each row in a relation."
   },
   {
-    "id": 68,
+    "id": 93,
     "category": "Keys & Integrity",
     "question": "A Primary Key must be:",
     "options": [
@@ -14411,7 +14736,7 @@ const DBMS_MCQS = [
     "explanation": "Primary Key constraint requires every value to be unique and non-null."
   },
   {
-    "id": 69,
+    "id": 94,
     "category": "Keys & Integrity",
     "question": "Which key cannot contain NULL values?",
     "options": [
@@ -14424,7 +14749,7 @@ const DBMS_MCQS = [
     "explanation": "By Entity Integrity rule, Primary Keys can never contain NULL values."
   },
   {
-    "id": 70,
+    "id": 95,
     "category": "Keys & Integrity",
     "question": "Which key may contain NULL values?",
     "options": [
@@ -14437,7 +14762,7 @@ const DBMS_MCQS = [
     "explanation": "Foreign keys may contain NULL values unless explicitly defined with NOT NULL constraint."
   },
   {
-    "id": 71,
+    "id": 96,
     "category": "Keys & Integrity",
     "question": "A Super Key is:",
     "options": [
@@ -14450,7 +14775,7 @@ const DBMS_MCQS = [
     "explanation": "A Super Key is any attribute or combination of attributes that uniquely identifies a row."
   },
   {
-    "id": 72,
+    "id": 97,
     "category": "Keys & Integrity",
     "question": "Every Primary Key is:",
     "options": [
@@ -14463,7 +14788,7 @@ const DBMS_MCQS = [
     "explanation": "Every Primary Key is a minimal Super Key."
   },
   {
-    "id": 73,
+    "id": 98,
     "category": "Keys & Integrity",
     "question": "Every Candidate Key is:",
     "options": [
@@ -14476,7 +14801,7 @@ const DBMS_MCQS = [
     "explanation": "Candidate Keys are minimal Super Keys."
   },
   {
-    "id": 74,
+    "id": 99,
     "category": "Keys & Integrity",
     "question": "Which of the following is the minimal Super Key?",
     "options": [
@@ -14489,7 +14814,7 @@ const DBMS_MCQS = [
     "explanation": "A Candidate Key is defined as a minimal super key with no redundant attributes."
   },
   {
-    "id": 75,
+    "id": 100,
     "category": "Keys & Integrity",
     "question": "A Candidate Key that is not selected as Primary Key becomes:",
     "options": [
@@ -14502,7 +14827,7 @@ const DBMS_MCQS = [
     "explanation": "Unchosen candidate keys serve as Alternate Keys."
   },
   {
-    "id": 76,
+    "id": 101,
     "category": "Keys & Integrity",
     "question": "A Composite Key consists of:",
     "options": [
@@ -14515,7 +14840,7 @@ const DBMS_MCQS = [
     "explanation": "A Composite Key uses two or more attributes combined to uniquely identify a record."
   },
   {
-    "id": 77,
+    "id": 102,
     "category": "Keys & Integrity",
     "question": "Which key references the Primary Key of another table?",
     "options": [
@@ -14528,7 +14853,7 @@ const DBMS_MCQS = [
     "explanation": "A Foreign Key in a child table references the Primary Key in a parent table."
   },
   {
-    "id": 78,
+    "id": 103,
     "category": "Keys & Integrity",
     "question": "Foreign Keys are mainly used to:",
     "options": [
@@ -14541,7 +14866,7 @@ const DBMS_MCQS = [
     "explanation": "Foreign Keys link tables and enforce relational integrity constraints."
   },
   {
-    "id": 79,
+    "id": 104,
     "category": "Keys & Integrity",
     "question": "Which key enforces Referential Integrity?",
     "options": [
@@ -14554,7 +14879,7 @@ const DBMS_MCQS = [
     "explanation": "Referential Integrity ensures child foreign key values match valid parent primary key values."
   },
   {
-    "id": 80,
+    "id": 105,
     "category": "Keys & Integrity",
     "question": "Which key should remain stable over time?",
     "options": [
@@ -14567,7 +14892,7 @@ const DBMS_MCQS = [
     "explanation": "Primary keys should be stable and unchanging to preserve foreign key references."
   },
   {
-    "id": 81,
+    "id": 106,
     "category": "Keys & Integrity",
     "question": "A system-generated unique key is called:",
     "options": [
@@ -14580,7 +14905,7 @@ const DBMS_MCQS = [
     "explanation": "A Surrogate Key is an artificial system-generated unique identifier (like auto-increment ID)."
   },
   {
-    "id": 82,
+    "id": 107,
     "category": "Keys & Integrity",
     "question": "An example of a Natural Key is:",
     "options": [
@@ -14593,7 +14918,7 @@ const DBMS_MCQS = [
     "explanation": "A Natural Key is formed from existing attributes that possess real-world meaning (e.g., CNIC, SSN)."
   },
   {
-    "id": 83,
+    "id": 108,
     "category": "Keys & Integrity",
     "question": "Which key is usually Auto Increment?",
     "options": [
@@ -14606,7 +14931,7 @@ const DBMS_MCQS = [
     "explanation": "Surrogate keys are typically implemented using DBMS auto-increment integer sequences."
   },
   {
-    "id": 84,
+    "id": 109,
     "category": "Keys & Integrity",
     "question": "Entity Integrity requires:",
     "options": [
@@ -14619,7 +14944,7 @@ const DBMS_MCQS = [
     "explanation": "Entity Integrity dictates that primary key attributes cannot contain NULL values."
   },
   {
-    "id": 85,
+    "id": 110,
     "category": "Keys & Integrity",
     "question": "Referential Integrity ensures:",
     "options": [
@@ -14632,7 +14957,7 @@ const DBMS_MCQS = [
     "explanation": "Referential Integrity requires that foreign key values must match existing parent primary key values or be NULL."
   },
   {
-    "id": 86,
+    "id": 111,
     "category": "Keys & Integrity",
     "question": "Which integrity constraint prevents orphan records?",
     "options": [
@@ -14645,7 +14970,7 @@ const DBMS_MCQS = [
     "explanation": "Referential Integrity prevents orphan records by disallowing child entries without matching parent keys."
   },
   {
-    "id": 87,
+    "id": 112,
     "category": "Keys & Integrity",
     "question": "Domain Integrity ensures:",
     "options": [
@@ -14658,7 +14983,7 @@ const DBMS_MCQS = [
     "explanation": "Domain Integrity ensures that values stored in a column adhere to defined data types, ranges, and formats."
   },
   {
-    "id": 88,
+    "id": 113,
     "category": "Keys & Integrity",
     "question": "Which constraint ensures valid values for an attribute?",
     "options": [
@@ -14671,7 +14996,7 @@ const DBMS_MCQS = [
     "explanation": "Domain constraints enforce range, type, and valid value rules for attributes."
   },
   {
-    "id": 89,
+    "id": 114,
     "category": "Keys & Integrity",
     "question": "Which constraint prevents duplicate values?",
     "options": [
@@ -14684,7 +15009,7 @@ const DBMS_MCQS = [
     "explanation": "The UNIQUE constraint ensures all non-null values in a column are distinct."
   },
   {
-    "id": 90,
+    "id": 115,
     "category": "Keys & Integrity",
     "question": "Which constraint prevents NULL values?",
     "options": [
@@ -14697,7 +15022,7 @@ const DBMS_MCQS = [
     "explanation": "The NOT NULL constraint prevents NULL entries in specified columns."
   },
   {
-    "id": 91,
+    "id": 116,
     "category": "Keys & Integrity",
     "question": "Which constraint assigns a default value automatically?",
     "options": [
@@ -14710,7 +15035,7 @@ const DBMS_MCQS = [
     "explanation": "DEFAULT constraint supplies a predetermined value when no value is provided on INSERT."
   },
   {
-    "id": 92,
+    "id": 117,
     "category": "Keys & Integrity",
     "question": "Which constraint validates a condition before inserting data?",
     "options": [
@@ -14723,7 +15048,7 @@ const DBMS_MCQS = [
     "explanation": "CHECK constraint evaluates boolean expression conditions prior to inserting/updating rows."
   },
   {
-    "id": 93,
+    "id": 118,
     "category": "Keys & Integrity",
     "question": "Which constraint combines UNIQUE and NOT NULL?",
     "options": [
@@ -14736,7 +15061,7 @@ const DBMS_MCQS = [
     "explanation": "PRIMARY KEY enforces both UNIQUE and NOT NULL constraints on key columns."
   },
   {
-    "id": 94,
+    "id": 119,
     "category": "Keys & Integrity",
     "question": "Which constraint establishes a relationship between two tables?",
     "options": [
@@ -14749,7 +15074,7 @@ const DBMS_MCQS = [
     "explanation": "FOREIGN KEY constraint enforces parent-child relational dependencies between tables."
   },
   {
-    "id": 95,
+    "id": 120,
     "category": "Relational Model",
     "question": "A relation should not contain:",
     "options": [
@@ -14762,7 +15087,7 @@ const DBMS_MCQS = [
     "explanation": "In set theory, relations are sets of unique tuples; duplicate tuples are strictly forbidden."
   },
   {
-    "id": 96,
+    "id": 121,
     "category": "Relational Model",
     "question": "Attribute values in a relation should be:",
     "options": [
@@ -14775,7 +15100,7 @@ const DBMS_MCQS = [
     "explanation": "First Normal Form requires attribute values to be atomic (indivisible single values)."
   },
   {
-    "id": 97,
+    "id": 122,
     "category": "Relational Model",
     "question": "Which property distinguishes a relation from a simple table?",
     "options": [
@@ -14788,7 +15113,7 @@ const DBMS_MCQS = [
     "explanation": "Mathematical relations prohibit duplicate tuples, whereas simple non-relational tables might contain duplicate rows."
   },
   {
-    "id": 98,
+    "id": 123,
     "category": "Relational Model",
     "question": "Which statement is TRUE about tuples in a relation?",
     "options": [
@@ -14801,7 +15126,7 @@ const DBMS_MCQS = [
     "explanation": "In relational algebra, tuples form an unordered set; physical row ordering is irrelevant."
   },
   {
-    "id": 99,
+    "id": 124,
     "category": "Relational Model",
     "question": "Which statement is TRUE about attributes in a relation?",
     "options": [
@@ -14814,7 +15139,7 @@ const DBMS_MCQS = [
     "explanation": "Attributes within a single relation schema must have distinct, unique column names."
   },
   {
-    "id": 100,
+    "id": 125,
     "category": "Relational Model",
     "question": "Which statement best describes a relation?",
     "options": [
@@ -14827,8 +15152,8 @@ const DBMS_MCQS = [
     "explanation": "A relation is a two-dimensional table structure containing rows and columns with unique tuples."
   },
   {
-    "id": 101,
-    "category": "ER & EER Model",
+    "id": 126,
+    "category": "ERD",
     "question": "An Entity is:",
     "options": [
       "A database table",
@@ -14840,8 +15165,8 @@ const DBMS_MCQS = [
     "explanation": "An entity represents an object, concept, or thing in the real world with independent existence."
   },
   {
-    "id": 102,
-    "category": "ER & EER Model",
+    "id": 127,
+    "category": "ERD",
     "question": "A collection of similar entities is called:",
     "options": [
       "Relation",
@@ -14853,8 +15178,8 @@ const DBMS_MCQS = [
     "explanation": "An Entity Set is a collection of similar entity types sharing the same attributes."
   },
   {
-    "id": 103,
-    "category": "ER & EER Model",
+    "id": 128,
+    "category": "ERD",
     "question": "Which of the following is an entity?",
     "options": [
       "Age",
@@ -14866,8 +15191,8 @@ const DBMS_MCQS = [
     "explanation": "Student is an entity object, whereas Age and Salary are attributes."
   },
   {
-    "id": 104,
-    "category": "ER & EER Model",
+    "id": 129,
+    "category": "ERD",
     "question": "In an ER diagram, an entity is represented by:",
     "options": [
       "Diamond",
@@ -14879,8 +15204,8 @@ const DBMS_MCQS = [
     "explanation": "Entity sets are depicted as Rectangles in standard Chen ER diagrams."
   },
   {
-    "id": 105,
-    "category": "ER & EER Model",
+    "id": 130,
+    "category": "ERD",
     "question": "Which is an example of an entity set?",
     "options": [
       "Ali",
@@ -14892,8 +15217,8 @@ const DBMS_MCQS = [
     "explanation": "Students is an entity set, while Ali is a specific entity instance."
   },
   {
-    "id": 106,
-    "category": "ER & EER Model",
+    "id": 131,
+    "category": "ERD",
     "question": "Which of the following is NOT an entity?",
     "options": [
       "Employee",
@@ -14905,8 +15230,8 @@ const DBMS_MCQS = [
     "explanation": "Salary is an attribute describing an Employee entity, not an entity itself."
   },
   {
-    "id": 107,
-    "category": "ER & EER Model",
+    "id": 132,
+    "category": "ERD",
     "question": "An attribute is:",
     "options": [
       "A relationship",
@@ -14918,8 +15243,8 @@ const DBMS_MCQS = [
     "explanation": "An attribute is a property or characteristic describing an entity set."
   },
   {
-    "id": 108,
-    "category": "ER & EER Model",
+    "id": 133,
+    "category": "ERD",
     "question": "In an ER diagram, an attribute is represented by:",
     "options": [
       "Rectangle",
@@ -14931,8 +15256,8 @@ const DBMS_MCQS = [
     "explanation": "Attributes are represented by Ovals (Ellipses) in ER diagrams."
   },
   {
-    "id": 109,
-    "category": "ER & EER Model",
+    "id": 134,
+    "category": "ERD",
     "question": "Which of the following is an attribute of Student?",
     "options": [
       "Student",
@@ -14944,8 +15269,8 @@ const DBMS_MCQS = [
     "explanation": "Roll Number is a property/attribute describing a Student entity."
   },
   {
-    "id": 110,
-    "category": "ER & EER Model",
+    "id": 135,
+    "category": "ERD",
     "question": "Which attribute uniquely identifies an entity?",
     "options": [
       "Composite Attribute",
@@ -14957,8 +15282,8 @@ const DBMS_MCQS = [
     "explanation": "A Key Attribute uniquely distinguishes individual entity instances in an entity set."
   },
   {
-    "id": 111,
-    "category": "ER & EER Model",
+    "id": 136,
+    "category": "ERD",
     "question": "A key attribute is shown by:",
     "options": [
       "Double Oval",
@@ -14970,8 +15295,8 @@ const DBMS_MCQS = [
     "explanation": "Key attributes are drawn as Ovals with Underlined text."
   },
   {
-    "id": 112,
-    "category": "ER & EER Model",
+    "id": 137,
+    "category": "ERD",
     "question": "An attribute that cannot be divided further is called:",
     "options": [
       "Composite Attribute",
@@ -14983,8 +15308,8 @@ const DBMS_MCQS = [
     "explanation": "A Simple (Atomic) Attribute cannot be subdivided into smaller constituent parts."
   },
   {
-    "id": 113,
-    "category": "ER & EER Model",
+    "id": 138,
+    "category": "ERD",
     "question": "Which attribute can be divided into smaller components?",
     "options": [
       "Simple Attribute",
@@ -14996,8 +15321,8 @@ const DBMS_MCQS = [
     "explanation": "A Composite Attribute can be divided into sub-components (e.g. Address -> Street, City, Zip)."
   },
   {
-    "id": 114,
-    "category": "ER & EER Model",
+    "id": 139,
+    "category": "ERD",
     "question": "Name can be divided into First Name and Last Name. It is a:",
     "options": [
       "Derived Attribute",
@@ -15009,8 +15334,8 @@ const DBMS_MCQS = [
     "explanation": "Name composed of First Name and Last Name is a Composite Attribute."
   },
   {
-    "id": 115,
-    "category": "ER & EER Model",
+    "id": 140,
+    "category": "ERD",
     "question": "Age calculated from Date of Birth is:",
     "options": [
       "Composite Attribute",
@@ -15022,8 +15347,8 @@ const DBMS_MCQS = [
     "explanation": "Age is a Derived Attribute computed dynamically from Date of Birth."
   },
   {
-    "id": 116,
-    "category": "ER & EER Model",
+    "id": 141,
+    "category": "ERD",
     "question": "A derived attribute is represented by:",
     "options": [
       "Double Oval",
@@ -15035,8 +15360,8 @@ const DBMS_MCQS = [
     "explanation": "Derived attributes are represented using Dashed Ovals in ER diagrams."
   },
   {
-    "id": 117,
-    "category": "ER & EER Model",
+    "id": 142,
+    "category": "ERD",
     "question": "Which attribute can have multiple values?",
     "options": [
       "Composite",
@@ -15048,8 +15373,8 @@ const DBMS_MCQS = [
     "explanation": "A Multivalued Attribute can store more than one value for a single entity."
   },
   {
-    "id": 118,
-    "category": "ER & EER Model",
+    "id": 143,
+    "category": "ERD",
     "question": "Phone Numbers is an example of:",
     "options": [
       "Composite Attribute",
@@ -15061,8 +15386,8 @@ const DBMS_MCQS = [
     "explanation": "A person having multiple phone numbers is a classic Multivalued Attribute."
   },
   {
-    "id": 119,
-    "category": "ER & EER Model",
+    "id": 144,
+    "category": "ERD",
     "question": "A multivalued attribute is represented by:",
     "options": [
       "Dashed Oval",
@@ -15074,8 +15399,8 @@ const DBMS_MCQS = [
     "explanation": "Multivalued attributes are drawn with Double Ovals in ER diagrams."
   },
   {
-    "id": 120,
-    "category": "ER & EER Model",
+    "id": 145,
+    "category": "ERD",
     "question": "Which of the following is a simple attribute?",
     "options": [
       "Address",
@@ -15087,8 +15412,8 @@ const DBMS_MCQS = [
     "explanation": "Gender is an atomic (simple) attribute with indivisible values."
   },
   {
-    "id": 121,
-    "category": "ER & EER Model",
+    "id": 146,
+    "category": "ERD",
     "question": "A relationship represents:",
     "options": [
       "Attribute Values",
@@ -15100,8 +15425,8 @@ const DBMS_MCQS = [
     "explanation": "A relationship is an association among two or more entity sets."
   },
   {
-    "id": 122,
-    "category": "ER & EER Model",
+    "id": 147,
+    "category": "ERD",
     "question": "In an ER diagram, a relationship is represented by:",
     "options": [
       "Rectangle",
@@ -15113,8 +15438,8 @@ const DBMS_MCQS = [
     "explanation": "Relationships are represented by Diamond shapes in ER diagrams."
   },
   {
-    "id": 123,
-    "category": "ER & EER Model",
+    "id": 148,
+    "category": "ERD",
     "question": " \"Student Enrolls in Course\" represents:",
     "options": [
       "Entity",
@@ -15126,8 +15451,8 @@ const DBMS_MCQS = [
     "explanation": "\"Enrolls\" represents a relationship associating Student and Course entities."
   },
   {
-    "id": 124,
-    "category": "ER & EER Model",
+    "id": 149,
+    "category": "ERD",
     "question": "A relationship may exist between:",
     "options": [
       "Attributes Only",
@@ -15139,8 +15464,8 @@ const DBMS_MCQS = [
     "explanation": "Relationships associate two or more entity sets."
   },
   {
-    "id": 125,
-    "category": "ER & EER Model",
+    "id": 150,
+    "category": "ERD",
     "question": "Which of the following is NOT a relationship?",
     "options": [
       "Works For",
@@ -15152,8 +15477,8 @@ const DBMS_MCQS = [
     "explanation": "Salary is an attribute, whereas Works For, Enrolls, and Purchases are relationships."
   },
   {
-    "id": 126,
-    "category": "ER & EER Model",
+    "id": 151,
+    "category": "ERD",
     "question": "A relationship involving one entity set is called:",
     "options": [
       "Unary Relationship",
@@ -15165,8 +15490,8 @@ const DBMS_MCQS = [
     "explanation": "A Unary (Recursive) Relationship associates entities within the same single entity set."
   },
   {
-    "id": 127,
-    "category": "ER & EER Model",
+    "id": 152,
+    "category": "ERD",
     "question": "Most relationships in databases are:",
     "options": [
       "Unary",
@@ -15178,8 +15503,8 @@ const DBMS_MCQS = [
     "explanation": "The vast majority of real-world database relationships are Binary (between 2 entity sets)."
   },
   {
-    "id": 128,
-    "category": "ER & EER Model",
+    "id": 153,
+    "category": "ERD",
     "question": "A relationship involving three entity sets is:",
     "options": [
       "Binary",
@@ -15191,8 +15516,8 @@ const DBMS_MCQS = [
     "explanation": "A relationship involving 3 participating entity sets is called a Ternary Relationship."
   },
   {
-    "id": 129,
-    "category": "ER & EER Model",
+    "id": 154,
+    "category": "ERD",
     "question": "Employee supervises Employee is an example of:",
     "options": [
       "Unary (Recursive) Relationship",
@@ -15204,8 +15529,8 @@ const DBMS_MCQS = [
     "explanation": "Supervision within the Employee entity set is a Unary (Recursive) Relationship."
   },
   {
-    "id": 130,
-    "category": "ER & EER Model",
+    "id": 155,
+    "category": "ERD",
     "question": "One customer can place many orders. This is:",
     "options": [
       "One-to-One",
@@ -15217,8 +15542,8 @@ const DBMS_MCQS = [
     "explanation": "One customer linked to multiple orders exhibits a 1:N (One-to-Many) cardinality."
   },
   {
-    "id": 131,
-    "category": "ER & EER Model",
+    "id": 156,
+    "category": "ERD",
     "question": "Many students enroll in many courses. This is:",
     "options": [
       "One-to-One",
@@ -15230,8 +15555,8 @@ const DBMS_MCQS = [
     "explanation": "Multiple students enrolling in multiple courses is an M:N (Many-to-Many) cardinality."
   },
   {
-    "id": 132,
-    "category": "ER & EER Model",
+    "id": 157,
+    "category": "ERD",
     "question": "One passport belongs to one citizen. This relationship is:",
     "options": [
       "One-to-One",
@@ -15243,8 +15568,8 @@ const DBMS_MCQS = [
     "explanation": "One passport mapped strictly to one citizen is a 1:1 (One-to-One) cardinality."
   },
   {
-    "id": 133,
-    "category": "ER & EER Model",
+    "id": 158,
+    "category": "ERD",
     "question": "One department has many employees. This is:",
     "options": [
       "One-to-One",
@@ -15256,8 +15581,8 @@ const DBMS_MCQS = [
     "explanation": "A single department employing multiple workers is a One-to-Many relationship."
   },
   {
-    "id": 134,
-    "category": "ER & EER Model",
+    "id": 159,
+    "category": "ERD",
     "question": "Which cardinality is generally implemented using a junction (bridge) table in relational databases?",
     "options": [
       "One-to-One",
@@ -15269,8 +15594,8 @@ const DBMS_MCQS = [
     "explanation": "Many-to-Many (M:N) relationships require an associative/junction table in RDBMS implementation."
   },
   {
-    "id": 135,
-    "category": "ER & EER Model",
+    "id": 160,
+    "category": "ERD",
     "question": "Total participation means:",
     "options": [
       "Some entities participate",
@@ -15282,8 +15607,8 @@ const DBMS_MCQS = [
     "explanation": "Total participation (existence dependency) requires every entity instance to participate in the relationship."
   },
   {
-    "id": 136,
-    "category": "ER & EER Model",
+    "id": 161,
+    "category": "ERD",
     "question": "Partial participation means:",
     "options": [
       "All entities participate",
@@ -15295,8 +15620,8 @@ const DBMS_MCQS = [
     "explanation": "Partial participation indicates that entity participation in the relationship is optional."
   },
   {
-    "id": 137,
-    "category": "ER & EER Model",
+    "id": 162,
+    "category": "ERD",
     "question": "Total participation is represented by:",
     "options": [
       "Single Line",
@@ -15308,8 +15633,8 @@ const DBMS_MCQS = [
     "explanation": "Total participation is drawn using Double Lines connecting entity set to relationship."
   },
   {
-    "id": 138,
-    "category": "ER & EER Model",
+    "id": 163,
+    "category": "ERD",
     "question": "A weak entity:",
     "options": [
       "Has its own Primary Key",
@@ -15321,8 +15646,8 @@ const DBMS_MCQS = [
     "explanation": "A Weak Entity does not have a primary key of its own and depends on an owner entity set."
   },
   {
-    "id": 139,
-    "category": "ER & EER Model",
+    "id": 164,
+    "category": "ERD",
     "question": "A weak entity is represented by:",
     "options": [
       "Single Rectangle",
@@ -15334,8 +15659,8 @@ const DBMS_MCQS = [
     "explanation": "Weak entity sets are represented as Double Rectangles in ER diagrams."
   },
   {
-    "id": 140,
-    "category": "ER & EER Model",
+    "id": 165,
+    "category": "ERD",
     "question": "The identifying relationship of a weak entity is represented by:",
     "options": [
       "Rectangle",
@@ -15347,8 +15672,8 @@ const DBMS_MCQS = [
     "explanation": "The relationship linking a weak entity to its owner is represented by a Double Diamond."
   },
   {
-    "id": 141,
-    "category": "ER & EER Model",
+    "id": 166,
+    "category": "ERD",
     "question": "Which entity can exist independently?",
     "options": [
       "Strong Entity",
@@ -15360,8 +15685,8 @@ const DBMS_MCQS = [
     "explanation": "A Strong Entity possesses its own primary key and exists independently."
   },
   {
-    "id": 142,
-    "category": "ER & EER Model",
+    "id": 167,
+    "category": "ERD",
     "question": "Which of the following is an example of a weak entity?",
     "options": [
       "Employee",
@@ -15373,99 +15698,8 @@ const DBMS_MCQS = [
     "explanation": "Dependent is a classic Weak Entity dependent on the Employee primary key."
   },
   {
-    "id": 143,
-    "category": "ER & EER Model",
-    "question": "Specialization is a:",
-    "options": [
-      "Bottom-up Process",
-      "Top-down Process",
-      "Query Optimization",
-      "Data Compression"
-    ],
-    "answerIndex": 1,
-    "explanation": "Specialization is a Top-down design process breaking superclasses into specialized subclasses."
-  },
-  {
-    "id": 144,
-    "category": "ER & EER Model",
-    "question": "Generalization is a:",
-    "options": [
-      "Bottom-up Process",
-      "Top-down Process",
-      "Normalization Technique",
-      "SQL Command"
-    ],
-    "answerIndex": 0,
-    "explanation": "Generalization is a Bottom-up design process synthesizing common entity types into a higher-level superclass."
-  },
-  {
-    "id": 145,
-    "category": "ER & EER Model",
-    "question": "Vehicle \u2192 Car, Bus, Bike is an example of:",
-    "options": [
-      "Generalization",
-      "Specialization",
-      "Aggregation",
-      "Association"
-    ],
-    "answerIndex": 1,
-    "explanation": "Subdividing Vehicle into Car, Bus, and Bike superclass-subclass hierarchies is Specialization."
-  },
-  {
-    "id": 146,
-    "category": "ER & EER Model",
-    "question": "Car + Bus + Bike \u2192 Vehicle is an example of:",
-    "options": [
-      "Generalization",
-      "Specialization",
-      "Aggregation",
-      "Composition"
-    ],
-    "answerIndex": 0,
-    "explanation": "Combining Car, Bus, and Bike into a generalized Vehicle superclass is Generalization."
-  },
-  {
-    "id": 147,
-    "category": "ER & EER Model",
-    "question": "Inheritance in EER allows a subclass to inherit:",
-    "options": [
-      "Queries Only",
-      "Attributes and Relationships of Superclass",
-      "SQL Commands",
-      "Tables Only"
-    ],
-    "answerIndex": 1,
-    "explanation": "Type Inheritance lets subclasses inherit all attributes and relationship participations of their superclass."
-  },
-  {
-    "id": 148,
-    "category": "ER & EER Model",
-    "question": "Aggregation is mainly used to:",
-    "options": [
-      "Remove Redundancy",
-      "Treat a Relationship as a Higher-Level Entity",
-      "Create Keys",
-      "Create Indexes"
-    ],
-    "answerIndex": 1,
-    "explanation": "Aggregation abstracts relationships between entity sets into higher-level composite entities."
-  },
-  {
-    "id": 149,
-    "category": "ER & EER Model",
-    "question": "Which EER concept allows subclasses to inherit properties from a superclass?",
-    "options": [
-      "Aggregation",
-      "Composition",
-      "Inheritance",
-      "Participation"
-    ],
-    "answerIndex": 2,
-    "explanation": "Inheritance allows subclasses to inherit superclass attributes and relationships."
-  },
-  {
-    "id": 150,
-    "category": "ER & EER Model",
+    "id": 168,
+    "category": "ERD",
     "question": "The main purpose of the ER model is to:",
     "options": [
       "Execute SQL Queries",
@@ -15477,7 +15711,7 @@ const DBMS_MCQS = [
     "explanation": "The ER model is a conceptual schema design tool representing logical database structure."
   },
   {
-    "id": 151,
+    "id": 169,
     "category": "Normalization",
     "question": "Functional Dependency describes:",
     "options": [
@@ -15490,9 +15724,9 @@ const DBMS_MCQS = [
     "explanation": "A Functional Dependency (FD) describes a constraint relationship between attributes in a relation."
   },
   {
-    "id": 152,
+    "id": 170,
     "category": "Normalization",
-    "question": "If A \u2192 B, then:",
+    "question": "If A → B, then:",
     "options": [
       "B determines A",
       "A uniquely determines B",
@@ -15500,12 +15734,12 @@ const DBMS_MCQS = [
       "B is always a primary key"
     ],
     "answerIndex": 1,
-    "explanation": "A \u2192 B means attribute A functionally and uniquely determines attribute B."
+    "explanation": "A → B means attribute A functionally and uniquely determines attribute B."
   },
   {
-    "id": 153,
+    "id": 171,
     "category": "Normalization",
-    "question": "In a functional dependency X \u2192 Y, X is called the:",
+    "question": "In a functional dependency X → Y, X is called the:",
     "options": [
       "Determinant",
       "Dependent",
@@ -15513,12 +15747,12 @@ const DBMS_MCQS = [
       "Foreign Key"
     ],
     "answerIndex": 0,
-    "explanation": "In X \u2192 Y, X is the Determinant attribute set."
+    "explanation": "In X → Y, X is the Determinant attribute set."
   },
   {
-    "id": 154,
+    "id": 172,
     "category": "Normalization",
-    "question": "In X \u2192 Y, Y is called the:",
+    "question": "In X → Y, Y is called the:",
     "options": [
       "Determinant",
       "Dependent Attribute",
@@ -15526,10 +15760,10 @@ const DBMS_MCQS = [
       "Domain"
     ],
     "answerIndex": 1,
-    "explanation": "In X \u2192 Y, Y is the Dependent attribute."
+    "explanation": "In X → Y, Y is the Dependent attribute."
   },
   {
-    "id": 155,
+    "id": 173,
     "category": "Normalization",
     "question": "Functional dependencies are mainly used in:",
     "options": [
@@ -15542,7 +15776,7 @@ const DBMS_MCQS = [
     "explanation": "Functional dependencies provide the formal mathematical foundation for database Normalization."
   },
   {
-    "id": 156,
+    "id": 174,
     "category": "Normalization",
     "question": "Which dependency forms the basis of normalization?",
     "options": [
@@ -15555,7 +15789,7 @@ const DBMS_MCQS = [
     "explanation": "Functional Dependency analysis forms the primary foundation for 1NF, 2NF, 3NF, and BCNF."
   },
   {
-    "id": 157,
+    "id": 175,
     "category": "Normalization",
     "question": "Which statement about functional dependency is TRUE?",
     "options": [
@@ -15568,7 +15802,7 @@ const DBMS_MCQS = [
     "explanation": "Functional dependency means a given determinant value uniquely pinpoints a dependent value."
   },
   {
-    "id": 158,
+    "id": 176,
     "category": "Normalization",
     "question": "Functional dependency helps eliminate:",
     "options": [
@@ -15581,7 +15815,7 @@ const DBMS_MCQS = [
     "explanation": "Analyzing FDs helps decompose tables to eliminate duplicate data and redundant storage."
   },
   {
-    "id": 159,
+    "id": 177,
     "category": "Normalization",
     "question": "A dependency in which an attribute depends on the entire composite key is called:",
     "options": [
@@ -15594,7 +15828,7 @@ const DBMS_MCQS = [
     "explanation": "Full Functional Dependency requires a non-prime attribute to depend on the whole candidate key, not a proper subset."
   },
   {
-    "id": 160,
+    "id": 178,
     "category": "Normalization",
     "question": "A dependency on only part of a composite key is called:",
     "options": [
@@ -15607,7 +15841,7 @@ const DBMS_MCQS = [
     "explanation": "Partial Dependency occurs when a non-key attribute depends on a proper subset of a composite candidate key."
   },
   {
-    "id": 161,
+    "id": 179,
     "category": "Normalization",
     "question": "Partial dependency occurs when:",
     "options": [
@@ -15620,7 +15854,7 @@ const DBMS_MCQS = [
     "explanation": "Partial dependency can only occur when a relation has a composite primary key."
   },
   {
-    "id": 162,
+    "id": 180,
     "category": "Normalization",
     "question": "Which normal form removes partial dependency?",
     "options": [
@@ -15633,7 +15867,7 @@ const DBMS_MCQS = [
     "explanation": "Second Normal Form (2NF) eliminates partial functional dependencies."
   },
   {
-    "id": 163,
+    "id": 181,
     "category": "Normalization",
     "question": "Transitive dependency occurs when:",
     "options": [
@@ -15643,10 +15877,10 @@ const DBMS_MCQS = [
       "A foreign key references a primary key"
     ],
     "answerIndex": 1,
-    "explanation": "Transitive dependency X \u2192 Y and Y \u2192 Z exists when a non-key attribute Z depends on another non-key attribute Y."
+    "explanation": "Transitive dependency X → Y and Y → Z exists when a non-key attribute Z depends on another non-key attribute Y."
   },
   {
-    "id": 164,
+    "id": 182,
     "category": "Normalization",
     "question": "Which normal form removes transitive dependency?",
     "options": [
@@ -15659,7 +15893,7 @@ const DBMS_MCQS = [
     "explanation": "Third Normal Form (3NF) eliminates transitive functional dependencies."
   },
   {
-    "id": 165,
+    "id": 183,
     "category": "Normalization",
     "question": "Which dependency is allowed in 2NF but not in 3NF?",
     "options": [
@@ -15672,7 +15906,7 @@ const DBMS_MCQS = [
     "explanation": "2NF permits transitive dependencies, but 3NF strictly forbids them."
   },
   {
-    "id": 166,
+    "id": 184,
     "category": "Normalization",
     "question": "Normalization is the process of:",
     "options": [
@@ -15685,7 +15919,7 @@ const DBMS_MCQS = [
     "explanation": "Normalization is the systematic process of structuring relation schemas to minimize redundancy and anomalies."
   },
   {
-    "id": 167,
+    "id": 185,
     "category": "Normalization",
     "question": "The primary objective of normalization is:",
     "options": [
@@ -15698,7 +15932,7 @@ const DBMS_MCQS = [
     "explanation": "Normalization minimizes data duplication and prevents insertion, update, and deletion anomalies."
   },
   {
-    "id": 168,
+    "id": 186,
     "category": "Normalization",
     "question": "Which of the following is NOT an objective of normalization?",
     "options": [
@@ -15711,7 +15945,7 @@ const DBMS_MCQS = [
     "explanation": "Increasing duplicate data contradicts the primary goal of normalization."
   },
   {
-    "id": 169,
+    "id": 187,
     "category": "Normalization",
     "question": "Normalization mainly improves:",
     "options": [
@@ -15724,7 +15958,7 @@ const DBMS_MCQS = [
     "explanation": "Normalization refines database schema design for data consistency and logical integrity."
   },
   {
-    "id": 170,
+    "id": 188,
     "category": "Normalization",
     "question": "Which of the following is an insertion anomaly?",
     "options": [
@@ -15737,7 +15971,7 @@ const DBMS_MCQS = [
     "explanation": "Insertion anomaly occurs when data cannot be recorded without artificially supplying unrelated attributes."
   },
   {
-    "id": 171,
+    "id": 189,
     "category": "Normalization",
     "question": "Deletion anomaly occurs when:",
     "options": [
@@ -15750,7 +15984,7 @@ const DBMS_MCQS = [
     "explanation": "Deletion anomaly happens when removing a row unintentionally destroys other vital business facts."
   },
   {
-    "id": 172,
+    "id": 190,
     "category": "Normalization",
     "question": "Update anomaly occurs because of:",
     "options": [
@@ -15763,7 +15997,7 @@ const DBMS_MCQS = [
     "explanation": "Update anomaly occurs when inconsistent data modifications result from redundant data stored in multiple places."
   },
   {
-    "id": 173,
+    "id": 191,
     "category": "Normalization",
     "question": "First Normal Form requires:",
     "options": [
@@ -15776,7 +16010,7 @@ const DBMS_MCQS = [
     "explanation": "1NF requires that all column attribute values must be scalar and atomic."
   },
   {
-    "id": 174,
+    "id": 192,
     "category": "Normalization",
     "question": "1NF eliminates:",
     "options": [
@@ -15789,7 +16023,7 @@ const DBMS_MCQS = [
     "explanation": "1NF eliminates repeating groups, multi-valued attributes, and non-atomic fields."
   },
   {
-    "id": 175,
+    "id": 193,
     "category": "Normalization",
     "question": "Which violates 1NF?",
     "options": [
@@ -15802,7 +16036,7 @@ const DBMS_MCQS = [
     "explanation": "Storing multiple comma-separated values in a single cell violates atomic value rules of 1NF."
   },
   {
-    "id": 176,
+    "id": 194,
     "category": "Normalization",
     "question": "Atomicity in 1NF means:",
     "options": [
@@ -15815,7 +16049,7 @@ const DBMS_MCQS = [
     "explanation": "Atomicity means attribute values are single, indivisible fields."
   },
   {
-    "id": 177,
+    "id": 195,
     "category": "Normalization",
     "question": "A relation must first satisfy _____ before 2NF.",
     "options": [
@@ -15828,7 +16062,7 @@ const DBMS_MCQS = [
     "explanation": "A relation must satisfy 1NF before it can be evaluated for 2NF."
   },
   {
-    "id": 178,
+    "id": 196,
     "category": "Normalization",
     "question": "2NF removes:",
     "options": [
@@ -15841,7 +16075,7 @@ const DBMS_MCQS = [
     "explanation": "2NF requires 1NF compliance and the total elimination of partial dependencies."
   },
   {
-    "id": 179,
+    "id": 197,
     "category": "Normalization",
     "question": "2NF applies mainly when:",
     "options": [
@@ -15854,7 +16088,7 @@ const DBMS_MCQS = [
     "explanation": "2NF is relevant when relations possess composite candidate keys."
   },
   {
-    "id": 180,
+    "id": 198,
     "category": "Normalization",
     "question": "Which dependency remains in 2NF?",
     "options": [
@@ -15867,7 +16101,7 @@ const DBMS_MCQS = [
     "explanation": "2NF removes partial dependencies but allows transitive dependencies to remain."
   },
   {
-    "id": 181,
+    "id": 199,
     "category": "Normalization",
     "question": "A table in 3NF must already be in:",
     "options": [
@@ -15880,7 +16114,7 @@ const DBMS_MCQS = [
     "explanation": "A table must satisfy 2NF requirements before achieving 3NF."
   },
   {
-    "id": 182,
+    "id": 200,
     "category": "Normalization",
     "question": "3NF removes:",
     "options": [
@@ -15893,7 +16127,7 @@ const DBMS_MCQS = [
     "explanation": "3NF removes transitive dependencies where a non-key attribute determines another non-key attribute."
   },
   {
-    "id": 183,
+    "id": 201,
     "category": "Normalization",
     "question": "In 3NF, every non-key attribute should depend on:",
     "options": [
@@ -15906,7 +16140,7 @@ const DBMS_MCQS = [
     "explanation": "In 3NF, non-key attributes depend directly on the primary key, the whole key, and nothing but the key."
   },
   {
-    "id": 184,
+    "id": 202,
     "category": "Normalization",
     "question": "Which dependency is NOT allowed in 3NF?",
     "options": [
@@ -15919,7 +16153,7 @@ const DBMS_MCQS = [
     "explanation": "Transitive functional dependencies are prohibited in 3NF."
   },
   {
-    "id": 185,
+    "id": 203,
     "category": "Normalization",
     "question": "BCNF is a stronger version of:",
     "options": [
@@ -15932,7 +16166,7 @@ const DBMS_MCQS = [
     "explanation": "Boyce-Codd Normal Form (BCNF) is a stricter, stronger variation of 3NF."
   },
   {
-    "id": 186,
+    "id": 204,
     "category": "Normalization",
     "question": "BCNF requires:",
     "options": [
@@ -15942,10 +16176,10 @@ const DBMS_MCQS = [
       "Every attribute must be unique"
     ],
     "answerIndex": 1,
-    "explanation": "BCNF requires that for every functional dependency X \u2192 Y, X must be a candidate key (super key)."
+    "explanation": "BCNF requires that for every functional dependency X → Y, X must be a candidate key (super key)."
   },
   {
-    "id": 187,
+    "id": 205,
     "category": "Normalization",
     "question": "Which normal form is stricter?",
     "options": [
@@ -15958,7 +16192,7 @@ const DBMS_MCQS = [
     "explanation": "BCNF enforces stricter conditions than standard 3NF by handling overlapping candidate keys."
   },
   {
-    "id": 188,
+    "id": 206,
     "category": "Normalization",
     "question": "BCNF eliminates anomalies caused by:",
     "options": [
@@ -15971,7 +16205,7 @@ const DBMS_MCQS = [
     "explanation": "BCNF removes anomalies resulting from functional dependencies where determinants are not candidate keys."
   },
   {
-    "id": 189,
+    "id": 207,
     "category": "Normalization",
     "question": "A Prime Attribute is:",
     "options": [
@@ -15984,7 +16218,7 @@ const DBMS_MCQS = [
     "explanation": "A Prime Attribute is an attribute that belongs to any candidate key of the relation."
   },
   {
-    "id": 190,
+    "id": 208,
     "category": "Normalization",
     "question": "A Non-prime Attribute is:",
     "options": [
@@ -15997,7 +16231,7 @@ const DBMS_MCQS = [
     "explanation": "A Non-prime Attribute does not belong to any candidate key."
   },
   {
-    "id": 191,
+    "id": 209,
     "category": "Normalization",
     "question": "Candidate keys are identified during:",
     "options": [
@@ -16010,7 +16244,7 @@ const DBMS_MCQS = [
     "explanation": "Candidate keys and functional dependencies are determined during conceptual/logical database design."
   },
   {
-    "id": 192,
+    "id": 210,
     "category": "Normalization",
     "question": "Which normal form is mainly concerned with atomic values?",
     "options": [
@@ -16023,7 +16257,7 @@ const DBMS_MCQS = [
     "explanation": "1NF focuses on atomicity of attribute values."
   },
   {
-    "id": 193,
+    "id": 211,
     "category": "Normalization",
     "question": "Which normal form specifically removes partial dependency?",
     "options": [
@@ -16036,7 +16270,7 @@ const DBMS_MCQS = [
     "explanation": "2NF specifically addresses and eliminates partial functional dependency."
   },
   {
-    "id": 194,
+    "id": 212,
     "category": "Normalization",
     "question": "Which normal form specifically removes transitive dependency?",
     "options": [
@@ -16049,7 +16283,7 @@ const DBMS_MCQS = [
     "explanation": "3NF specifically addresses and eliminates transitive functional dependency."
   },
   {
-    "id": 195,
+    "id": 213,
     "category": "Normalization",
     "question": "Which normal form requires every determinant to be a candidate key?",
     "options": [
@@ -16062,7 +16296,7 @@ const DBMS_MCQS = [
     "explanation": "BCNF strictly requires every functional determinant to be a super key/candidate key."
   },
   {
-    "id": 196,
+    "id": 214,
     "category": "Normalization",
     "question": "Which normal form is generally sufficient for most practical database designs?",
     "options": [
@@ -16075,7 +16309,7 @@ const DBMS_MCQS = [
     "explanation": "3NF (or BCNF) provides an optimal balance of redundancy elimination and performance for real-world applications."
   },
   {
-    "id": 197,
+    "id": 215,
     "category": "Normalization",
     "question": "Which of the following best describes denormalization?",
     "options": [
@@ -16088,7 +16322,7 @@ const DBMS_MCQS = [
     "explanation": "Denormalization intentionally reintroduces controlled redundancy into normalized tables to speed up complex queries."
   },
   {
-    "id": 198,
+    "id": 216,
     "category": "Normalization",
     "question": "Denormalization is mainly performed to:",
     "options": [
@@ -16101,7 +16335,7 @@ const DBMS_MCQS = [
     "explanation": "Denormalization reduces costly JOIN operations to optimize read query execution speed."
   },
   {
-    "id": 199,
+    "id": 217,
     "category": "Normalization",
     "question": "Which statement is TRUE?",
     "options": [
@@ -16114,20 +16348,20 @@ const DBMS_MCQS = [
     "explanation": "BCNF is a stricter subset of 3NF; therefore, every relation in BCNF is automatically in 3NF."
   },
   {
-    "id": 200,
+    "id": 218,
     "category": "Normalization",
     "question": "Which sequence of normalization forms is correct?",
     "options": [
-      "BCNF \u2192 3NF \u2192 2NF \u2192 1NF",
-      "2NF \u2192 BCNF \u2192 1NF \u2192 3NF",
-      "1NF \u2192 2NF \u2192 3NF \u2192 BCNF",
-      "3NF \u2192 2NF \u2192 1NF \u2192 BCNF"
+      "BCNF → 3NF → 2NF → 1NF",
+      "2NF → BCNF → 1NF → 3NF",
+      "1NF → 2NF → 3NF → BCNF",
+      "3NF → 2NF → 1NF → BCNF"
     ],
     "answerIndex": 2,
-    "explanation": "The standard progression of normal forms is 1NF \u2192 2NF \u2192 3NF \u2192 BCNF."
+    "explanation": "The standard progression of normal forms is 1NF → 2NF → 3NF → BCNF."
   },
   {
-    "id": 201,
+    "id": 219,
     "category": "SQL Commands",
     "question": "SQL stands for:",
     "options": [
@@ -16140,7 +16374,7 @@ const DBMS_MCQS = [
     "explanation": "SQL stands for Structured Query Language."
   },
   {
-    "id": 202,
+    "id": 220,
     "category": "SQL Commands",
     "question": "SQL is primarily used to:",
     "options": [
@@ -16153,7 +16387,7 @@ const DBMS_MCQS = [
     "explanation": "SQL is the standard language for defining, querying, and managing relational databases."
   },
   {
-    "id": 203,
+    "id": 221,
     "category": "SQL Commands",
     "question": "SQL is:",
     "options": [
@@ -16166,7 +16400,7 @@ const DBMS_MCQS = [
     "explanation": "SQL is a domain-specific database query and data manipulation language."
   },
   {
-    "id": 204,
+    "id": 222,
     "category": "SQL Commands",
     "question": "Which organization originally standardized SQL?",
     "options": [
@@ -16179,7 +16413,7 @@ const DBMS_MCQS = [
     "explanation": "ANSI (American National Standards Institute) first standardized SQL in 1986."
   },
   {
-    "id": 205,
+    "id": 223,
     "category": "SQL Commands",
     "question": "SQL is mainly used with:",
     "options": [
@@ -16192,7 +16426,7 @@ const DBMS_MCQS = [
     "explanation": "SQL is used universally as the query interface for Relational DBMS (RDBMS)."
   },
   {
-    "id": 206,
+    "id": 224,
     "category": "SQL Commands",
     "question": "Which category contains CREATE, ALTER and DROP?",
     "options": [
@@ -16205,7 +16439,7 @@ const DBMS_MCQS = [
     "explanation": "Data Definition Language (DDL) includes commands that define database schema structure."
   },
   {
-    "id": 207,
+    "id": 225,
     "category": "SQL Commands",
     "question": "DDL stands for:",
     "options": [
@@ -16218,7 +16452,7 @@ const DBMS_MCQS = [
     "explanation": "DDL stands for Data Definition Language."
   },
   {
-    "id": 208,
+    "id": 226,
     "category": "SQL Commands",
     "question": "Which command creates a new table?",
     "options": [
@@ -16231,7 +16465,7 @@ const DBMS_MCQS = [
     "explanation": "The CREATE TABLE statement creates a new database table."
   },
   {
-    "id": 209,
+    "id": 227,
     "category": "SQL Commands",
     "question": "Which command permanently removes a table?",
     "options": [
@@ -16244,7 +16478,7 @@ const DBMS_MCQS = [
     "explanation": "The DROP TABLE statement permanently deletes a table structure and all its data."
   },
   {
-    "id": 210,
+    "id": 228,
     "category": "SQL Commands",
     "question": "ALTER command is used to:",
     "options": [
@@ -16257,7 +16491,7 @@ const DBMS_MCQS = [
     "explanation": "ALTER is a DDL command used to modify existing table structures or database objects."
   },
   {
-    "id": 211,
+    "id": 229,
     "category": "SQL Commands",
     "question": "Which command removes all rows but keeps the table structure?",
     "options": [
@@ -16270,7 +16504,7 @@ const DBMS_MCQS = [
     "explanation": "TRUNCATE TABLE quickly removes all rows while keeping the table definition intact."
   },
   {
-    "id": 212,
+    "id": 230,
     "category": "SQL Commands",
     "question": "TRUNCATE is classified as:",
     "options": [
@@ -16283,7 +16517,7 @@ const DBMS_MCQS = [
     "explanation": "TRUNCATE is classified as a DDL statement because it deallocates data pages and resets table metadata."
   },
   {
-    "id": 213,
+    "id": 231,
     "category": "SQL Commands",
     "question": "DML stands for:",
     "options": [
@@ -16296,7 +16530,7 @@ const DBMS_MCQS = [
     "explanation": "DML stands for Data Manipulation Language."
   },
   {
-    "id": 214,
+    "id": 232,
     "category": "SQL Commands",
     "question": "Which command inserts new records?",
     "options": [
@@ -16309,7 +16543,7 @@ const DBMS_MCQS = [
     "explanation": "The INSERT INTO statement adds new data records to a table."
   },
   {
-    "id": 215,
+    "id": 233,
     "category": "SQL Commands",
     "question": "UPDATE command is used to:",
     "options": [
@@ -16322,7 +16556,7 @@ const DBMS_MCQS = [
     "explanation": "The UPDATE statement modifies existing data values within table rows."
   },
   {
-    "id": 216,
+    "id": 234,
     "category": "SQL Commands",
     "question": "DELETE command removes:",
     "options": [
@@ -16335,7 +16569,7 @@ const DBMS_MCQS = [
     "explanation": "DELETE is a DML command that removes specified rows from a table based on a condition."
   },
   {
-    "id": 217,
+    "id": 235,
     "category": "SQL Commands",
     "question": "Which command retrieves data?",
     "options": [
@@ -16348,7 +16582,7 @@ const DBMS_MCQS = [
     "explanation": "The SELECT statement retrieves data records matching query conditions."
   },
   {
-    "id": 218,
+    "id": 236,
     "category": "SQL Commands",
     "question": "SELECT belongs to:",
     "options": [
@@ -16361,7 +16595,7 @@ const DBMS_MCQS = [
     "explanation": "SELECT belongs to Data Query Language (DQL), a subset of DML."
   },
   {
-    "id": 219,
+    "id": 237,
     "category": "SQL Commands",
     "question": "Which SQL category manipulates data?",
     "options": [
@@ -16374,7 +16608,7 @@ const DBMS_MCQS = [
     "explanation": "Data Manipulation Language (DML) statements (INSERT, UPDATE, DELETE) alter table data content."
   },
   {
-    "id": 220,
+    "id": 238,
     "category": "SQL Commands",
     "question": "DCL stands for:",
     "options": [
@@ -16387,7 +16621,7 @@ const DBMS_MCQS = [
     "explanation": "DCL stands for Data Control Language."
   },
   {
-    "id": 221,
+    "id": 239,
     "category": "SQL Commands",
     "question": "Which command grants user privileges?",
     "options": [
@@ -16400,7 +16634,7 @@ const DBMS_MCQS = [
     "explanation": "GRANT is a DCL command used to assign security privileges and access permissions."
   },
   {
-    "id": 222,
+    "id": 240,
     "category": "SQL Commands",
     "question": "Which command removes user privileges?",
     "options": [
@@ -16413,7 +16647,7 @@ const DBMS_MCQS = [
     "explanation": "REVOKE is a DCL command used to take back assigned permissions from users."
   },
   {
-    "id": 223,
+    "id": 241,
     "category": "SQL Commands",
     "question": "GRANT and REVOKE belong to:",
     "options": [
@@ -16426,7 +16660,7 @@ const DBMS_MCQS = [
     "explanation": "GRANT and REVOKE are the principal DCL commands."
   },
   {
-    "id": 224,
+    "id": 242,
     "category": "SQL Commands",
     "question": "TCL stands for:",
     "options": [
@@ -16439,7 +16673,7 @@ const DBMS_MCQS = [
     "explanation": "TCL stands for Transaction Control Language."
   },
   {
-    "id": 225,
+    "id": 243,
     "category": "SQL Commands",
     "question": "Which command permanently saves a transaction?",
     "options": [
@@ -16452,7 +16686,7 @@ const DBMS_MCQS = [
     "explanation": "COMMIT permanently saves all modifications made during the current transaction."
   },
   {
-    "id": 226,
+    "id": 244,
     "category": "SQL Commands",
     "question": "Which command restores the database to the previous committed state?",
     "options": [
@@ -16465,7 +16699,7 @@ const DBMS_MCQS = [
     "explanation": "ROLLBACK cancels uncommitted changes and reverts data to the last committed checkpoint state."
   },
   {
-    "id": 227,
+    "id": 245,
     "category": "SQL Commands",
     "question": "SAVEPOINT is used to:",
     "options": [
@@ -16478,7 +16712,7 @@ const DBMS_MCQS = [
     "explanation": "SAVEPOINT sets an intermediate marker within a transaction to allow partial rollback."
   },
   {
-    "id": 228,
+    "id": 246,
     "category": "SQL Commands",
     "question": "COMMIT belongs to:",
     "options": [
@@ -16491,7 +16725,696 @@ const DBMS_MCQS = [
     "explanation": "COMMIT is a Transaction Control Language (TCL) command."
   },
   {
-    "id": 229,
+    "category": "SQL Commands Practice",
+    "question": "Which SQL query retrieves all columns from the Employee table?",
+    "options": [
+      "SELECT Employee;",
+      "SELECT ALL FROM Employee;",
+      "SELECT * FROM Employee;",
+      "SHOW * FROM Employee;"
+    ],
+    "answerIndex": 2,
+    "explanation": "The asterisk (*) wildcard selects all columns from the specified table.",
+    "id": 247
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves only Name and Salary?",
+    "options": [
+      "SELECT * FROM Employee;",
+      "SELECT Name, Salary FROM Employee;",
+      "SELECT(Name,Salary) FROM Employee;",
+      "GET Name Salary FROM Employee;"
+    ],
+    "answerIndex": 1,
+    "explanation": "Comma-separated column names in SELECT retrieve specific projection fields.",
+    "id": 248
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees whose salary is greater than 50,000?",
+    "options": [
+      "SELECT * FROM Employee WHERE Salary>=50000;",
+      "SELECT * FROM Employee WHERE Salary>50000;",
+      "SELECT Salary>50000 FROM Employee;",
+      "SELECT * FROM Employee HAVING Salary>50000;"
+    ],
+    "answerIndex": 1,
+    "explanation": "The > operator checks for strictly greater values in the WHERE clause.",
+    "id": 249
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees whose age is less than 30?",
+    "options": [
+      "SELECT * FROM Employee WHERE Age<=30;",
+      "SELECT * FROM Employee WHERE Age<30;",
+      "SELECT * FROM Employee HAVING Age<30;",
+      "SELECT Age<30 FROM Employee;"
+    ],
+    "answerIndex": 1,
+    "explanation": "The < operator filters rows where Age is strictly less than 30.",
+    "id": 250
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which SQL query retrieves employees belonging to the IT department?",
+    "options": [
+      "SELECT * FROM Employee WHERE Department=IT;",
+      "SELECT * FROM Employee WHERE Department='IT';",
+      "SELECT IT FROM Employee;",
+      "SELECT * FROM IT;"
+    ],
+    "answerIndex": 1,
+    "explanation": "String literals in SQL WHERE conditions must be enclosed in single quotes.",
+    "id": 251
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees whose salary is at least 55,000?",
+    "options": [
+      "WHERE Salary>55000;",
+      "SELECT * FROM Employee WHERE Salary>=55000;",
+      "SELECT Salary>=55000;",
+      "SELECT * FROM Employee HAVING Salary>=55000;"
+    ],
+    "answerIndex": 1,
+    "explanation": "The >= operator checks for values greater than or equal to (at least) 55,000.",
+    "id": 252
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees whose salary is not equal to 45,000?",
+    "options": [
+      "WHERE Salary=!45000;",
+      "WHERE Salary NOT 45000;",
+      "SELECT * FROM Employee WHERE Salary<>45000;",
+      "WHERE Salary==45000;"
+    ],
+    "answerIndex": 2,
+    "explanation": "<> or != tests inequality in standard SQL WHERE clauses.",
+    "id": 253
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees who work in IT and earn more than 60,000?",
+    "options": [
+      "SELECT * FROM Employee WHERE Department='IT' OR Salary>60000;",
+      "SELECT * FROM Employee WHERE Department='IT' AND Salary>60000;",
+      "SELECT * FROM Employee WHERE Salary>60000;",
+      "SELECT * FROM Employee GROUP BY Department;"
+    ],
+    "answerIndex": 1,
+    "explanation": "AND requires both conditions (Department='IT' AND Salary>60000) to evaluate to TRUE.",
+    "id": 254
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees working in IT or HR?",
+    "options": [
+      "SELECT * FROM Employee WHERE Department='IT' AND Department='HR';",
+      "SELECT * FROM Employee WHERE Department='IT' OR Department='HR';",
+      "SELECT * FROM Employee WHERE Department='IT HR';",
+      "SELECT * FROM Employee GROUP BY Department;"
+    ],
+    "answerIndex": 1,
+    "explanation": "OR returns TRUE if either condition (Department='IT' OR Department='HR') is met.",
+    "id": 255
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees not working in HR?",
+    "options": [
+      "WHERE Department='HR';",
+      "WHERE Department<>IT;",
+      "SELECT * FROM Employee WHERE Department<>'HR';",
+      "WHERE NOT Salary;"
+    ],
+    "answerIndex": 2,
+    "explanation": "<>'HR' excludes all rows where Department matches 'HR'.",
+    "id": 256
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees whose salary is between 40,000 and 60,000?",
+    "options": [
+      "WHERE Salary>40000 OR Salary<60000;",
+      "SELECT * FROM Employee WHERE Salary BETWEEN 40000 AND 60000;",
+      "WHERE Salary=(40000,60000);",
+      "WHERE Salary IN RANGE;"
+    ],
+    "answerIndex": 1,
+    "explanation": "BETWEEN min AND max checks for inclusive range matching.",
+    "id": 257
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees belonging to HR or Finance?",
+    "options": [
+      "WHERE Department='HR' AND Department='Finance';",
+      "SELECT * FROM Employee WHERE Department IN ('HR','Finance');",
+      "WHERE Department BETWEEN HR AND Finance;",
+      "WHERE Department='HR,Finance';"
+    ],
+    "answerIndex": 1,
+    "explanation": "The IN operator checks membership against a discrete list of string values.",
+    "id": 258
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees whose age is 20, 25 or 30?",
+    "options": [
+      "WHERE Age=20,25,30;",
+      "WHERE Age BETWEEN 20 AND 30;",
+      "SELECT * FROM Employee WHERE Age IN (20,25,30);",
+      "WHERE Age=20 OR 25 OR 30;"
+    ],
+    "answerIndex": 2,
+    "explanation": "IN (20, 25, 30) tests if the Age column matches any value in the set.",
+    "id": 259
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees whose salary is outside the range 40,000–60,000?",
+    "options": [
+      "WHERE Salary BETWEEN 40000 AND 60000;",
+      "SELECT * FROM Employee WHERE Salary NOT BETWEEN 40000 AND 60000;",
+      "WHERE Salary<>40000;",
+      "WHERE Salary IN (40000,60000);"
+    ],
+    "answerIndex": 1,
+    "explanation": "NOT BETWEEN excludes values falling within the specified inclusive range.",
+    "id": 260
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves employees who are not in IT or HR?",
+    "options": [
+      "WHERE Department<>'IT';",
+      "SELECT * FROM Employee WHERE Department NOT IN ('IT','HR');",
+      "WHERE Department='Finance';",
+      "WHERE Department!='IT HR';"
+    ],
+    "answerIndex": 1,
+    "explanation": "NOT IN ('IT', 'HR') filters out rows matching any of the specified values.",
+    "id": 261
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query displays employees in ascending order of salary?",
+    "options": [
+      "ORDER Salary;",
+      "SELECT * FROM Employee ORDER BY Salary ASC;",
+      "SORT Salary;",
+      "GROUP BY Salary;"
+    ],
+    "answerIndex": 1,
+    "explanation": "ORDER BY Salary ASC sorts result rows from lowest to highest salary.",
+    "id": 262
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query displays employees from highest salary to lowest?",
+    "options": [
+      "ORDER Salary;",
+      "ORDER BY Salary;",
+      "SELECT * FROM Employee ORDER BY Salary DESC;",
+      "SORT Salary DESC;"
+    ],
+    "answerIndex": 2,
+    "explanation": "ORDER BY Salary DESC sorts result rows from highest to lowest salary.",
+    "id": 263
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query displays unique department names?",
+    "options": [
+      "SELECT Department FROM Employee;",
+      "SELECT DISTINCT Department FROM Employee;",
+      "SELECT UNIQUE Department;",
+      "SELECT DIFFERENT Department;"
+    ],
+    "answerIndex": 1,
+    "explanation": "DISTINCT eliminates duplicate values from the output result set.",
+    "id": 264
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query displays employee names in alphabetical order?",
+    "options": [
+      "ORDER BY Salary;",
+      "SELECT Name FROM Employee ORDER BY Name;",
+      "GROUP BY Name;",
+      "SELECT Name SORT Name;"
+    ],
+    "answerIndex": 1,
+    "explanation": "ORDER BY Name defaults to ascending alphabetical order.",
+    "id": 265
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query sorts employees by Department and then by Salary (highest first)?",
+    "options": [
+      "ORDER Department Salary;",
+      "SELECT * ORDER BY Department;",
+      "SELECT * FROM Employee ORDER BY Department ASC, Salary DESC;",
+      "GROUP BY Department;"
+    ],
+    "answerIndex": 2,
+    "explanation": "Multiple ORDER BY columns are evaluated left-to-right (Department ASC, then Salary DESC).",
+    "id": 266
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query counts the number of employees in each department?",
+    "options": [
+      "SELECT COUNT(*) FROM Employee;",
+      "SELECT Department, COUNT(*) FROM Employee GROUP BY Department;",
+      "SELECT Department HAVING COUNT(*);",
+      "SELECT Department ORDER BY COUNT(*);"
+    ],
+    "answerIndex": 1,
+    "explanation": "GROUP BY Department aggregates rows into department groups to count members.",
+    "id": 267
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query shows departments having more than one employee?",
+    "options": [
+      "SELECT Department WHERE COUNT(*)>1;",
+      "SELECT Department, COUNT(*) FROM Employee GROUP BY Department HAVING COUNT(*)>1;",
+      "SELECT COUNT(*) HAVING Department;",
+      "GROUP Department;"
+    ],
+    "answerIndex": 1,
+    "explanation": "HAVING COUNT(*)>1 filters grouped summary results after GROUP BY.",
+    "id": 268
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query calculates the average salary of each department?",
+    "options": [
+      "SELECT AVG(Salary);",
+      "SELECT Department, AVG(Salary) FROM Employee GROUP BY Department;",
+      "SELECT Department HAVING AVG(Salary);",
+      "SELECT Department ORDER Salary;"
+    ],
+    "answerIndex": 1,
+    "explanation": "AVG(Salary) grouped by Department computes mean salary per department.",
+    "id": 269
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which clause is necessary before using HAVING COUNT(*) > 2?",
+    "options": [
+      "ORDER BY",
+      "DISTINCT",
+      "GROUP BY",
+      "WHERE"
+    ],
+    "answerIndex": 2,
+    "explanation": "HAVING operates on aggregated groups formed by a preceding GROUP BY clause.",
+    "id": 270
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query finds departments whose average salary exceeds 50,000?",
+    "options": [
+      "SELECT Department WHERE AVG(Salary)>50000;",
+      "SELECT Department, AVG(Salary) FROM Employee GROUP BY Department HAVING AVG(Salary)>50000;",
+      "SELECT AVG(Salary) ORDER BY Department;",
+      "SELECT * FROM Employee;"
+    ],
+    "answerIndex": 1,
+    "explanation": "HAVING AVG(Salary)>50000 filters aggregate groups whose calculated average exceeds 50,000.",
+    "id": 271
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query increases every employee's salary by 10%?",
+    "options": [
+      "UPDATE Employee SET Salary=Salary*1.10;",
+      "CHANGE Employee Salary=10%;",
+      "MODIFY Salary;",
+      "UPDATE Salary;"
+    ],
+    "answerIndex": 0,
+    "explanation": "UPDATE Employee SET Salary=Salary*1.10 multiplies current salary by 1.10 for all rows.",
+    "id": 272
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query increases the salary of only HR employees by 5%?",
+    "options": [
+      "UPDATE Employee SET Salary=Salary*1.05 WHERE Department='HR';",
+      "UPDATE Employee Salary=5%;",
+      "MODIFY Employee;",
+      "CHANGE Salary;"
+    ],
+    "answerIndex": 0,
+    "explanation": "WHERE Department='HR' restricts the 5% salary update exclusively to HR personnel.",
+    "id": 273
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query deletes employees older than 60 years?",
+    "options": [
+      "DROP Employee;",
+      "DELETE FROM Employee WHERE Age>60;",
+      "REMOVE Employee;",
+      "DELETE Employee;"
+    ],
+    "answerIndex": 1,
+    "explanation": "DELETE FROM Employee WHERE Age>60 removes rows matching the condition.",
+    "id": 274
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query inserts a new employee into the Employee table?",
+    "options": [
+      "INSERT INTO Employee VALUES(6,'Usman','IT',52000,26);",
+      "ADD Employee;",
+      "NEW Employee;",
+      "CREATE Employee VALUES(...);"
+    ],
+    "answerIndex": 0,
+    "explanation": "INSERT INTO Employee VALUES(...) adds a new record row to the table.",
+    "id": 275
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves the names of employees in the IT department whose salary is greater than 60,000, sorted by salary in descending order?",
+    "options": [
+      "SELECT Name FROM Employee WHERE Department='IT' ORDER BY Salary;",
+      "SELECT Name FROM Employee WHERE Salary>60000 ORDER BY Salary DESC;",
+      "SELECT Name FROM Employee WHERE Department='IT' AND Salary>60000 ORDER BY Salary DESC;",
+      "SELECT Name GROUP BY Salary;"
+    ],
+    "answerIndex": 2,
+    "explanation": "Combines WHERE with AND condition and sorts the projected result using ORDER BY Salary DESC.",
+    "id": 276
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query contains a syntax error?",
+    "options": [
+      "SELECT * FROM Employee;",
+      "SELECT Name FROM Employee WHERE Salary>50000;",
+      "UPDATE Employee SET Salary=60000;",
+      "SELECT FROM Employee WHERE Salary>50000;"
+    ],
+    "answerIndex": 3,
+    "explanation": "SELECT requires column names or asterisk wildcard (*) before the FROM clause.",
+    "id": 277
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves all employees except those in the Finance department?",
+    "options": [
+      "WHERE Department='Finance';",
+      "SELECT * FROM Employee WHERE Department<>'Finance';",
+      "SELECT Finance;",
+      "DELETE Finance;"
+    ],
+    "answerIndex": 1,
+    "explanation": "Department<>'Finance' selects all rows except those where department is Finance.",
+    "id": 278
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query displays the employee with the highest salary first?",
+    "options": [
+      "ORDER BY Salary;",
+      "SELECT * FROM Employee ORDER BY Salary DESC;",
+      "GROUP BY Salary;",
+      "SELECT MAX(Salary);"
+    ],
+    "answerIndex": 1,
+    "explanation": "ORDER BY Salary DESC places the highest salary record at the top of the result set.",
+    "id": 279
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which SQL statement retrieves all columns from the Student table?",
+    "options": [
+      "GET * FROM Student",
+      "SELECT * FROM Student;",
+      "SHOW * Student",
+      "DISPLAY Student"
+    ],
+    "answerIndex": 1,
+    "explanation": "SELECT * FROM Student; retrieves all attributes from the Student table.",
+    "id": 280
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which SQL statement retrieves only the Name column?",
+    "options": [
+      "SELECT(Name) Student;",
+      "SELECT Name FROM Student;",
+      "GET Name Student;",
+      "SHOW Name FROM Student;"
+    ],
+    "answerIndex": 1,
+    "explanation": "SELECT Name FROM Student; projects only the Name attribute.",
+    "id": 281
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which clause is used to retrieve only specific rows?",
+    "options": [
+      "ORDER BY",
+      "GROUP BY",
+      "WHERE",
+      "HAVING"
+    ],
+    "answerIndex": 2,
+    "explanation": "The WHERE clause specifies conditions for row filtering.",
+    "id": 282
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves students whose age is greater than 20?",
+    "options": [
+      "SELECT * FROM Student WHERE Age => 20;",
+      "SELECT * FROM Student WHERE Age > 20;",
+      "SELECT Age >20 FROM Student;",
+      "GET Student Age >20;"
+    ],
+    "answerIndex": 1,
+    "explanation": "Age > 20 filters for students strictly older than 20.",
+    "id": 283
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which SQL operator checks equality?",
+    "options": [
+      "==",
+      "=",
+      ":=",
+      "==="
+    ],
+    "answerIndex": 1,
+    "explanation": "Standard SQL uses a single equals sign (=) for relational equality comparison.",
+    "id": 284
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which clause sorts records in ascending order by default?",
+    "options": [
+      "GROUP BY",
+      "WHERE",
+      "ORDER BY",
+      "HAVING"
+    ],
+    "answerIndex": 2,
+    "explanation": "ORDER BY sorts query output in ascending order unless DESC is specified.",
+    "id": 285
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query sorts employees by salary from highest to lowest?",
+    "options": [
+      "ORDER Salary DESC",
+      "SELECT * FROM Employee ORDER BY Salary DESC;",
+      "SELECT Salary DESC Employee;",
+      "SORT Employee Salary;"
+    ],
+    "answerIndex": 1,
+    "explanation": "ORDER BY Salary DESC sorts records in descending order of salary.",
+    "id": 286
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which keyword removes duplicate rows from the result?",
+    "options": [
+      "UNIQUE",
+      "DISTINCT",
+      "DIFFERENT",
+      "REMOVE"
+    ],
+    "answerIndex": 1,
+    "explanation": "DISTINCT filters out duplicate result rows.",
+    "id": 287
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query returns unique department names?",
+    "options": [
+      "SELECT UNIQUE Department",
+      "SELECT DISTINCT Department FROM Employee;",
+      "SELECT DIFFERENT Department",
+      "SELECT ONLY Department"
+    ],
+    "answerIndex": 1,
+    "explanation": "SELECT DISTINCT Department FROM Employee; returns unique department list.",
+    "id": 288
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which clause filters groups after aggregation?",
+    "options": [
+      "WHERE",
+      "ORDER BY",
+      "HAVING",
+      "DISTINCT"
+    ],
+    "answerIndex": 2,
+    "explanation": "HAVING operates on aggregated groups following GROUP BY.",
+    "id": 289
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which clause is generally used with aggregate functions?",
+    "options": [
+      "ORDER BY",
+      "GROUP BY",
+      "WHERE",
+      "UPDATE"
+    ],
+    "answerIndex": 1,
+    "explanation": "GROUP BY organizes data rows into groups for aggregate evaluation.",
+    "id": 290
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which operator selects values between two limits?",
+    "options": [
+      "IN",
+      "BETWEEN",
+      "LIKE",
+      "EXISTS"
+    ],
+    "answerIndex": 1,
+    "explanation": "BETWEEN tests for values falling inclusively within a specified range.",
+    "id": 291
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query retrieves salaries between 30,000 and 50,000?",
+    "options": [
+      "Salary IN (30000-50000)",
+      "WHERE Salary BETWEEN 30000 AND 50000",
+      "WHERE Salary = 30000 TO 50000",
+      "WHERE Salary INSIDE"
+    ],
+    "answerIndex": 1,
+    "explanation": "WHERE Salary BETWEEN 30000 AND 50000 selects salaries within the inclusive range.",
+    "id": 292
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which operator checks multiple values?",
+    "options": [
+      "EXISTS",
+      "IN",
+      "LIKE",
+      "BETWEEN"
+    ],
+    "answerIndex": 1,
+    "explanation": "The IN operator tests if a column value matches any item in a target set.",
+    "id": 293
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query selects departments IT, HR, and Finance?",
+    "options": [
+      "WHERE Department = IT,HR,Finance",
+      "WHERE Department IN ('IT','HR','Finance')",
+      "WHERE Department BETWEEN",
+      "WHERE Department LIKE"
+    ],
+    "answerIndex": 1,
+    "explanation": "WHERE Department IN ('IT','HR','Finance') matches any of the listed departments.",
+    "id": 294
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which SQL operator checks NULL values?",
+    "options": [
+      "= NULL",
+      "== NULL",
+      "IS NULL",
+      "NULL ="
+    ],
+    "answerIndex": 2,
+    "explanation": "IS NULL tests if an attribute contains an unassigned NULL value.",
+    "id": 295
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which operator checks NOT NULL values?",
+    "options": [
+      "!= NULL",
+      "IS NOT NULL",
+      "<> NULL",
+      "NOT = NULL"
+    ],
+    "answerIndex": 1,
+    "explanation": "IS NOT NULL evaluates to TRUE for non-null attributes.",
+    "id": 296
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "Which query calculates the total salary of employees?",
+    "options": [
+      "COUNT(Salary)",
+      "SUM(Salary)",
+      "TOTAL(Salary)",
+      "ADD(Salary)"
+    ],
+    "answerIndex": 1,
+    "explanation": "SUM(Salary) aggregates and totals all numeric salary values.",
+    "id": 297
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "GROUP BY mainly groups rows having:",
+    "options": [
+      "Different values",
+      "The same value in specified columns",
+      "Random values",
+      "Sorted values"
+    ],
+    "answerIndex": 1,
+    "explanation": "GROUP BY summarizes rows sharing identical values across designated columns.",
+    "id": 298
+  },
+  {
+    "category": "SQL Commands Practice",
+    "question": "HAVING differs from WHERE because HAVING filters:",
+    "options": [
+      "Individual rows",
+      "Groups formed after aggregation",
+      "Tables",
+      "Views"
+    ],
+    "answerIndex": 1,
+    "explanation": "HAVING operates on aggregated groups produced by GROUP BY, while WHERE filters individual rows.",
+    "id": 299
+  },
+  {
+    "id": 300,
     "category": "SQL Clauses & Functions",
     "question": "Which clause filters rows based on a condition?",
     "options": [
@@ -16504,7 +17427,7 @@ const DBMS_MCQS = [
     "explanation": "The WHERE clause filters individual rows before grouping or aggregation."
   },
   {
-    "id": 230,
+    "id": 301,
     "category": "SQL Clauses & Functions",
     "question": "WHERE clause is used with:",
     "options": [
@@ -16517,7 +17440,7 @@ const DBMS_MCQS = [
     "explanation": "WHERE provides row-level conditional filtering in SELECT, UPDATE, and DELETE queries."
   },
   {
-    "id": 231,
+    "id": 302,
     "category": "SQL Clauses & Functions",
     "question": "Which clause is evaluated before GROUP BY?",
     "options": [
@@ -16530,7 +17453,7 @@ const DBMS_MCQS = [
     "explanation": "In SQL query execution order, WHERE is evaluated before GROUP BY."
   },
   {
-    "id": 232,
+    "id": 303,
     "category": "SQL Clauses & Functions",
     "question": "ORDER BY is used to:",
     "options": [
@@ -16543,7 +17466,7 @@ const DBMS_MCQS = [
     "explanation": "The ORDER BY clause sorts the result set rows in ascending or descending order."
   },
   {
-    "id": 233,
+    "id": 304,
     "category": "SQL Clauses & Functions",
     "question": "Default sorting order of ORDER BY is:",
     "options": [
@@ -16556,7 +17479,7 @@ const DBMS_MCQS = [
     "explanation": "ORDER BY defaults to Ascending (ASC) order if unspecified."
   },
   {
-    "id": 234,
+    "id": 305,
     "category": "SQL Clauses & Functions",
     "question": "Which keyword sorts in descending order?",
     "options": [
@@ -16569,7 +17492,7 @@ const DBMS_MCQS = [
     "explanation": "The DESC keyword specifies descending sorting order in ORDER BY."
   },
   {
-    "id": 235,
+    "id": 306,
     "category": "SQL Clauses & Functions",
     "question": "GROUP BY is mainly used with:",
     "options": [
@@ -16582,7 +17505,7 @@ const DBMS_MCQS = [
     "explanation": "GROUP BY arranges identical data into summary groups, commonly paired with Aggregate Functions."
   },
   {
-    "id": 236,
+    "id": 307,
     "category": "SQL Clauses & Functions",
     "question": "HAVING clause filters:",
     "options": [
@@ -16595,7 +17518,7 @@ const DBMS_MCQS = [
     "explanation": "HAVING filters aggregated groups created by GROUP BY, operating on summary values."
   },
   {
-    "id": 237,
+    "id": 308,
     "category": "SQL Clauses & Functions",
     "question": "Which clause is used after GROUP BY?",
     "options": [
@@ -16608,7 +17531,7 @@ const DBMS_MCQS = [
     "explanation": "HAVING is evaluated after GROUP BY to filter grouped results."
   },
   {
-    "id": 238,
+    "id": 309,
     "category": "SQL Clauses & Functions",
     "question": "Which clause cannot use aggregate functions directly?",
     "options": [
@@ -16621,7 +17544,7 @@ const DBMS_MCQS = [
     "explanation": "WHERE filters rows before aggregation occurs and cannot directly evaluate aggregate functions like COUNT() or SUM()."
   },
   {
-    "id": 239,
+    "id": 310,
     "category": "SQL Clauses & Functions",
     "question": "Which is an aggregate function?",
     "options": [
@@ -16634,7 +17557,7 @@ const DBMS_MCQS = [
     "explanation": "COUNT() is a standard SQL aggregate function operating on a set of rows."
   },
   {
-    "id": 240,
+    "id": 311,
     "category": "SQL Clauses & Functions",
     "question": "COUNT(*) returns:",
     "options": [
@@ -16647,7 +17570,7 @@ const DBMS_MCQS = [
     "explanation": "COUNT(*) returns the total number of rows matching the query, including NULL values."
   },
   {
-    "id": 241,
+    "id": 312,
     "category": "SQL Clauses & Functions",
     "question": "Which function returns the highest value?",
     "options": [
@@ -16660,7 +17583,7 @@ const DBMS_MCQS = [
     "explanation": "MAX() calculates and returns the maximum value in a column."
   },
   {
-    "id": 242,
+    "id": 313,
     "category": "SQL Clauses & Functions",
     "question": "Which function returns the lowest value?",
     "options": [
@@ -16673,7 +17596,7 @@ const DBMS_MCQS = [
     "explanation": "MIN() returns the minimum scalar value in a column."
   },
   {
-    "id": 243,
+    "id": 314,
     "category": "SQL Clauses & Functions",
     "question": "Which function calculates average?",
     "options": [
@@ -16686,7 +17609,7 @@ const DBMS_MCQS = [
     "explanation": "AVG() calculates the mathematical average of numeric column values."
   },
   {
-    "id": 244,
+    "id": 315,
     "category": "SQL Clauses & Functions",
     "question": "SUM() calculates:",
     "options": [
@@ -16699,7 +17622,7 @@ const DBMS_MCQS = [
     "explanation": "SUM() computes the cumulative arithmetic sum of numeric values."
   },
   {
-    "id": 245,
+    "id": 316,
     "category": "SQL Clauses & Functions",
     "question": "Which aggregate function ignores NULL values?",
     "options": [
@@ -16712,7 +17635,7 @@ const DBMS_MCQS = [
     "explanation": "All aggregate functions (SUM, AVG, MIN, MAX, COUNT(col)) ignore NULL values (except COUNT(*))."
   },
   {
-    "id": 246,
+    "id": 317,
     "category": "SQL Clauses & Functions",
     "question": "Which operator searches for a range of values?",
     "options": [
@@ -16725,7 +17648,7 @@ const DBMS_MCQS = [
     "explanation": "BETWEEN tests whether a value falls within an inclusive range."
   },
   {
-    "id": 247,
+    "id": 318,
     "category": "SQL Clauses & Functions",
     "question": "Which operator checks membership in a list?",
     "options": [
@@ -16738,7 +17661,7 @@ const DBMS_MCQS = [
     "explanation": "The IN operator checks if a value matches any entry in a discrete list or subquery result."
   },
   {
-    "id": 248,
+    "id": 319,
     "category": "SQL Clauses & Functions",
     "question": "Which operator is mainly used with wildcard characters?",
     "options": [
@@ -16751,7 +17674,7 @@ const DBMS_MCQS = [
     "explanation": "LIKE performs pattern matching using wildcard characters (% and _)."
   },
   {
-    "id": 249,
+    "id": 320,
     "category": "SQL Clauses & Functions",
     "question": "Which wildcard represents any number of characters in SQL?",
     "options": [
@@ -16764,7 +17687,7 @@ const DBMS_MCQS = [
     "explanation": "The percent sign (%) wildcard matches zero, one, or multiple arbitrary characters."
   },
   {
-    "id": 250,
+    "id": 321,
     "category": "SQL Clauses & Functions",
     "question": "Which wildcard represents exactly one character?",
     "options": [
@@ -16777,7 +17700,332 @@ const DBMS_MCQS = [
     "explanation": "The underscore (_) wildcard matches exactly one single character."
   },
   {
-    "id": 251,
+    "category": "Relational Algebra",
+    "question": "Which relational algebra operator is used to select specific rows (tuples) from a relation?",
+    "options": [
+      "π (Projection)",
+      "σ (Selection)",
+      "∪ (Union)",
+      "× (Cartesian Product)"
+    ],
+    "answerIndex": 1,
+    "explanation": "Selection (σ) filters tuples (rows) based on specified predicate conditions.",
+    "id": 322
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which relational algebra expression retrieves employees whose salary is greater than 50,000?",
+    "options": [
+      "π Salary>50000(Employee)",
+      "σ Salary>50000(Employee)",
+      "Employee ∪ Salary>50000",
+      "Employee × Salary"
+    ],
+    "answerIndex": 1,
+    "explanation": "σ Salary>50000(Employee) filters row tuples matching the condition Salary > 50000.",
+    "id": 323
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Selection (σ) is equivalent to which SQL clause?",
+    "options": [
+      "GROUP BY",
+      "ORDER BY",
+      "WHERE",
+      "HAVING"
+    ],
+    "answerIndex": 2,
+    "explanation": "Selection (σ) in relational algebra is equivalent to the row-filtering WHERE clause in SQL.",
+    "id": 324
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which operator is used to retrieve specific columns (attributes)?",
+    "options": [
+      "σ",
+      "π",
+      "∪",
+      "×"
+    ],
+    "answerIndex": 1,
+    "explanation": "Projection (π) projects specified attribute columns from a relation.",
+    "id": 325
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Projection removes:",
+    "options": [
+      "Duplicate tables",
+      "Duplicate rows produced after selecting attributes",
+      "Duplicate databases",
+      "Duplicate queries"
+    ],
+    "answerIndex": 1,
+    "explanation": "In relational algebra set theory, Projection automatically eliminates duplicate result tuples.",
+    "id": 326
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Projection (π) is equivalent to selecting which part of an SQL query?",
+    "options": [
+      "WHERE clause",
+      "Column list in SELECT",
+      "GROUP BY",
+      "ORDER BY"
+    ],
+    "answerIndex": 1,
+    "explanation": "Projection specifies column lists in the SELECT statement (e.g., SELECT col1, col2).",
+    "id": 327
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which relational algebra operator combines tuples from two compatible relations?",
+    "options": [
+      "Join",
+      "Difference",
+      "Union (∪)",
+      "Cartesian Product"
+    ],
+    "answerIndex": 2,
+    "explanation": "Union (∪) combines tuples from two union-compatible relations into a single set.",
+    "id": 328
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Union operation requires:",
+    "options": [
+      "Same table name",
+      "Same primary key",
+      "Union-compatible relations (same number and type of attributes)",
+      "Same number of tuples"
+    ],
+    "answerIndex": 2,
+    "explanation": "Union requires relations to have identical arity (attribute count) and compatible domain types.",
+    "id": 329
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which SQL operator is conceptually equivalent to the Union operator?",
+    "options": [
+      "JOIN",
+      "UNION",
+      "GROUP BY",
+      "DISTINCT"
+    ],
+    "answerIndex": 1,
+    "explanation": "The relational algebra Union operator (∪) directly maps to SQL UNION.",
+    "id": 330
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which operator returns tuples that exist in one relation but not in another?",
+    "options": [
+      "Union",
+      "Join",
+      "Difference (−)",
+      "Projection"
+    ],
+    "answerIndex": 2,
+    "explanation": "Set Difference (R − S) finds tuples belonging to relation R that do not exist in relation S.",
+    "id": 331
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Difference operation also requires:",
+    "options": [
+      "Foreign keys",
+      "Same primary key",
+      "Union-compatible relations",
+      "Same table name"
+    ],
+    "answerIndex": 2,
+    "explanation": "Set Difference requires both input relations to be union-compatible.",
+    "id": 332
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which operator pairs every tuple of one relation with every tuple of another relation?",
+    "options": [
+      "Join",
+      "Union",
+      "Cartesian Product (×)",
+      "Selection"
+    ],
+    "answerIndex": 2,
+    "explanation": "Cartesian Product (R × S) pairs every tuple in R with every tuple in S.",
+    "id": 333
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "If relation R has 5 tuples and relation S has 4 tuples, then R × S contains:",
+    "options": [
+      "9 tuples",
+      "5 tuples",
+      "4 tuples",
+      "20 tuples"
+    ],
+    "answerIndex": 3,
+    "explanation": "Cartesian Product output tuple count equals |R| × |S| = 5 × 4 = 20 tuples.",
+    "id": 334
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which SQL JOIN is conceptually closest to the Cartesian Product?",
+    "options": [
+      "INNER JOIN",
+      "LEFT JOIN",
+      "CROSS JOIN",
+      "NATURAL JOIN"
+    ],
+    "answerIndex": 2,
+    "explanation": "CROSS JOIN in SQL computes the Cartesian Product of two tables.",
+    "id": 335
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "The primary purpose of a Join operation is to:",
+    "options": [
+      "Remove duplicate rows",
+      "Select columns",
+      "Combine related tuples from two relations",
+      "Sort tuples"
+    ],
+    "answerIndex": 2,
+    "explanation": "Join operations combine related tuples across relations using matching key attributes.",
+    "id": 336
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "A Natural Join differs from a Cartesian Product because it:",
+    "options": [
+      "Produces more tuples",
+      "Matches tuples based on common attributes",
+      "Removes all attributes",
+      "Works on one relation only"
+    ],
+    "answerIndex": 1,
+    "explanation": "Natural Join automatically equates matching attributes sharing identical names across relations.",
+    "id": 337
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which relational algebra operation is most commonly used to retrieve data from multiple related tables?",
+    "options": [
+      "Difference",
+      "Projection",
+      "Join",
+      "Rename"
+    ],
+    "answerIndex": 2,
+    "explanation": "Join (⨝) is the fundamental operator for combining multi-table relational data.",
+    "id": 338
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which relational algebra operator is used to rename a relation or an attribute?",
+    "options": [
+      "π",
+      "σ",
+      "ρ (Rename)",
+      "×"
+    ],
+    "answerIndex": 2,
+    "explanation": "The Rename operator (ρ) renames relation schemas or attribute identifiers.",
+    "id": 339
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Rename is mainly useful when:",
+    "options": [
+      "Deleting tuples",
+      "Avoiding ambiguity and assigning temporary names",
+      "Sorting data",
+      "Updating data"
+    ],
+    "answerIndex": 1,
+    "explanation": "Rename resolves attribute name collisions in self-joins and complex algebraic expressions.",
+    "id": 340
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which relational algebra operation is a unary operation?",
+    "options": [
+      "Union",
+      "Cartesian Product",
+      "Selection",
+      "Join"
+    ],
+    "answerIndex": 2,
+    "explanation": "Selection (σ) operates on a single input relation (Unary operator).",
+    "id": 341
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which of the following is a binary operation?",
+    "options": [
+      "Projection",
+      "Selection",
+      "Union",
+      "Rename"
+    ],
+    "answerIndex": 2,
+    "explanation": "Union (∪) requires two input relations (Binary operator).",
+    "id": 342
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which operation changes the number of columns while keeping selected attributes?",
+    "options": [
+      "Selection",
+      "Projection",
+      "Join",
+      "Difference"
+    ],
+    "answerIndex": 1,
+    "explanation": "Projection filters columns, altering attribute width while holding specified attributes.",
+    "id": 343
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "Which operation changes the number of rows without changing the number of columns?",
+    "options": [
+      "Selection",
+      "Projection",
+      "Rename",
+      "Union"
+    ],
+    "answerIndex": 0,
+    "explanation": "Selection filters row tuples based on condition, preserving all original columns.",
+    "id": 344
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "A database designer wants to retrieve only the Name and Department columns of all employees. Which relational algebra operation should be applied?",
+    "options": [
+      "Selection",
+      "Union",
+      "Projection",
+      "Difference"
+    ],
+    "answerIndex": 2,
+    "explanation": "Projection (π Name, Department (Employee)) extracts specific attribute columns.",
+    "id": 345
+  },
+  {
+    "category": "Relational Algebra",
+    "question": "A database administrator wants to retrieve only employees whose department is \"IT\". Which relational algebra operation should be applied first?",
+    "options": [
+      "Projection",
+      "Cartesian Product",
+      "Selection",
+      "Union"
+    ],
+    "answerIndex": 2,
+    "explanation": "Selection (σ Department='IT' (Employee)) filters for specific row conditions first.",
+    "id": 346
+  },
+  {
+    "id": 347,
     "category": "Joins & SQL Objects",
     "question": "A JOIN operation is used to:",
     "options": [
@@ -16790,7 +18038,7 @@ const DBMS_MCQS = [
     "explanation": "A JOIN query combines rows from two or more tables based on related key columns."
   },
   {
-    "id": 252,
+    "id": 348,
     "category": "Joins & SQL Objects",
     "question": "Which join returns only matching rows from both tables?",
     "options": [
@@ -16803,7 +18051,7 @@ const DBMS_MCQS = [
     "explanation": "INNER JOIN returns only rows where matching values exist in both joined tables."
   },
   {
-    "id": 253,
+    "id": 349,
     "category": "Joins & SQL Objects",
     "question": "Which join is also known as Equi Join?",
     "options": [
@@ -16816,7 +18064,7 @@ const DBMS_MCQS = [
     "explanation": "An INNER JOIN performed using an equality operator (=) is known as an Equi Join."
   },
   {
-    "id": 254,
+    "id": 350,
     "category": "Joins & SQL Objects",
     "question": "Which join returns all rows from the left table and matching rows from the right table?",
     "options": [
@@ -16829,7 +18077,7 @@ const DBMS_MCQS = [
     "explanation": "LEFT OUTER JOIN returns all records from left table, plus matched values from right table."
   },
   {
-    "id": 255,
+    "id": 351,
     "category": "Joins & SQL Objects",
     "question": "Which join returns all rows from the right table and matching rows from the left table?",
     "options": [
@@ -16842,7 +18090,7 @@ const DBMS_MCQS = [
     "explanation": "RIGHT OUTER JOIN returns all records from right table, plus matching records from left table."
   },
   {
-    "id": 256,
+    "id": 352,
     "category": "Joins & SQL Objects",
     "question": "Which join returns all rows from both tables?",
     "options": [
@@ -16855,7 +18103,7 @@ const DBMS_MCQS = [
     "explanation": "FULL OUTER JOIN returns all rows when there is a match in left OR right table."
   },
   {
-    "id": 257,
+    "id": 353,
     "category": "Joins & SQL Objects",
     "question": "Which join returns the Cartesian Product?",
     "options": [
@@ -16868,7 +18116,7 @@ const DBMS_MCQS = [
     "explanation": "CROSS JOIN pairs every row of the first table with every row of the second, returning their Cartesian Product."
   },
   {
-    "id": 258,
+    "id": 354,
     "category": "Joins & SQL Objects",
     "question": "Cartesian Product means:",
     "options": [
@@ -16878,10 +18126,10 @@ const DBMS_MCQS = [
       "Sorted rows"
     ],
     "answerIndex": 1,
-    "explanation": "Cartesian product combines each row of table A with all rows of table B (M \u00d7 N rows)."
+    "explanation": "Cartesian product combines each row of table A with all rows of table B (M × N rows)."
   },
   {
-    "id": 259,
+    "id": 355,
     "category": "Joins & SQL Objects",
     "question": "Which join joins a table with itself?",
     "options": [
@@ -16894,7 +18142,7 @@ const DBMS_MCQS = [
     "explanation": "A SELF JOIN is a regular join in which a table is joined with itself using table aliases."
   },
   {
-    "id": 260,
+    "id": 356,
     "category": "Joins & SQL Objects",
     "question": "SELF JOIN is useful for:",
     "options": [
@@ -16907,7 +18155,7 @@ const DBMS_MCQS = [
     "explanation": "SELF JOIN compares rows within the same table (e.g., matching employees to managers)."
   },
   {
-    "id": 261,
+    "id": 357,
     "category": "Joins & SQL Objects",
     "question": "NATURAL JOIN automatically joins tables based on:",
     "options": [
@@ -16920,7 +18168,7 @@ const DBMS_MCQS = [
     "explanation": "NATURAL JOIN joins tables automatically using all columns sharing identical names and data types."
   },
   {
-    "id": 262,
+    "id": 358,
     "category": "Joins & SQL Objects",
     "question": "Which join usually returns the smallest result set?",
     "options": [
@@ -16933,7 +18181,7 @@ const DBMS_MCQS = [
     "explanation": "INNER JOIN filters out non-matching rows, usually producing the smallest result set."
   },
   {
-    "id": 263,
+    "id": 359,
     "category": "Views & Indexes",
     "question": "A View is:",
     "options": [
@@ -16946,7 +18194,7 @@ const DBMS_MCQS = [
     "explanation": "A View is a virtual database table defined by an underlying SELECT query statement."
   },
   {
-    "id": 264,
+    "id": 360,
     "category": "Views & Indexes",
     "question": "A view stores:",
     "options": [
@@ -16959,7 +18207,7 @@ const DBMS_MCQS = [
     "explanation": "A standard View does not store physical data; it stores the SQL query definition in the data dictionary."
   },
   {
-    "id": 265,
+    "id": 361,
     "category": "Views & Indexes",
     "question": "Which SQL command creates a view?",
     "options": [
@@ -16972,7 +18220,7 @@ const DBMS_MCQS = [
     "explanation": "The CREATE VIEW statement creates a new virtual view."
   },
   {
-    "id": 266,
+    "id": 362,
     "category": "Views & Indexes",
     "question": "The main advantage of a view is:",
     "options": [
@@ -16985,7 +18233,7 @@ const DBMS_MCQS = [
     "explanation": "Views simplify complex query logic and enhance security by restricting column/row visibility."
   },
   {
-    "id": 267,
+    "id": 363,
     "category": "Views & Indexes",
     "question": "A view always contains:",
     "options": [
@@ -16998,7 +18246,7 @@ const DBMS_MCQS = [
     "explanation": "A View dynamically displays data derived from underlying base tables."
   },
   {
-    "id": 268,
+    "id": 364,
     "category": "Views & Indexes",
     "question": "Which statement about views is TRUE?",
     "options": [
@@ -17011,7 +18259,7 @@ const DBMS_MCQS = [
     "explanation": "Standard views are virtual windows dynamically computed from base queries."
   },
   {
-    "id": 269,
+    "id": 365,
     "category": "Views & Indexes",
     "question": "Which SQL statement removes a view?",
     "options": [
@@ -17024,7 +18272,7 @@ const DBMS_MCQS = [
     "explanation": "DROP VIEW removes a view definition from the data dictionary."
   },
   {
-    "id": 270,
+    "id": 366,
     "category": "Views & Indexes",
     "question": "The primary purpose of an index is to:",
     "options": [
@@ -17037,7 +18285,7 @@ const DBMS_MCQS = [
     "explanation": "Indexes speed up data retrieval operations by providing fast lookup access paths."
   },
   {
-    "id": 271,
+    "id": 367,
     "category": "Views & Indexes",
     "question": "Which SQL command creates an index?",
     "options": [
@@ -17050,7 +18298,7 @@ const DBMS_MCQS = [
     "explanation": "The CREATE INDEX statement creates an access index on specified columns."
   },
   {
-    "id": 272,
+    "id": 368,
     "category": "Views & Indexes",
     "question": "CREATE INDEX belongs to:",
     "options": [
@@ -17063,7 +18311,7 @@ const DBMS_MCQS = [
     "explanation": "CREATE INDEX is a DDL command modifying database structural objects."
   },
   {
-    "id": 273,
+    "id": 369,
     "category": "Views & Indexes",
     "question": "Which database object improves query performance?",
     "options": [
@@ -17076,7 +18324,7 @@ const DBMS_MCQS = [
     "explanation": "Indexes significantly improve query search and retrieval performance."
   },
   {
-    "id": 274,
+    "id": 370,
     "category": "Views & Indexes",
     "question": "An index is especially useful for:",
     "options": [
@@ -17089,7 +18337,7 @@ const DBMS_MCQS = [
     "explanation": "Indexes optimize lookups on primary keys, foreign key joins, and frequently searched filter columns."
   },
   {
-    "id": 275,
+    "id": 371,
     "category": "Views & Indexes",
     "question": "Which index determines the physical order of rows?",
     "options": [
@@ -17102,7 +18350,7 @@ const DBMS_MCQS = [
     "explanation": "A Clustered Index sorts and determines the physical storage order of rows in a table."
   },
   {
-    "id": 276,
+    "id": 372,
     "category": "Views & Indexes",
     "question": "A non-clustered index:",
     "options": [
@@ -17115,7 +18363,7 @@ const DBMS_MCQS = [
     "explanation": "A Non-Clustered Index maintains a separate B-tree structure containing pointers to physical data rows."
   },
   {
-    "id": 277,
+    "id": 373,
     "category": "Views & Indexes",
     "question": "How many clustered indexes can a table typically have?",
     "options": [
@@ -17128,7 +18376,7 @@ const DBMS_MCQS = [
     "explanation": "A table can have only ONE Clustered Index because data rows can be physically ordered only once."
   },
   {
-    "id": 278,
+    "id": 374,
     "category": "Views & Indexes",
     "question": "Which statement is TRUE?",
     "options": [
@@ -17141,7 +18389,7 @@ const DBMS_MCQS = [
     "explanation": "Excessive indexes slow down write operations (INSERT, UPDATE, DELETE) because indexes must be updated on write."
   },
   {
-    "id": 279,
+    "id": 375,
     "category": "Schema & Metadata",
     "question": "Database schema defines:",
     "options": [
@@ -17154,7 +18402,7 @@ const DBMS_MCQS = [
     "explanation": "Database schema defines the overall logical blueprint and table organization of a database."
   },
   {
-    "id": 280,
+    "id": 376,
     "category": "Schema & Metadata",
     "question": "Schema contains:",
     "options": [
@@ -17167,7 +18415,7 @@ const DBMS_MCQS = [
     "explanation": "A schema contains metadata definitions for tables, views, fields, constraints, and keys."
   },
   {
-    "id": 281,
+    "id": 377,
     "category": "Schema & Metadata",
     "question": "Which changes more frequently?",
     "options": [
@@ -17180,7 +18428,7 @@ const DBMS_MCQS = [
     "explanation": "The database instance changes dynamically whenever data is updated."
   },
   {
-    "id": 282,
+    "id": 378,
     "category": "Schema & Metadata",
     "question": "A schema is created during:",
     "options": [
@@ -17193,7 +18441,7 @@ const DBMS_MCQS = [
     "explanation": "A schema is created during the database design and initial system setup phase."
   },
   {
-    "id": 283,
+    "id": 379,
     "category": "Schema & Metadata",
     "question": "Database instance represents:",
     "options": [
@@ -17206,7 +18454,7 @@ const DBMS_MCQS = [
     "explanation": "An instance represents the actual data state stored in the database at any given snapshot in time."
   },
   {
-    "id": 284,
+    "id": 380,
     "category": "Schema & Metadata",
     "question": "Which statement is TRUE?",
     "options": [
@@ -17219,7 +18467,7 @@ const DBMS_MCQS = [
     "explanation": "The database instance mutates dynamically whenever data modifications occur."
   },
   {
-    "id": 285,
+    "id": 381,
     "category": "Schema & Metadata",
     "question": "Data Dictionary stores:",
     "options": [
@@ -17232,7 +18480,7 @@ const DBMS_MCQS = [
     "explanation": "The Data Dictionary stores system metadata describing tables, columns, indexes, and constraints."
   },
   {
-    "id": 286,
+    "id": 382,
     "category": "Schema & Metadata",
     "question": "Metadata means:",
     "options": [
@@ -17245,7 +18493,7 @@ const DBMS_MCQS = [
     "explanation": "Metadata is defined as structural data that describes other data."
   },
   {
-    "id": 287,
+    "id": 383,
     "category": "Schema & Metadata",
     "question": "Which of the following is stored in a Data Dictionary?",
     "options": [
@@ -17258,7 +18506,7 @@ const DBMS_MCQS = [
     "explanation": "Data Dictionaries hold definitions for table names, column data types, security roles, and constraints."
   },
   {
-    "id": 288,
+    "id": 384,
     "category": "Schema & Metadata",
     "question": "The Data Dictionary is maintained mainly by:",
     "options": [
@@ -17271,7 +18519,7 @@ const DBMS_MCQS = [
     "explanation": "The DBMS automatically maintains and updates system Data Dictionary tables."
   },
   {
-    "id": 289,
+    "id": 385,
     "category": "Triggers & Procedures",
     "question": "Which database object automatically executes when a specified event occurs?",
     "options": [
@@ -17284,7 +18532,7 @@ const DBMS_MCQS = [
     "explanation": "A Trigger is a procedural code block that automatically executes in response to database events (INSERT, UPDATE, DELETE)."
   },
   {
-    "id": 290,
+    "id": 386,
     "category": "Triggers & Procedures",
     "question": "Trigger is executed:",
     "options": [
@@ -17297,7 +18545,7 @@ const DBMS_MCQS = [
     "explanation": "Triggers fire automatically when associated DML/DDL events occur."
   },
   {
-    "id": 291,
+    "id": 387,
     "category": "Triggers & Procedures",
     "question": "Which event can activate a trigger?",
     "options": [
@@ -17310,7 +18558,7 @@ const DBMS_MCQS = [
     "explanation": "Triggers can be attached to INSERT, UPDATE, or DELETE events."
   },
   {
-    "id": 292,
+    "id": 388,
     "category": "Triggers & Procedures",
     "question": "A stored procedure is:",
     "options": [
@@ -17323,7 +18571,7 @@ const DBMS_MCQS = [
     "explanation": "A Stored Procedure is a compiled group of reusable SQL statements stored on the server."
   },
   {
-    "id": 293,
+    "id": 389,
     "category": "Triggers & Procedures",
     "question": "Which object helps reuse SQL logic?",
     "options": [
@@ -17336,7 +18584,7 @@ const DBMS_MCQS = [
     "explanation": "Stored procedures encapsulate business logic for modular execution and code reuse."
   },
   {
-    "id": 294,
+    "id": 390,
     "category": "Triggers & Procedures",
     "question": "Which database object is mainly used for security and simplifying complex queries?",
     "options": [
@@ -17349,7 +18597,7 @@ const DBMS_MCQS = [
     "explanation": "Views simplify complex query syntax and enforce data access security control."
   },
   {
-    "id": 295,
+    "id": 391,
     "category": "Query Processing",
     "question": "Query optimization aims to:",
     "options": [
@@ -17362,7 +18610,7 @@ const DBMS_MCQS = [
     "explanation": "Query Optimization selects the most cost-effective execution plan to process a SQL query efficiently."
   },
   {
-    "id": 296,
+    "id": 392,
     "category": "Query Processing",
     "question": "Which component selects the most efficient execution plan?",
     "options": [
@@ -17375,7 +18623,7 @@ const DBMS_MCQS = [
     "explanation": "The Query Optimizer evaluates execution strategies and selects the optimal query plan."
   },
   {
-    "id": 297,
+    "id": 393,
     "category": "Query Processing",
     "question": "Which factor most improves query speed?",
     "options": [
@@ -17388,7 +18636,7 @@ const DBMS_MCQS = [
     "explanation": "Proper indexing provides fast lookup paths, drastically accelerating query execution speed."
   },
   {
-    "id": 298,
+    "id": 394,
     "category": "Miscellaneous SQL",
     "question": "Which object occupies the least additional storage?",
     "options": [
@@ -17401,7 +18649,7 @@ const DBMS_MCQS = [
     "explanation": "A standard View stores only its SQL text definition, consuming virtually zero additional data storage."
   },
   {
-    "id": 299,
+    "id": 395,
     "category": "Miscellaneous SQL",
     "question": "Materialized View differs from a normal view because it:",
     "options": [
@@ -17414,7 +18662,7 @@ const DBMS_MCQS = [
     "explanation": "A Materialized View physically saves and persists query results on disk for rapid retrieval."
   },
   {
-    "id": 300,
+    "id": 396,
     "category": "Miscellaneous SQL",
     "question": "Which database object is best suited for frequently executed complex queries without recalculating results every time?",
     "options": [
@@ -17427,7 +18675,7 @@ const DBMS_MCQS = [
     "explanation": "Materialized Views store precomputed query results on disk, avoiding repeated recalculations."
   },
   {
-    "id": 301,
+    "id": 397,
     "category": "Transactions",
     "question": "A database transaction is:",
     "options": [
@@ -17440,7 +18688,7 @@ const DBMS_MCQS = [
     "explanation": "A transaction is a logical unit of database processing that executes as an all-or-nothing unit."
   },
   {
-    "id": 302,
+    "id": 398,
     "category": "Transactions",
     "question": "A transaction normally consists of:",
     "options": [
@@ -17453,7 +18701,7 @@ const DBMS_MCQS = [
     "explanation": "A transaction combines one or multiple SQL operations executed atomically as a single operational unit."
   },
   {
-    "id": 303,
+    "id": 399,
     "category": "Transactions",
     "question": "Which of the following is an example of a transaction?",
     "options": [
@@ -17466,7 +18714,7 @@ const DBMS_MCQS = [
     "explanation": "Bank account fund transfer is a classic transaction requiring debit and credit operations to complete together."
   },
   {
-    "id": 304,
+    "id": 400,
     "category": "Transactions",
     "question": "A transaction ends successfully with:",
     "options": [
@@ -17479,7 +18727,7 @@ const DBMS_MCQS = [
     "explanation": "A transaction ends successfully when a COMMIT command persists all modifications."
   },
   {
-    "id": 305,
+    "id": 401,
     "category": "Transactions",
     "question": "Which command cancels uncommitted changes?",
     "options": [
@@ -17492,7 +18740,7 @@ const DBMS_MCQS = [
     "explanation": "ROLLBACK aborts an active transaction and reverts uncommitted changes."
   },
   {
-    "id": 306,
+    "id": 402,
     "category": "Transactions",
     "question": "SAVEPOINT is used to:",
     "options": [
@@ -17505,7 +18753,7 @@ const DBMS_MCQS = [
     "explanation": "SAVEPOINT establishes intermediate checkpoints within a transaction for partial rollbacks."
   },
   {
-    "id": 307,
+    "id": 403,
     "category": "Transactions",
     "question": "Which command makes transaction changes permanent?",
     "options": [
@@ -17518,7 +18766,7 @@ const DBMS_MCQS = [
     "explanation": "COMMIT permanently writes all transaction updates to persistent storage."
   },
   {
-    "id": 308,
+    "id": 404,
     "category": "Transactions",
     "question": "If a transaction fails before COMMIT, the DBMS should:",
     "options": [
@@ -17531,7 +18779,7 @@ const DBMS_MCQS = [
     "explanation": "By the Atomicity principle, if a transaction fails before commit, the DBMS must undo (rollback) all partial updates."
   },
   {
-    "id": 309,
+    "id": 405,
     "category": "ACID Properties",
     "question": "ACID stands for:",
     "options": [
@@ -17544,7 +18792,7 @@ const DBMS_MCQS = [
     "explanation": "ACID stands for Atomicity, Consistency, Isolation, and Durability."
   },
   {
-    "id": 310,
+    "id": 406,
     "category": "ACID Properties",
     "question": "Which ACID property ensures that a transaction is completed entirely or not at all?",
     "options": [
@@ -17557,7 +18805,7 @@ const DBMS_MCQS = [
     "explanation": "Atomicity guarantees an 'all-or-nothing' execution rule for transaction operations."
   },
   {
-    "id": 311,
+    "id": 407,
     "category": "ACID Properties",
     "question": "The \"C\" in ACID stands for:",
     "options": [
@@ -17570,7 +18818,7 @@ const DBMS_MCQS = [
     "explanation": "The 'C' in ACID stands for Consistency."
   },
   {
-    "id": 312,
+    "id": 408,
     "category": "ACID Properties",
     "question": "Consistency ensures that:",
     "options": [
@@ -17583,7 +18831,7 @@ const DBMS_MCQS = [
     "explanation": "Consistency guarantees that a transaction moves the database from one valid integrity state to another."
   },
   {
-    "id": 313,
+    "id": 409,
     "category": "ACID Properties",
     "question": "Which ACID property prevents one transaction from interfering with another?",
     "options": [
@@ -17596,7 +18844,7 @@ const DBMS_MCQS = [
     "explanation": "Isolation ensures concurrent transactions execute independently without interfering with each other."
   },
   {
-    "id": 314,
+    "id": 410,
     "category": "ACID Properties",
     "question": "Durability guarantees that:",
     "options": [
@@ -17609,7 +18857,7 @@ const DBMS_MCQS = [
     "explanation": "Durability ensures that once a transaction commits, its modifications persist permanently even during power outages or system crashes."
   },
   {
-    "id": 315,
+    "id": 411,
     "category": "ACID Properties",
     "question": "Which ACID property is most closely associated with COMMIT?",
     "options": [
@@ -17622,7 +18870,7 @@ const DBMS_MCQS = [
     "explanation": "COMMIT finalizes transaction updates, directly fulfilling the Durability property."
   },
   {
-    "id": 316,
+    "id": 412,
     "category": "ACID Properties",
     "question": "Which ACID property ensures no partial updates occur?",
     "options": [
@@ -17635,7 +18883,7 @@ const DBMS_MCQS = [
     "explanation": "Atomicity ensures partial updates are rolled back if execution fails midway."
   },
   {
-    "id": 317,
+    "id": 413,
     "category": "Transaction States",
     "question": "Which is the first state of a transaction?",
     "options": [
@@ -17648,7 +18896,7 @@ const DBMS_MCQS = [
     "explanation": "When a transaction begins execution, it enters the Active state."
   },
   {
-    "id": 318,
+    "id": 414,
     "category": "Transaction States",
     "question": "After successful completion, a transaction enters:",
     "options": [
@@ -17661,7 +18909,7 @@ const DBMS_MCQS = [
     "explanation": "Upon successful completion of all operations, a transaction transitions to Committed state."
   },
   {
-    "id": 319,
+    "id": 415,
     "category": "Transaction States",
     "question": "If an error occurs during execution, the transaction enters:",
     "options": [
@@ -17674,7 +18922,7 @@ const DBMS_MCQS = [
     "explanation": "If a failure or system error occurs during active execution, the transaction enters Failed state."
   },
   {
-    "id": 320,
+    "id": 416,
     "category": "Transaction States",
     "question": "After ROLLBACK, the transaction becomes:",
     "options": [
@@ -17687,7 +18935,7 @@ const DBMS_MCQS = [
     "explanation": "Once a failed transaction has rolled back its changes, it enters the Aborted state."
   },
   {
-    "id": 321,
+    "id": 417,
     "category": "Concurrency Control",
     "question": "Concurrency Control is used to:",
     "options": [
@@ -17700,7 +18948,7 @@ const DBMS_MCQS = [
     "explanation": "Concurrency Control coordinates simultaneous transaction executions to prevent data conflicts."
   },
   {
-    "id": 322,
+    "id": 418,
     "category": "Concurrency Control",
     "question": "Concurrency problems occur mainly because:",
     "options": [
@@ -17713,7 +18961,7 @@ const DBMS_MCQS = [
     "explanation": "Concurrency issues arise when multiple interleaved transactions access and modify the same data concurrently."
   },
   {
-    "id": 323,
+    "id": 419,
     "category": "Concurrency Control",
     "question": "The main objective of concurrency control is:",
     "options": [
@@ -17726,7 +18974,7 @@ const DBMS_MCQS = [
     "explanation": "Concurrency control maintains database consistency during concurrent multi-user execution."
   },
   {
-    "id": 324,
+    "id": 420,
     "category": "Concurrency Control",
     "question": "Which problem occurs when two transactions update the same data simultaneously?",
     "options": [
@@ -17739,7 +18987,7 @@ const DBMS_MCQS = [
     "explanation": "Lost Update occurs when concurrent transaction T2 overwrites an uncommitted update made by T1."
   },
   {
-    "id": 325,
+    "id": 421,
     "category": "Concurrency Control",
     "question": "A Dirty Read occurs when:",
     "options": [
@@ -17752,7 +19000,7 @@ const DBMS_MCQS = [
     "explanation": "A Dirty Read occurs when transaction T2 reads uncommitted modifications written by transaction T1."
   },
   {
-    "id": 326,
+    "id": 422,
     "category": "Concurrency Control",
     "question": "Phantom Read occurs when:",
     "options": [
@@ -17765,7 +19013,7 @@ const DBMS_MCQS = [
     "explanation": "Phantom Read occurs when re-running a query returns a different set of rows because another transaction inserted or deleted matching rows."
   },
   {
-    "id": 327,
+    "id": 423,
     "category": "Concurrency Control",
     "question": "Which problem is prevented by proper isolation?",
     "options": [
@@ -17776,955 +19024,6 @@ const DBMS_MCQS = [
     ],
     "answerIndex": 1,
     "explanation": "Enforcing transaction Isolation levels (Read Committed/Serializable) prevents Dirty Reads."
-  },
-  {
-    "id": 328,
-    "category": "Locking",
-    "question": "Locking is primarily used for:",
-    "options": [
-      "Encryption",
-      "Concurrency Control",
-      "Backup",
-      "Indexing"
-    ],
-    "answerIndex": 1,
-    "explanation": "Locking mechanisms serialize data access to enforce concurrency control and transaction isolation."
-  },
-  {
-    "id": 329,
-    "category": "Locking",
-    "question": "A Shared Lock allows:",
-    "options": [
-      "Multiple transactions to read the same data",
-      "Multiple transactions to update simultaneously",
-      "One transaction to delete all rows",
-      "Only database administrators to read data"
-    ],
-    "answerIndex": 0,
-    "explanation": "A Shared Lock (S-lock) allows multiple concurrent transactions to read a data item."
-  },
-  {
-    "id": 330,
-    "category": "Locking",
-    "question": "An Exclusive Lock allows:",
-    "options": [
-      "Multiple writers",
-      "Only one transaction to modify data",
-      "Everyone to update",
-      "Only SELECT operations"
-    ],
-    "answerIndex": 1,
-    "explanation": "An Exclusive Lock (X-lock) permits only a single transaction to write/update a data item."
-  },
-  {
-    "id": 331,
-    "category": "Locking",
-    "question": "Which lock is required before updating a record?",
-    "options": [
-      "Shared Lock",
-      "Exclusive Lock",
-      "Intent Lock",
-      "Read Lock"
-    ],
-    "answerIndex": 1,
-    "explanation": "An Exclusive Lock (X-lock) must be acquired before performing write/update operations."
-  },
-  {
-    "id": 332,
-    "category": "Locking",
-    "question": "Which lock is generally compatible with another Shared Lock?",
-    "options": [
-      "Shared Lock",
-      "Exclusive Lock",
-      "Update Lock",
-      "None"
-    ],
-    "answerIndex": 0,
-    "explanation": "Shared Locks are compatible with other Shared Locks (multiple readers allowed)."
-  },
-  {
-    "id": 333,
-    "category": "Two-Phase Locking",
-    "question": "Two-Phase Locking consists of:",
-    "options": [
-      "Read Phase & Write Phase",
-      "Growing Phase & Shrinking Phase",
-      "Lock Phase & Unlock Phase",
-      "Insert Phase & Delete Phase"
-    ],
-    "answerIndex": 1,
-    "explanation": "2PL protocol consists of two distinct phases: Growing Phase and Shrinking Phase."
-  },
-  {
-    "id": 334,
-    "category": "Two-Phase Locking",
-    "question": "During the Growing Phase:",
-    "options": [
-      "Locks are acquired but not released",
-      "Locks are released only",
-      "Data is deleted",
-      "Transactions are committed"
-    ],
-    "answerIndex": 0,
-    "explanation": "In the Growing Phase, a transaction may acquire new locks but cannot release any locks."
-  },
-  {
-    "id": 335,
-    "category": "Two-Phase Locking",
-    "question": "During the Shrinking Phase:",
-    "options": [
-      "New locks can be acquired",
-      "Locks are released but no new locks are acquired",
-      "Tables are created",
-      "Data is encrypted"
-    ],
-    "answerIndex": 1,
-    "explanation": "In the Shrinking Phase, a transaction releases existing locks but cannot acquire new ones."
-  },
-  {
-    "id": 336,
-    "category": "Deadlock",
-    "question": "Deadlock occurs when:",
-    "options": [
-      "Database crashes",
-      "Two or more transactions wait indefinitely for each other",
-      "SQL syntax is wrong",
-      "Primary key is duplicated"
-    ],
-    "answerIndex": 1,
-    "explanation": "Deadlock is a blockage occurring when two or more transactions indefinitely wait for locks held by each other."
-  },
-  {
-    "id": 337,
-    "category": "Deadlock",
-    "question": "Which condition is necessary for deadlock?",
-    "options": [
-      "No locking",
-      "Circular Wait",
-      "Data redundancy",
-      "Backup failure"
-    ],
-    "answerIndex": 1,
-    "explanation": "Circular Wait is a fundamental necessary condition for deadlock occurrence."
-  },
-  {
-    "id": 338,
-    "category": "Deadlock",
-    "question": "Deadlock can be resolved by:",
-    "options": [
-      "Creating indexes",
-      "Aborting one of the transactions",
-      "Adding foreign keys",
-      "Deleting tables"
-    ],
-    "answerIndex": 1,
-    "explanation": "Deadlocks are resolved by selecting a victim transaction and aborting/rolling it back."
-  },
-  {
-    "id": 339,
-    "category": "Deadlock",
-    "question": "Which locking approach generally reduces deadlocks?",
-    "options": [
-      "Exclusive Locking Only",
-      "Optimistic Concurrency Control",
-      "No Locking",
-      "Random Locking"
-    ],
-    "answerIndex": 1,
-    "explanation": "Optimistic Concurrency Control reduces lock contention and deadlocks by validating transactions prior to commit."
-  },
-  {
-    "id": 340,
-    "category": "Recovery & Logs",
-    "question": "Database recovery aims to:",
-    "options": [
-      "Improve query speed",
-      "Restore the database after failure",
-      "Create indexes",
-      "Normalize tables"
-    ],
-    "answerIndex": 1,
-    "explanation": "Database recovery techniques restore the database to a consistent state following a crash or failure."
-  },
-  {
-    "id": 341,
-    "category": "Recovery & Logs",
-    "question": "Which recovery technique uses a transaction log?",
-    "options": [
-      "Replication",
-      "Log-based Recovery",
-      "Partitioning",
-      "Normalization"
-    ],
-    "answerIndex": 1,
-    "explanation": "Log-based recovery uses sequential transaction log records to perform UNDO and REDO operations."
-  },
-  {
-    "id": 342,
-    "category": "Recovery & Logs",
-    "question": "A transaction log stores:",
-    "options": [
-      "SQL keywords",
-      "Records of database changes",
-      "ER diagrams",
-      "Indexes"
-    ],
-    "answerIndex": 1,
-    "explanation": "A transaction log sequentially records all data modifications, transaction starts, commits, and aborts."
-  },
-  {
-    "id": 343,
-    "category": "Recovery & Logs",
-    "question": "Which operation reverses changes made by an incomplete transaction?",
-    "options": [
-      "UNDO",
-      "REDO",
-      "COMMIT",
-      "SAVEPOINT"
-    ],
-    "answerIndex": 0,
-    "explanation": "The UNDO operation reverses (rolls back) uncommitted changes made by incomplete transactions."
-  },
-  {
-    "id": 344,
-    "category": "Recovery & Logs",
-    "question": "Which operation reapplies committed transactions after a crash?",
-    "options": [
-      "UNDO",
-      "REDO",
-      "DELETE",
-      "UPDATE"
-    ],
-    "answerIndex": 1,
-    "explanation": "The REDO operation reapplies changes made by committed transactions that were not flushed to disk before failure."
-  },
-  {
-    "id": 345,
-    "category": "Recovery & Logs",
-    "question": "A checkpoint is used to:",
-    "options": [
-      "Delete logs",
-      "Reduce recovery time",
-      "Create views",
-      "Encrypt transactions"
-    ],
-    "answerIndex": 1,
-    "explanation": "Checkpoints periodically sync memory to disk, reducing the amount of transaction log needed during crash recovery."
-  },
-  {
-    "id": 346,
-    "category": "Recovery & Logs",
-    "question": "During recovery, checkpoints help because they:",
-    "options": [
-      "Increase redundancy",
-      "Reduce the amount of log that must be processed",
-      "Remove indexes",
-      "Create backups"
-    ],
-    "answerIndex": 1,
-    "explanation": "Checkpoints ensure earlier committed log records can be skipped, shortening recovery duration."
-  },
-  {
-    "id": 347,
-    "category": "ACID & Transactions",
-    "question": "Which ACID property is most directly related to concurrency control?",
-    "options": [
-      "Durability",
-      "Isolation",
-      "Atomicity",
-      "Consistency"
-    ],
-    "answerIndex": 1,
-    "explanation": "Concurrency Control mechanisms directly enforce the Isolation property."
-  },
-  {
-    "id": 348,
-    "category": "ACID & Transactions",
-    "question": "Which statement is TRUE?",
-    "options": [
-      "COMMIT can be undone.",
-      "ROLLBACK cannot undo a committed transaction.",
-      "COMMIT deletes data.",
-      "SAVEPOINT permanently stores data."
-    ],
-    "answerIndex": 1,
-    "explanation": "Once a transaction is committed, ROLLBACK cannot undo it; recovery tools are required."
-  },
-  {
-    "id": 349,
-    "category": "ACID & Transactions",
-    "question": "Which component is responsible for maintaining database consistency during concurrent execution?",
-    "options": [
-      "Query Optimizer",
-      "Parser",
-      "Concurrency Control Manager",
-      "Data Dictionary"
-    ],
-    "answerIndex": 2,
-    "explanation": "The Concurrency Control Manager handles locks and schedules to preserve database consistency."
-  },
-  {
-    "id": 350,
-    "category": "ACID & Transactions",
-    "question": "Which statement best summarizes the purpose of transactions?",
-    "options": [
-      "Increase storage efficiency",
-      "Improve SQL syntax",
-      "Ensure reliable, consistent, and recoverable execution of database operations",
-      "Replace normalization"
-    ],
-    "answerIndex": 2,
-    "explanation": "Transactions guarantee reliable, consistent, isolated, and recoverable database operations."
-  },
-  {
-    "id": 351,
-    "category": "NoSQL Databases",
-    "question": "NoSQL stands for:",
-    "options": [
-      "No Structured Query Language",
-      "Not Only SQL",
-      "New SQL",
-      "Non-Standard Query Language"
-    ],
-    "answerIndex": 1,
-    "explanation": "NoSQL stands for 'Not Only SQL', representing non-relational, highly scalable databases."
-  },
-  {
-    "id": 352,
-    "category": "NoSQL Databases",
-    "question": "NoSQL databases are mainly designed for:",
-    "options": [
-      "Small fixed datasets",
-      "Large-scale, flexible and distributed data",
-      "Spreadsheet processing",
-      "Word processing"
-    ],
-    "answerIndex": 1,
-    "explanation": "NoSQL databases are engineered for massive scale, high throughput, and unstructured/semi-structured flexible data models."
-  },
-  {
-    "id": 353,
-    "category": "NoSQL Databases",
-    "question": "Which of the following is NOT a NoSQL database?",
-    "options": [
-      "MongoDB",
-      "Cassandra",
-      "MySQL",
-      "Redis"
-    ],
-    "answerIndex": 2,
-    "explanation": "MySQL is a relational database (RDBMS), whereas MongoDB, Cassandra, and Redis are NoSQL databases."
-  },
-  {
-    "id": 354,
-    "category": "NoSQL Databases",
-    "question": "MongoDB is a:",
-    "options": [
-      "Key-Value Database",
-      "Document Database",
-      "Graph Database",
-      "Relational Database"
-    ],
-    "answerIndex": 1,
-    "explanation": "MongoDB is a document-oriented NoSQL database storing JSON/BSON document structures."
-  },
-  {
-    "id": 355,
-    "category": "NoSQL Databases",
-    "question": "Cassandra is a:",
-    "options": [
-      "Document Database",
-      "Column-Family Database",
-      "Graph Database",
-      "Object-Oriented Database"
-    ],
-    "answerIndex": 1,
-    "explanation": "Apache Cassandra is a wide-column family NoSQL database built for high scalability."
-  },
-  {
-    "id": 356,
-    "category": "NoSQL Databases",
-    "question": "Redis is a:",
-    "options": [
-      "Key-Value Database",
-      "Document Database",
-      "Relational Database",
-      "Graph Database"
-    ],
-    "answerIndex": 0,
-    "explanation": "Redis is an in-memory key-value data store used as a cache and database."
-  },
-  {
-    "id": 357,
-    "category": "NoSQL Databases",
-    "question": "Neo4j is mainly classified as a:",
-    "options": [
-      "Relational Database",
-      "Column Database",
-      "Graph Database",
-      "Document Database"
-    ],
-    "answerIndex": 2,
-    "explanation": "Neo4j is a graph database optimized for storing nodes, edges, and complex interconnected relationships."
-  },
-  {
-    "id": 358,
-    "category": "NoSQL Databases",
-    "question": "Which NoSQL database is best suited for graph relationships?",
-    "options": [
-      "Redis",
-      "MongoDB",
-      "Cassandra",
-      "Neo4j"
-    ],
-    "answerIndex": 3,
-    "explanation": "Neo4j is purpose-built for querying graph structures and network relationships."
-  },
-  {
-    "id": 359,
-    "category": "NoSQL Databases",
-    "question": "Which feature is commonly associated with NoSQL databases?",
-    "options": [
-      "Fixed schema only",
-      "Flexible schema",
-      "Tables only",
-      "SQL only"
-    ],
-    "answerIndex": 1,
-    "explanation": "NoSQL databases feature dynamic/flexible schemas allowing fields to vary per record."
-  },
-  {
-    "id": 360,
-    "category": "NoSQL Databases",
-    "question": "NoSQL databases are generally preferred for:",
-    "options": [
-      "Small payroll systems only",
-      "Big Data and highly scalable web applications",
-      "Text editing",
-      "Operating systems"
-    ],
-    "answerIndex": 1,
-    "explanation": "NoSQL is preferred for big data processing, real-time analytics, and horizontally scalable web apps."
-  },
-  {
-    "id": 361,
-    "category": "Distributed DB & Warehousing",
-    "question": "A Distributed Database stores data:",
-    "options": [
-      "On one computer only",
-      "Across multiple networked computers",
-      "In RAM only",
-      "On removable media only"
-    ],
-    "answerIndex": 1,
-    "explanation": "A Distributed Database manages data distributed physically across multiple networked computer nodes."
-  },
-  {
-    "id": 362,
-    "category": "Distributed DB & Warehousing",
-    "question": "The primary advantage of distributed databases is:",
-    "options": [
-      "Reduced security",
-      "High availability and scalability",
-      "Increased redundancy only",
-      "Slower processing"
-    ],
-    "answerIndex": 1,
-    "explanation": "Distributed databases offer high availability, fault tolerance, and horizontal scalability."
-  },
-  {
-    "id": 363,
-    "category": "Distributed DB & Warehousing",
-    "question": "Which of the following is an advantage of distributed databases?",
-    "options": [
-      "Single point of failure",
-      "Improved fault tolerance",
-      "No network communication",
-      "No replication"
-    ],
-    "answerIndex": 1,
-    "explanation": "Distributed architecture improves fault tolerance by removing single points of system failure."
-  },
-  {
-    "id": 364,
-    "category": "Distributed DB & Warehousing",
-    "question": "Data replication means:",
-    "options": [
-      "Data deletion",
-      "Maintaining copies of data at multiple locations",
-      "Data compression",
-      "Data normalization"
-    ],
-    "answerIndex": 1,
-    "explanation": "Replication maintains duplicate copies of data across multiple geographic/network locations."
-  },
-  {
-    "id": 365,
-    "category": "Distributed DB & Warehousing",
-    "question": "Replication mainly improves:",
-    "options": [
-      "Query complexity",
-      "Availability and reliability",
-      "Redundancy elimination",
-      "SQL syntax"
-    ],
-    "answerIndex": 1,
-    "explanation": "Replication ensures data remains accessible even if individual server nodes experience outages."
-  },
-  {
-    "id": 366,
-    "category": "Distributed DB & Warehousing",
-    "question": "A Data Warehouse is primarily used for:",
-    "options": [
-      "Daily transaction processing",
-      "Decision support and analysis",
-      "Operating systems",
-      "Web hosting"
-    ],
-    "answerIndex": 1,
-    "explanation": "A Data Warehouse centralizes historical data for analytical processing and decision support (BI)."
-  },
-  {
-    "id": 367,
-    "category": "Distributed DB & Warehousing",
-    "question": "Data warehouses mainly store:",
-    "options": [
-      "Temporary data",
-      "Historical data",
-      "Program code",
-      "Operating system files"
-    ],
-    "answerIndex": 1,
-    "explanation": "Data warehouses store large volumes of historical, time-variant data collected over time."
-  },
-  {
-    "id": 368,
-    "category": "Distributed DB & Warehousing",
-    "question": "Data Warehouse is:",
-    "options": [
-      "Subject-oriented",
-      "Integrated",
-      "Time-variant",
-      "All of them"
-    ],
-    "answerIndex": 3,
-    "explanation": "Bill Inmon defined a Data Warehouse as a subject-oriented, integrated, time-variant, non-volatile data repository."
-  },
-  {
-    "id": 369,
-    "category": "Distributed DB & Warehousing",
-    "question": "Which process extracts, transforms and loads data into a warehouse?",
-    "options": [
-      "SQL",
-      "ETL",
-      "DDL",
-      "DML"
-    ],
-    "answerIndex": 1,
-    "explanation": "ETL (Extract, Transform, Load) pipelines process and ingest data into a warehouse."
-  },
-  {
-    "id": 370,
-    "category": "Distributed DB & Warehousing",
-    "question": "ETL stands for:",
-    "options": [
-      "Execute, Transfer, Load",
-      "Extract, Transform, Load",
-      "Extract, Translate, Link",
-      "Execute, Transform, Link"
-    ],
-    "answerIndex": 1,
-    "explanation": "ETL stands for Extract, Transform, Load."
-  },
-  {
-    "id": 371,
-    "category": "OLTP vs OLAP",
-    "question": "OLTP stands for:",
-    "options": [
-      "Online Transaction Processing",
-      "Online Table Processing",
-      "Offline Transaction Processing",
-      "Online Transfer Processing"
-    ],
-    "answerIndex": 0,
-    "explanation": "OLTP stands for Online Transaction Processing."
-  },
-  {
-    "id": 372,
-    "category": "OLTP vs OLAP",
-    "question": "OLAP stands for:",
-    "options": [
-      "Online Logical Access Processing",
-      "Online Analytical Processing",
-      "Offline Analytical Processing",
-      "Online Application Processing"
-    ],
-    "answerIndex": 1,
-    "explanation": "OLAP stands for Online Analytical Processing."
-  },
-  {
-    "id": 373,
-    "category": "OLTP vs OLAP",
-    "question": "OLTP systems are mainly designed for:",
-    "options": [
-      "Data Analysis",
-      "Day-to-day Transactions",
-      "Machine Learning",
-      "Data Mining"
-    ],
-    "answerIndex": 1,
-    "explanation": "OLTP systems process fast, high-volume day-to-day operational transactions (e.g., banking, sales)."
-  },
-  {
-    "id": 374,
-    "category": "OLTP vs OLAP",
-    "question": "OLAP systems are mainly designed for:",
-    "options": [
-      "Banking Transactions",
-      "Analytical Queries and Reporting",
-      "Record Insertion",
-      "Transaction Recovery"
-    ],
-    "answerIndex": 1,
-    "explanation": "OLAP systems optimize complex analytical queries, aggregations, and business reporting."
-  },
-  {
-    "id": 375,
-    "category": "OLTP vs OLAP",
-    "question": "Which system generally handles fewer but more complex queries?",
-    "options": [
-      "OLTP",
-      "OLAP",
-      "File System",
-      "FTP"
-    ],
-    "answerIndex": 1,
-    "explanation": "OLAP databases process fewer, long-running, complex analytical aggregation queries."
-  },
-  {
-    "id": 376,
-    "category": "Advanced DBMS Concepts",
-    "question": "Data Mining is the process of:",
-    "options": [
-      "Storing data",
-      "Discovering useful patterns from large datasets",
-      "Deleting duplicate records",
-      "Creating indexes"
-    ],
-    "answerIndex": 1,
-    "explanation": "Data Mining uses algorithmic techniques to extract patterns and knowledge from large datasets."
-  },
-  {
-    "id": 377,
-    "category": "Advanced DBMS Concepts",
-    "question": "Data Mining is commonly performed on:",
-    "options": [
-      "Word Documents",
-      "Data Warehouses",
-      "Operating Systems",
-      "ER Diagrams"
-    ],
-    "answerIndex": 1,
-    "explanation": "Data Mining algorithms run against consolidated historical data stored in Data Warehouses."
-  },
-  {
-    "id": 378,
-    "category": "Advanced DBMS Concepts",
-    "question": "CAP Theorem consists of:",
-    "options": [
-      "Consistency, Accuracy, Performance",
-      "Consistency, Availability, Partition Tolerance",
-      "Compression, Access, Protection",
-      "Concurrency, Accuracy, Persistence"
-    ],
-    "answerIndex": 1,
-    "explanation": "CAP Theorem states a distributed system can guarantee at most 2 of: Consistency, Availability, and Partition Tolerance."
-  },
-  {
-    "id": 379,
-    "category": "Advanced DBMS Concepts",
-    "question": "According to CAP theorem, during a network partition a distributed system must choose between:",
-    "options": [
-      "SQL and NoSQL",
-      "Consistency and Availability",
-      "Backup and Recovery",
-      "OLTP and OLAP"
-    ],
-    "answerIndex": 1,
-    "explanation": "When a network partition occurs (P), a system must trade off between Consistency (C) and Availability (A)."
-  },
-  {
-    "id": 380,
-    "category": "Advanced DBMS Concepts",
-    "question": "RAID is mainly used for:",
-    "options": [
-      "SQL optimization",
-      "Improving storage reliability and/or performance",
-      "Database normalization",
-      "Query optimization"
-    ],
-    "answerIndex": 1,
-    "explanation": "RAID (Redundant Array of Independent Disks) combines physical hard drives to boost storage reliability and performance."
-  },
-  {
-    "id": 381,
-    "category": "Advanced DBMS Concepts",
-    "question": "RAID stands for:",
-    "options": [
-      "Random Access Independent Drives",
-      "Redundant Array of Independent Disks",
-      "Reliable Access Internal Disks",
-      "Random Array of Indexed Disks"
-    ],
-    "answerIndex": 1,
-    "explanation": "RAID stands for Redundant Array of Independent Disks."
-  },
-  {
-    "id": 382,
-    "category": "Advanced DBMS Concepts",
-    "question": "XML is mainly used to:",
-    "options": [
-      "Create indexes",
-      "Store and exchange structured/semi-structured data",
-      "Normalize databases",
-      "Create transactions"
-    ],
-    "answerIndex": 1,
-    "explanation": "XML (eXtensible Markup Language) formats structured and semi-structured data for storage and web exchange."
-  },
-  {
-    "id": 383,
-    "category": "Advanced DBMS Concepts",
-    "question": "XML is considered:",
-    "options": [
-      "Relational Data",
-      "Semi-Structured Data",
-      "Binary Data",
-      "Temporary Data"
-    ],
-    "answerIndex": 1,
-    "explanation": "XML data features self-describing tags and is classified as Semi-Structured Data."
-  },
-  {
-    "id": 384,
-    "category": "Advanced DBMS Concepts",
-    "question": "Hashing primarily helps in:",
-    "options": [
-      "Normalization",
-      "Fast record retrieval",
-      "Backup",
-      "Data Warehousing"
-    ],
-    "answerIndex": 1,
-    "explanation": "Hashing uses hash functions for direct, constant time O(1) record location retrieval."
-  },
-  {
-    "id": 385,
-    "category": "Advanced DBMS Concepts",
-    "question": "A hash function maps:",
-    "options": [
-      "Queries to indexes",
-      "Keys to storage locations",
-      "Tables to views",
-      "Transactions to logs"
-    ],
-    "answerIndex": 1,
-    "explanation": "A Hash Function maps search keys directly to specific hash bucket storage locations."
-  },
-  {
-    "id": 386,
-    "category": "Advanced DBMS Concepts",
-    "question": "A cursor is used to:",
-    "options": [
-      "Create tables",
-      "Process query results row by row",
-      "Create indexes",
-      "Backup databases"
-    ],
-    "answerIndex": 1,
-    "explanation": "A Cursor is a database control structure used to iterate and process query result sets row by row."
-  },
-  {
-    "id": 387,
-    "category": "Advanced DBMS Concepts",
-    "question": "Cursors are mainly associated with:",
-    "options": [
-      "Views",
-      "Stored Procedures and SQL Programming",
-      "Constraints",
-      "Transactions"
-    ],
-    "answerIndex": 1,
-    "explanation": "Cursors are used within Stored Procedures and embedded SQL for sequential row processing."
-  },
-  {
-    "id": 388,
-    "category": "Advanced DBMS Concepts",
-    "question": "Embedded SQL means:",
-    "options": [
-      "SQL stored in indexes",
-      "SQL statements embedded within a programming language",
-      "SQL inside operating systems",
-      "SQL inside browsers"
-    ],
-    "answerIndex": 1,
-    "explanation": "Embedded SQL refers to SQL queries embedded inside procedural host programming code (C, COAP, Java)."
-  },
-  {
-    "id": 389,
-    "category": "Advanced DBMS Concepts",
-    "question": "In a client-server DBMS:",
-    "options": [
-      "Client stores the entire database",
-      "Client requests services from the database server",
-      "Server has no database",
-      "Client performs recovery"
-    ],
-    "answerIndex": 1,
-    "explanation": "In client-server architecture, client applications request database services from a centralized database server."
-  },
-  {
-    "id": 390,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which component executes SQL queries?",
-    "options": [
-      "Client only",
-      "Database Server",
-      "Browser",
-      "Compiler"
-    ],
-    "answerIndex": 1,
-    "explanation": "The Database Server receives, compiles, optimizes, and executes SQL queries."
-  },
-  {
-    "id": 391,
-    "category": "Advanced DBMS Concepts",
-    "question": "Metadata is:",
-    "options": [
-      "Duplicate data",
-      "Data describing other data",
-      "Backup data",
-      "Transaction data"
-    ],
-    "answerIndex": 1,
-    "explanation": "Metadata is structural information describing database schemas, data types, and objects."
-  },
-  {
-    "id": 392,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which of the following is metadata?",
-    "options": [
-      "Student Marks",
-      "Column Data Types",
-      "Salary Records",
-      "Attendance Data"
-    ],
-    "answerIndex": 1,
-    "explanation": "Column Data Types describe structural properties of fields and represent Metadata."
-  },
-  {
-    "id": 393,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which database is best suited for highly connected data like social networks?",
-    "options": [
-      "Relational Database",
-      "Document Database",
-      "Graph Database",
-      "Key-Value Database"
-    ],
-    "answerIndex": 2,
-    "explanation": "Graph Databases excel at traversing highly interconnected network node relationships like social networks."
-  },
-  {
-    "id": 394,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which database model provides the greatest schema flexibility?",
-    "options": [
-      "Relational",
-      "NoSQL",
-      "Hierarchical",
-      "Network"
-    ],
-    "answerIndex": 1,
-    "explanation": "NoSQL database models provide schema-less dynamic flexibility for changing data structures."
-  },
-  {
-    "id": 395,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which technology is commonly used for large-scale analytics?",
-    "options": [
-      "OLTP",
-      "Data Warehouse",
-      "Trigger",
-      "Cursor"
-    ],
-    "answerIndex": 1,
-    "explanation": "Data Warehouses are built specifically to support high-volume analytical business intelligence."
-  },
-  {
-    "id": 396,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which of the following is TRUE about Data Warehouses?",
-    "options": [
-      "Frequently updated with every transaction",
-      "Optimized for querying and reporting",
-      "Used only for backups",
-      "Cannot store historical data"
-    ],
-    "answerIndex": 1,
-    "explanation": "Data Warehouses are optimized for complex analytical queries, reporting, and historical trend analysis."
-  },
-  {
-    "id": 397,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which database is most suitable for storing JSON documents?",
-    "options": [
-      "MySQL",
-      "MongoDB",
-      "Neo4j",
-      "Oracle (Traditional RDBMS)"
-    ],
-    "answerIndex": 1,
-    "explanation": "MongoDB natively stores semi-structured BSON/JSON document collections."
-  },
-  {
-    "id": 398,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which concept mainly improves database scalability?",
-    "options": [
-      "Normalization only",
-      "Distribution and Partitioning",
-      "Views",
-      "Constraints"
-    ],
-    "answerIndex": 1,
-    "explanation": "Distribution and Horizontal Partitioning (Sharding) enable linear database scaling across clusters."
-  },
-  {
-    "id": 399,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which DBMS feature provides high availability by maintaining multiple copies of data?",
-    "options": [
-      "Normalization",
-      "Replication",
-      "Hashing",
-      "Cursor"
-    ],
-    "answerIndex": 1,
-    "explanation": "Data Replication distributes redundant copies across nodes to ensure high service availability."
-  },
-  {
-    "id": 400,
-    "category": "Advanced DBMS Concepts",
-    "question": "Which statement best summarizes modern DBMS evolution?",
-    "options": [
-      "Relational databases have completely replaced NoSQL databases.",
-      "NoSQL databases have completely replaced relational databases.",
-      "Relational and NoSQL databases complement each other depending on application requirements.",
-      "Data warehouses are replacing operational databases."
-    ],
-    "answerIndex": 2,
-    "explanation": "Relational RDBMS and NoSQL systems complement each other in modern polyglot persistence architectures."
   }
 ];
 
