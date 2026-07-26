@@ -2861,7 +2861,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "question": "Turnaround Time is:",
     "options": [
       "Execution Time only",
-      "Completion Time \u2212 Arrival Time",
+      "Completion Time − Arrival Time",
       "Waiting Time only",
       "Response Time only"
     ],
@@ -5717,201 +5717,6 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 281,
-    "category": "Page Replacement Algorithms",
-    "question": "Page replacement is required when:",
-    "options": [
-      "RAM has no free frame available.",
-      "CPU utilization is low.",
-      "Cache is empty.",
-      "Process finishes."
-    ],
-    "answerIndex": 0,
-    "explanation": "When a page fault occurs and physical RAM contains no free frames, page replacement evicts an existing page."
-  },
-  {
-    "id": 282,
-    "category": "Page Replacement Algorithms",
-    "question": "Which algorithm replaces the oldest loaded page?",
-    "options": [
-      "LRU",
-      "FIFO",
-      "Optimal",
-      "Clock"
-    ],
-    "answerIndex": 1,
-    "explanation": "First-In, First-Out (FIFO) page replacement selects the page that has been resident in memory the longest."
-  },
-  {
-    "id": 283,
-    "category": "Page Replacement Algorithms",
-    "question": "FIFO stands for:",
-    "options": [
-      "First In First Out",
-      "Fast Input Fast Output",
-      "First Idle First Output",
-      "Frame Input Frame Output"
-    ],
-    "answerIndex": 0,
-    "explanation": "FIFO stands for First-In, First-Out."
-  },
-  {
-    "id": 284,
-    "category": "Page Replacement Algorithms",
-    "question": "Which algorithm replaces the page that has not been used for the longest time?",
-    "options": [
-      "FIFO",
-      "LRU",
-      "Optimal",
-      "FCFS"
-    ],
-    "answerIndex": 1,
-    "explanation": "Least Recently Used (LRU) evicts the page that has not been referenced for the longest period of time."
-  },
-  {
-    "id": 285,
-    "category": "Page Replacement Algorithms",
-    "question": "LRU stands for:",
-    "options": [
-      "Least Recently Used",
-      "Last Removed Unit",
-      "Logical Replacement Unit",
-      "Lowest Reference Unit"
-    ],
-    "answerIndex": 0,
-    "explanation": "LRU stands for Least Recently Used."
-  },
-  {
-    "id": 286,
-    "category": "Page Replacement Algorithms",
-    "question": "Which page replacement algorithm provides the minimum possible number of page faults (theoretical)?",
-    "options": [
-      "FIFO",
-      "Optimal",
-      "LRU",
-      "Clock"
-    ],
-    "answerIndex": 1,
-    "explanation": "Optimal Page Replacement (OPT / Belady's OPT) yields lowest possible page fault rate by replacing page needed furthest in future."
-  },
-  {
-    "id": 287,
-    "category": "Page Replacement Algorithms",
-    "question": "Which page replacement algorithm cannot be perfectly implemented in practice because it requires future knowledge?",
-    "options": [
-      "FIFO",
-      "LRU",
-      "Optimal",
-      "Second Chance"
-    ],
-    "answerIndex": 2,
-    "explanation": "Optimal algorithm requires knowing future page reference strings, which is impossible in general real-time systems."
-  },
-  {
-    "id": 288,
-    "category": "Page Replacement Algorithms",
-    "question": "Which algorithm approximates Optimal by using past references?",
-    "options": [
-      "LRU",
-      "FIFO",
-      "FCFS",
-      "Priority"
-    ],
-    "answerIndex": 0,
-    "explanation": "LRU uses recent past reference history as an approximation of future page access probability."
-  },
-  {
-    "id": 289,
-    "category": "Page Replacement Algorithms",
-    "question": "Which page replacement algorithm may suffer from Belady's Anomaly?",
-    "options": [
-      "FIFO",
-      "LRU",
-      "Optimal",
-      "Clock"
-    ],
-    "answerIndex": 0,
-    "explanation": "FIFO page replacement can exhibit Belady's Anomaly."
-  },
-  {
-    "id": 290,
-    "category": "Page Replacement Algorithms",
-    "question": "Belady's Anomaly means:",
-    "options": [
-      "Increasing the number of frames may increase page faults.",
-      "CPU speed decreases.",
-      "RAM becomes fragmented.",
-      "Threads stop executing."
-    ],
-    "answerIndex": 0,
-    "explanation": "Belady's Anomaly is the counterintuitive phenomenon where adding physical frames causes more page faults under FIFO."
-  },
-  {
-    "id": 291,
-    "category": "Page Replacement Algorithms",
-    "question": "Which algorithm generally performs better than FIFO?",
-    "options": [
-      "LRU",
-      "Random",
-      "FCFS",
-      "Static"
-    ],
-    "answerIndex": 0,
-    "explanation": "LRU consistently outperforms FIFO because it accounts for temporal locality of page access."
-  },
-  {
-    "id": 292,
-    "category": "Page Replacement Algorithms",
-    "question": "The Second Chance (Clock) algorithm is mainly an improvement over:",
-    "options": [
-      "FIFO",
-      "LRU",
-      "Optimal",
-      "Round Robin"
-    ],
-    "answerIndex": 0,
-    "explanation": "The Second Chance (Clock) algorithm improves FIFO by using a reference bit to spare recently used pages."
-  },
-  {
-    "id": 293,
-    "category": "Page Replacement Algorithms",
-    "question": "Which algorithm uses a reference bit?",
-    "options": [
-      "Clock (Second Chance)",
-      "FCFS",
-      "SJF",
-      "Priority"
-    ],
-    "answerIndex": 0,
-    "explanation": "Clock / Second Chance algorithm inspects a 1-bit reference flag per page frame in a circular queue."
-  },
-  {
-    "id": 294,
-    "category": "Page Replacement Algorithms",
-    "question": "Which page replacement algorithm is easiest to implement?",
-    "options": [
-      "FIFO",
-      "LRU",
-      "Optimal",
-      "Clock"
-    ],
-    "answerIndex": 0,
-    "explanation": "FIFO is simplest to implement using a standard queue data structure."
-  },
-  {
-    "id": 295,
-    "category": "Page Replacement Algorithms",
-    "question": "Which statement is TRUE?",
-    "options": [
-      "Optimal Page Replacement is mainly used as a benchmark for comparison.",
-      "FIFO always gives the fewest page faults.",
-      "LRU requires future knowledge.",
-      "Belady's Anomaly affects Optimal."
-    ],
-    "answerIndex": 0,
-    "explanation": "Optimal replacement serves as an ideal baseline benchmark to evaluate performance of real-world algorithms."
-  },
-  {
-    "id": 296,
     "category": "Thrashing & Working Set",
     "question": "Thrashing occurs when:",
     "options": [
@@ -5924,7 +5729,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Thrashing occurs when a system spends more time servicing page faults than executing application instructions."
   },
   {
-    "id": 297,
+    "id": 282,
     "category": "Thrashing & Working Set",
     "question": "The primary cause of thrashing is:",
     "options": [
@@ -5937,7 +5742,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Thrashing happens when total physical memory is smaller than sum of working sets of active processes."
   },
   {
-    "id": 298,
+    "id": 283,
     "category": "Thrashing & Working Set",
     "question": "Which symptom indicates thrashing?",
     "options": [
@@ -5950,7 +5755,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A sudden surge in continuous page fault rate accompanied by near-zero CPU utilization signals thrashing."
   },
   {
-    "id": 299,
+    "id": 284,
     "category": "Thrashing & Working Set",
     "question": "The Working Set Model attempts to:",
     "options": [
@@ -5963,7 +5768,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The Working Set Model tracks pages actively referenced by a process in a recent time delta to prevent thrashing."
   },
   {
-    "id": 300,
+    "id": 285,
     "category": "Thrashing & Working Set",
     "question": "Which statement is correct?",
     "options": [
@@ -5976,7 +5781,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Thrashing degrades performance, whereas working set allocation prevents thrashing by ensuring sufficient frames per process."
   },
   {
-    "id": 301,
+    "id": 286,
     "category": "File System Basics",
     "question": "A file is:",
     "options": [
@@ -5989,7 +5794,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A file is a named, logical collection of contiguous related bytes saved on persistent storage."
   },
   {
-    "id": 302,
+    "id": 287,
     "category": "File System Basics",
     "question": "Which operating system component manages files and directories?",
     "options": [
@@ -6002,7 +5807,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The File System sub-component manages files, directory trees, storage block allocation, and access rights."
   },
   {
-    "id": 303,
+    "id": 288,
     "category": "File System Basics",
     "question": "Which of the following is NOT a typical file attribute?",
     "options": [
@@ -6015,7 +5820,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "CPU clock speed is a hardware specification, not a file metadata attribute."
   },
   {
-    "id": 304,
+    "id": 289,
     "category": "File System Basics",
     "question": "Which file attribute uniquely identifies a file in many operating systems?",
     "options": [
@@ -6028,7 +5833,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A unique file identifier (such as Inode number in POSIX filesystems) uniquely identifies a file internally."
   },
   {
-    "id": 305,
+    "id": 290,
     "category": "File System Basics",
     "question": "Which operation creates a new empty file?",
     "options": [
@@ -6041,7 +5846,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The create() system operation allocates directory entry and filesystem structures for a new file."
   },
   {
-    "id": 306,
+    "id": 291,
     "category": "File System Basics",
     "question": "Which file operation removes a file permanently from the file system?",
     "options": [
@@ -6054,7 +5859,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The delete() operation unlinks directory entries and releases occupied storage blocks."
   },
   {
-    "id": 307,
+    "id": 292,
     "category": "File System Basics",
     "question": "Which operation changes the current read/write position within a file?",
     "options": [
@@ -6067,7 +5872,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The seek() operation repositions the file position pointer to a specified byte offset."
   },
   {
-    "id": 308,
+    "id": 293,
     "category": "File System Basics",
     "question": "Which operation is performed before reading data from most files?",
     "options": [
@@ -6080,7 +5885,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The open() call locates file metadata and returns a file descriptor before I/O operations occur."
   },
   {
-    "id": 309,
+    "id": 294,
     "category": "File System Basics",
     "question": "Which operation releases the file after use?",
     "options": [
@@ -6093,7 +5898,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The close() system call flushes buffers and frees file descriptor locks."
   },
   {
-    "id": 310,
+    "id": 295,
     "category": "File System Basics",
     "question": "Which operation adds data to the end of a file?",
     "options": [
@@ -6106,7 +5911,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The append operation writes new bytes strictly to the end of an existing file."
   },
   {
-    "id": 311,
+    "id": 296,
     "category": "File System Basics",
     "question": "Which statement is TRUE?",
     "options": [
@@ -6119,7 +5924,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "File names within a single directory path must be unique."
   },
   {
-    "id": 312,
+    "id": 297,
     "category": "File System Basics",
     "question": "Which file attribute is mainly used for access control?",
     "options": [
@@ -6132,7 +5937,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "File permissions (e.g. read, write, execute flags) govern access control security."
   },
   {
-    "id": 313,
+    "id": 298,
     "category": "File System Basics",
     "question": "Which operation retrieves data from a file?",
     "options": [
@@ -6145,7 +5950,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The read() system call retrieves byte streams from a file into process memory."
   },
   {
-    "id": 314,
+    "id": 299,
     "category": "File System Basics",
     "question": "Which operation modifies existing file contents?",
     "options": [
@@ -6158,7 +5963,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The write() operation modifies or overwrites file data."
   },
   {
-    "id": 315,
+    "id": 300,
     "category": "File System Basics",
     "question": "Which statement best describes a file system?",
     "options": [
@@ -6171,7 +5976,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A file system provides logical structure, persistence, retrieval, and protection for files on storage drives."
   },
   {
-    "id": 316,
+    "id": 301,
     "category": "File Access Methods",
     "question": "Which access method reads records one after another?",
     "options": [
@@ -6184,7 +5989,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Sequential Access reads file records in strict linear order from start to end."
   },
   {
-    "id": 317,
+    "id": 302,
     "category": "File Access Methods",
     "question": "Which access method allows immediate access to any record?",
     "options": [
@@ -6197,7 +6002,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Direct (Random) Access allows jumping directly to any arbitrary block/record using block numbers."
   },
   {
-    "id": 318,
+    "id": 303,
     "category": "File Access Methods",
     "question": "Sequential access is most suitable for:",
     "options": [
@@ -6210,7 +6015,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Streaming continuous media (audio/video) from start to finish naturally aligns with sequential access."
   },
   {
-    "id": 319,
+    "id": 304,
     "category": "File Access Methods",
     "question": "Direct access is commonly used in:",
     "options": [
@@ -6223,7 +6028,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Database engines use direct random access to fetch specific records rapidly by offset/block."
   },
   {
-    "id": 320,
+    "id": 305,
     "category": "File Access Methods",
     "question": "Which storage device naturally supports sequential access?",
     "options": [
@@ -6236,7 +6041,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Magnetic tape drives operate linearly, making them inherently sequential access media."
   },
   {
-    "id": 321,
+    "id": 306,
     "category": "File Access Methods",
     "question": "Which storage device efficiently supports direct access?",
     "options": [
@@ -6249,7 +6054,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Hard disks and SSDs allow direct block-level random read/write operations."
   },
   {
-    "id": 322,
+    "id": 307,
     "category": "File Access Methods",
     "question": "Which access method is generally slower when searching for the last record?",
     "options": [
@@ -6262,7 +6067,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Sequential access must traverse all preceding records from the beginning to reach the end."
   },
   {
-    "id": 323,
+    "id": 308,
     "category": "File Access Methods",
     "question": "Indexed access improves:",
     "options": [
@@ -6275,7 +6080,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Indexed access uses an index lookup table to speed up target record locations."
   },
   {
-    "id": 324,
+    "id": 309,
     "category": "File Access Methods",
     "question": "Which access method combines an index with direct retrieval?",
     "options": [
@@ -6288,7 +6093,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Indexed Sequential Access Method (ISAM) uses index pointers to enable direct record retrieval."
   },
   {
-    "id": 325,
+    "id": 310,
     "category": "File Access Methods",
     "question": "Which statement is TRUE?",
     "options": [
@@ -6301,137 +6106,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Direct access enables reading block N directly without processing blocks 1 through N-1."
   },
   {
-    "id": 326,
-    "category": "Directory Structures",
-    "question": "A directory is primarily used to:",
-    "options": [
-      "Store process states.",
-      "Organize files and subdirectories.",
-      "Allocate CPU time.",
-      "Manage virtual memory."
-    ],
-    "answerIndex": 1,
-    "explanation": "A directory is a container symbol table mapping human-readable file names to file control metadata/inodes."
-  },
-  {
-    "id": 327,
-    "category": "Directory Structures",
-    "question": "Which directory structure is the simplest?",
-    "options": [
-      "Single-Level Directory",
-      "Tree Directory",
-      "Acyclic Graph",
-      "General Graph"
-    ],
-    "answerIndex": 0,
-    "explanation": "A Single-Level Directory contains all files in one single directory, making it simplest but prone to name collisions."
-  },
-  {
-    "id": 328,
-    "category": "Directory Structures",
-    "question": "The major disadvantage of a single-level directory is:",
-    "options": [
-      "Name conflicts among users.",
-      "Slow CPU scheduling.",
-      "External fragmentation.",
-      "Page faults."
-    ],
-    "answerIndex": 0,
-    "explanation": "Single-level directory causes name collisions because distinct users cannot use identical file names."
-  },
-  {
-    "id": 329,
-    "category": "Directory Structures",
-    "question": "A two-level directory mainly solves:",
-    "options": [
-      "File name conflicts between users.",
-      "Deadlock.",
-      "Paging.",
-      "Swapping."
-    ],
-    "answerIndex": 0,
-    "explanation": "Two-level directory creates distinct master directory folders per user, resolving name collisions."
-  },
-  {
-    "id": 330,
-    "category": "Directory Structures",
-    "question": "Which directory structure allows subdirectories?",
-    "options": [
-      "Tree Directory",
-      "Single-Level Directory",
-      "Flat Directory",
-      "FIFO Directory"
-    ],
-    "answerIndex": 0,
-    "explanation": "Tree-Structured directory layout allows nesting arbitrary subdirectories."
-  },
-  {
-    "id": 331,
-    "category": "Directory Structures",
-    "question": "Which directory structure most closely resembles modern operating systems?",
-    "options": [
-      "Tree Directory",
-      "Single-Level",
-      "Circular Directory",
-      "Sequential Directory"
-    ],
-    "answerIndex": 0,
-    "explanation": "Modern OS file systems use tree-structured hierarchical directory organization."
-  },
-  {
-    "id": 332,
-    "category": "Directory Structures",
-    "question": "Which directory structure supports shared files without cycles?",
-    "options": [
-      "Acyclic Graph Directory",
-      "Single-Level",
-      "Two-Level",
-      "Linear Directory"
-    ],
-    "answerIndex": 0,
-    "explanation": "An Acyclic Graph Directory permits links/shared files while strictly prohibiting directory cycles."
-  },
-  {
-    "id": 333,
-    "category": "Directory Structures",
-    "question": "Which directory structure may create cycles if not carefully managed?",
-    "options": [
-      "General Graph Directory",
-      "Tree Directory",
-      "Two-Level Directory",
-      "Single-Level Directory"
-    ],
-    "answerIndex": 0,
-    "explanation": "General Graph Directory allows unrestricted links, which can introduce cycles if not managed."
-  },
-  {
-    "id": 334,
-    "category": "Directory Structures",
-    "question": "Which statement is TRUE?",
-    "options": [
-      "Every file belongs to exactly one directory in all systems.",
-      "Graph-based directories can allow shared files.",
-      "Tree directories cannot contain subdirectories.",
-      "Directories cannot store file metadata."
-    ],
-    "answerIndex": 1,
-    "explanation": "Graph-based directory structures support soft/hard links enabling shared files across directories."
-  },
-  {
-    "id": 335,
-    "category": "Directory Structures",
-    "question": "Which directory structure offers the best balance between organization and simplicity?",
-    "options": [
-      "Tree Directory",
-      "Single-Level",
-      "Flat Directory",
-      "FIFO Directory"
-    ],
-    "answerIndex": 0,
-    "explanation": "Tree directory offers clean, intuitive organizational grouping for files and subfolders."
-  },
-  {
-    "id": 336,
+    "id": 311,
     "category": "File Allocation Methods & Protection",
     "question": "Contiguous allocation stores:",
     "options": [
@@ -6444,7 +6119,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Contiguous allocation requires placing file blocks in adjacent consecutive disk sectors."
   },
   {
-    "id": 337,
+    "id": 312,
     "category": "File Allocation Methods & Protection",
     "question": "Which allocation method provides the fastest sequential access?",
     "options": [
@@ -6457,7 +6132,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Contiguous allocation minimizes disk head movement, providing maximum sequential read/write speed."
   },
   {
-    "id": 338,
+    "id": 313,
     "category": "File Allocation Methods & Protection",
     "question": "Which allocation method suffers from external fragmentation?",
     "options": [
@@ -6470,7 +6145,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Variable file sizing under contiguous allocation causes disk space external fragmentation."
   },
   {
-    "id": 339,
+    "id": 314,
     "category": "File Allocation Methods & Protection",
     "question": "Linked allocation stores:",
     "options": [
@@ -6483,7 +6158,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Linked allocation links non-contiguous file blocks using embedded pointers in each disk block."
   },
   {
-    "id": 340,
+    "id": 315,
     "category": "File Allocation Methods & Protection",
     "question": "Which allocation method provides efficient random access?",
     "options": [
@@ -6496,7 +6171,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Indexed Allocation brings all block pointers into an index block, enabling direct random block reads."
   },
   {
-    "id": 341,
+    "id": 316,
     "category": "File Allocation Methods & Protection",
     "question": "FAT stands for:",
     "options": [
@@ -6509,7 +6184,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "FAT stands for File Allocation Table."
   },
   {
-    "id": 342,
+    "id": 317,
     "category": "File Allocation Methods & Protection",
     "question": "The primary purpose of FAT is to:",
     "options": [
@@ -6522,7 +6197,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The FAT table stores linked-list pointer entries tracking disk block chains for every file."
   },
   {
-    "id": 343,
+    "id": 318,
     "category": "File Allocation Methods & Protection",
     "question": "An inode in UNIX-like systems stores:",
     "options": [
@@ -6535,7 +6210,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "An inode (index node) stores file attributes, permissions, file size, timestamps, and direct/indirect block pointers."
   },
   {
-    "id": 344,
+    "id": 319,
     "category": "File Allocation Methods & Protection",
     "question": "Which information is NOT typically stored in an inode?",
     "options": [
@@ -6548,7 +6223,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "In UNIX filesystems, file names are stored in directory entries, not inside the inode itself."
   },
   {
-    "id": 345,
+    "id": 320,
     "category": "File Allocation Methods & Protection",
     "question": "Which protection mechanism determines who can read, write, or execute a file?",
     "options": [
@@ -6561,7 +6236,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "File access permissions (Read, Write, Execute for Owner/Group/Others) govern access rights."
   },
   {
-    "id": 346,
+    "id": 321,
     "category": "File Allocation Methods & Protection",
     "question": "Which principle improves file security the most?",
     "options": [
@@ -6574,7 +6249,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The Principle of Least Privilege dictates granting only essential permissions required for task execution."
   },
   {
-    "id": 347,
+    "id": 322,
     "category": "File Allocation Methods & Protection",
     "question": "Which statement correctly compares FAT and inodes?",
     "options": [
@@ -6587,7 +6262,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "FAT maintains a centralized allocation table; inodes store individual file metadata and block maps per file."
   },
   {
-    "id": 348,
+    "id": 323,
     "category": "File Allocation Methods & Protection",
     "question": "Which file allocation method is generally easiest to implement but inefficient for random access?",
     "options": [
@@ -6600,7 +6275,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Linked allocation is simple to implement but slow for random access (must traverse pointers in sequence)."
   },
   {
-    "id": 349,
+    "id": 324,
     "category": "File Allocation Methods & Protection",
     "question": "Which allocation method eliminates external fragmentation but requires an index block?",
     "options": [
@@ -6613,7 +6288,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Indexed Allocation eliminates external fragmentation by allowing arbitrary block placement, using an index block for pointers."
   },
   {
-    "id": 350,
+    "id": 325,
     "category": "File Allocation Methods & Protection",
     "question": "Which statement is correct?",
     "options": [
@@ -6626,7 +6301,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "File systems combine metadata, directory trees, storage allocation algorithms, and security permissions for data storage."
   },
   {
-    "id": 351,
+    "id": 326,
     "category": "Kernel & Kernel Types",
     "question": "The kernel is:",
     "options": [
@@ -6639,7 +6314,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The kernel is the essential core of an OS that interacts directly with hardware and manages processes/memory."
   },
   {
-    "id": 352,
+    "id": 327,
     "category": "Kernel & Kernel Types",
     "question": "Which operating system component always remains in memory while the system is running?",
     "options": [
@@ -6652,7 +6327,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The kernel code stays permanently resident in kernel-space RAM as long as system power is active."
   },
   {
-    "id": 353,
+    "id": 328,
     "category": "Kernel & Kernel Types",
     "question": "Which kernel directly manages CPU scheduling, memory, and devices?",
     "options": [
@@ -6665,7 +6340,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The kernel manages core sub-systems: process scheduler, memory manager, device drivers, and IPC."
   },
   {
-    "id": 354,
+    "id": 329,
     "category": "Kernel & Kernel Types",
     "question": "A Monolithic Kernel places:",
     "options": [
@@ -6678,7 +6353,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Monolithic architecture bundles virtually all OS services (drivers, filesystem, scheduler) inside a single kernel address space."
   },
   {
-    "id": 355,
+    "id": 330,
     "category": "Kernel & Kernel Types",
     "question": "Which operating system commonly uses a monolithic kernel?",
     "options": [
@@ -6691,7 +6366,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Linux is a prime example of a monolithic kernel architecture (with dynamic module loading)."
   },
   {
-    "id": 356,
+    "id": 331,
     "category": "Kernel & Kernel Types",
     "question": "A Microkernel keeps only essential services in kernel space, mainly:",
     "options": [
@@ -6704,7 +6379,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Microkernels strip kernel space down to essential minimal services: basic thread scheduling, memory mapping, and IPC."
   },
   {
-    "id": 357,
+    "id": 332,
     "category": "Kernel & Kernel Types",
     "question": "Which is a major advantage of a microkernel?",
     "options": [
@@ -6717,7 +6392,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Microkernels offer high reliability and fault isolation: a crashing driver in user space won't crash the core kernel."
   },
   {
-    "id": 358,
+    "id": 333,
     "category": "Kernel & Kernel Types",
     "question": "Which is generally faster?",
     "options": [
@@ -6730,7 +6405,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Monolithic kernels generally outperform microkernels because inter-service calls avoid user-kernel context-switch overhead."
   },
   {
-    "id": 359,
+    "id": 334,
     "category": "Kernel & Kernel Types",
     "question": "Which kernel usually has lower communication overhead?",
     "options": [
@@ -6743,7 +6418,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Monolithic kernels communicate via fast direct C function calls rather than user-space message-passing IPC."
   },
   {
-    "id": 360,
+    "id": 335,
     "category": "Kernel & Kernel Types",
     "question": "Which kernel relies heavily on message passing between services?",
     "options": [
@@ -6756,7 +6431,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Microkernel architectures rely heavily on Message Passing IPC to coordinate user-space drivers and servers."
   },
   {
-    "id": 361,
+    "id": 336,
     "category": "Kernel & Kernel Types",
     "question": "Which statement about a microkernel is TRUE?",
     "options": [
@@ -6769,7 +6444,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "In microkernels, device drivers and filesystems run as isolated unprivileged user-space daemons."
   },
   {
-    "id": 362,
+    "id": 337,
     "category": "Kernel & Kernel Types",
     "question": "Which statement about a monolithic kernel is TRUE?",
     "options": [
@@ -6782,7 +6457,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Monolithic design runs filesystem, drivers, and network stack inside privileged kernel space."
   },
   {
-    "id": 363,
+    "id": 338,
     "category": "Kernel & Kernel Types",
     "question": "Which kernel design generally provides better modularity?",
     "options": [
@@ -6795,7 +6470,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Microkernels enforce clean modular architecture by decoupling services into user-space modules."
   },
   {
-    "id": 364,
+    "id": 339,
     "category": "Kernel & Kernel Types",
     "question": "Which statement correctly compares monolithic and microkernels?",
     "options": [
@@ -6808,7 +6483,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Monolithic maximizes execution speed; microkernel prioritizes stability, security isolation, and modularity."
   },
   {
-    "id": 365,
+    "id": 340,
     "category": "Kernel & Kernel Types",
     "question": "Which operating system component provides the interface between applications and hardware?",
     "options": [
@@ -6821,7 +6496,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The Kernel abstracts hardware interfaces for application programs."
   },
   {
-    "id": 366,
+    "id": 341,
     "category": "System Calls",
     "question": "A system call is:",
     "options": [
@@ -6834,7 +6509,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A system call provides the programmatic interface for applications to request services from the OS kernel."
   },
   {
-    "id": 367,
+    "id": 342,
     "category": "System Calls",
     "question": "Applications communicate with the operating system primarily through:",
     "options": [
@@ -6847,7 +6522,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "User-space applications invoke system calls (APIs like POSIX) to perform protected operations."
   },
   {
-    "id": 368,
+    "id": 343,
     "category": "System Calls",
     "question": "Which operation typically requires a system call?",
     "options": [
@@ -6860,7 +6535,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "I/O hardware access (like reading a file from disk) requires kernel-mode system call execution."
   },
   {
-    "id": 369,
+    "id": 344,
     "category": "System Calls",
     "question": "Which system call category includes creating a process?",
     "options": [
@@ -6873,7 +6548,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Process control system calls include fork(), exec(), exit(), wait(), and process management."
   },
   {
-    "id": 370,
+    "id": 345,
     "category": "System Calls",
     "question": "Which system call category includes opening a file?",
     "options": [
@@ -6886,7 +6561,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "File management system calls handle open(), read(), write(), close(), and stat() file operations."
   },
   {
-    "id": 371,
+    "id": 346,
     "category": "System Calls",
     "question": "Which system call category manages communication between processes?",
     "options": [
@@ -6899,7 +6574,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Communication system calls handle pipe(), socket(), shmget(), and message queues."
   },
   {
-    "id": 372,
+    "id": 347,
     "category": "System Calls",
     "question": "Which system call category allocates memory?",
     "options": [
@@ -6912,7 +6587,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Memory management system calls (brk, sbrk, mmap) allocate address space frames to processes."
   },
   {
-    "id": 373,
+    "id": 348,
     "category": "System Calls",
     "question": "Which operation usually requires switching from user mode to kernel mode?",
     "options": [
@@ -6925,7 +6600,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Executing a system call triggers a software interrupt/trap switching execution from User Mode to Kernel Mode."
   },
   {
-    "id": 374,
+    "id": 349,
     "category": "System Calls",
     "question": "Why are system calls needed?",
     "options": [
@@ -6938,7 +6613,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "For security and hardware protection, applications run in unprivileged User Mode and rely on system calls for hardware access."
   },
   {
-    "id": 375,
+    "id": 350,
     "category": "System Calls",
     "question": "Which statement is TRUE?",
     "options": [
@@ -6951,7 +6626,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "System calls offer a controlled, validated gateway into kernel services."
   },
   {
-    "id": 376,
+    "id": 351,
     "category": "System Calls",
     "question": "Which of the following is NOT typically a system call category?",
     "options": [
@@ -6964,7 +6639,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Compiler optimization is performed offline by software compilers, not by kernel system calls."
   },
   {
-    "id": 377,
+    "id": 352,
     "category": "System Calls",
     "question": "Which mode executes most application programs?",
     "options": [
@@ -6977,7 +6652,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Normal user applications execute in CPU User Mode (Ring 3) with restricted instruction access."
   },
   {
-    "id": 378,
+    "id": 353,
     "category": "System Calls",
     "question": "Which mode has unrestricted access to hardware?",
     "options": [
@@ -6990,20 +6665,20 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Kernel Mode (Ring 0 / Supervisor Mode) grants execution of all CPU instructions and full hardware access."
   },
   {
-    "id": 379,
+    "id": 354,
     "category": "System Calls",
     "question": "Which transition occurs during a system call?",
     "options": [
-      "User Mode \u2192 Kernel Mode",
-      "Kernel Mode \u2192 User Mode only",
-      "RAM \u2192 Cache",
-      "Disk \u2192 Register"
+      "User Mode → Kernel Mode",
+      "Kernel Mode → User Mode only",
+      "RAM → Cache",
+      "Disk → Register"
     ],
     "answerIndex": 0,
     "explanation": "Executing a system call traps CPU execution from User Mode into privileged Kernel Mode."
   },
   {
-    "id": 380,
+    "id": 355,
     "category": "System Calls",
     "question": "Which statement is correct?",
     "options": [
@@ -7016,7 +6691,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "System calls serve as the essential layer connecting application software to the OS kernel."
   },
   {
-    "id": 381,
+    "id": 356,
     "category": "Boot Process & IPC",
     "question": "Booting is:",
     "options": [
@@ -7029,7 +6704,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Booting is the startup sequence initializing hardware and loading OS kernel into memory from storage."
   },
   {
-    "id": 382,
+    "id": 357,
     "category": "Boot Process & IPC",
     "question": "Which firmware initializes hardware during startup?",
     "options": [
@@ -7042,7 +6717,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "BIOS (Basic Input/Output System) or UEFI firmware performs hardware POST checks and launches bootloader."
   },
   {
-    "id": 383,
+    "id": 358,
     "category": "Boot Process & IPC",
     "question": "Which component loads the operating system kernel into memory?",
     "options": [
@@ -7055,7 +6730,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The Bootloader (e.g. GRUB) locates, loads, and executes the OS kernel image in main memory."
   },
   {
-    "id": 384,
+    "id": 359,
     "category": "Boot Process & IPC",
     "question": "Which type of boot restarts the system without turning off power?",
     "options": [
@@ -7068,7 +6743,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A Warm Boot (reboot) restarts system software without cutting motherboard physical power."
   },
   {
-    "id": 385,
+    "id": 360,
     "category": "Boot Process & IPC",
     "question": "Which type of boot starts the computer from a powered-off state?",
     "options": [
@@ -7081,7 +6756,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A Cold Boot powers on the system from complete powered-off state, running full POST hardware tests."
   },
   {
-    "id": 386,
+    "id": 361,
     "category": "Boot Process & IPC",
     "question": "IPC stands for:",
     "options": [
@@ -7094,7 +6769,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "IPC stands for Inter-Process Communication."
   },
   {
-    "id": 387,
+    "id": 362,
     "category": "Boot Process & IPC",
     "question": "IPC is mainly used for:",
     "options": [
@@ -7107,7 +6782,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "IPC mechanisms enable concurrent processes to exchange data and synchronize execution."
   },
   {
-    "id": 388,
+    "id": 363,
     "category": "Boot Process & IPC",
     "question": "Which IPC mechanism allows two related processes to communicate through a unidirectional channel?",
     "options": [
@@ -7120,7 +6795,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "A Pipe creates a unidirectional byte-stream communication channel between related processes."
   },
   {
-    "id": 389,
+    "id": 364,
     "category": "Boot Process & IPC",
     "question": "Which IPC mechanism generally provides the fastest communication because processes directly access the same memory?",
     "options": [
@@ -7133,7 +6808,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Shared Memory offers maximum speed because processes access shared RAM directly without kernel copying overhead."
   },
   {
-    "id": 390,
+    "id": 365,
     "category": "Boot Process & IPC",
     "question": "Which IPC mechanism exchanges data as discrete messages?",
     "options": [
@@ -7146,7 +6821,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Message Queues pass discrete structured message packets between processes via kernel queues."
   },
   {
-    "id": 391,
+    "id": 366,
     "category": "Boot Process & IPC",
     "question": "Which IPC mechanism is primarily used to notify a process of an event?",
     "options": [
@@ -7159,7 +6834,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Signals are asynchronous notifications delivered by OS to notify a process of specific events or exceptions."
   },
   {
-    "id": 392,
+    "id": 367,
     "category": "Boot Process & IPC",
     "question": "Which IPC mechanism is commonly used for communication across different computers?",
     "options": [
@@ -7172,7 +6847,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Sockets (network sockets) support IPC across networked systems as well as local inter-process communication."
   },
   {
-    "id": 393,
+    "id": 368,
     "category": "Boot Process & IPC",
     "question": "Which IPC mechanism usually requires synchronization to avoid race conditions?",
     "options": [
@@ -7185,7 +6860,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Shared Memory access must be synchronized using semaphores/mutexes to prevent concurrent data corruption."
   },
   {
-    "id": 394,
+    "id": 369,
     "category": "Boot Process & IPC",
     "question": "Which statement is TRUE?",
     "options": [
@@ -7198,7 +6873,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Traditional anonymous pipes require parent-child relationship between communicating processes."
   },
   {
-    "id": 395,
+    "id": 370,
     "category": "Boot Process & IPC",
     "question": "Which operating system service is responsible for communication between processes?",
     "options": [
@@ -7211,7 +6886,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Inter-Process Communication (IPC) is the dedicated OS subsystem enabling process data exchange."
   },
   {
-    "id": 396,
+    "id": 371,
     "category": "Boot Process & IPC",
     "question": "Which operating system concept provides protection by separating user mode from kernel mode?",
     "options": [
@@ -7224,7 +6899,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Dual-Mode Operation hardware support enforces separation between unprivileged user mode and privileged kernel mode."
   },
   {
-    "id": 397,
+    "id": 372,
     "category": "Boot Process & IPC",
     "question": "Which statement correctly distinguishes user mode and kernel mode?",
     "options": [
@@ -7237,7 +6912,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "User mode restricts CPU instructions to safeguard stability; kernel mode has unrestricted hardware control."
   },
   {
-    "id": 398,
+    "id": 373,
     "category": "Boot Process & IPC",
     "question": "Which of the following is an example of a privileged instruction?",
     "options": [
@@ -7250,7 +6925,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "Modifying page table base registers, disabling interrupts, or accessing I/O ports are privileged instructions reserved for kernel mode."
   },
   {
-    "id": 399,
+    "id": 374,
     "category": "Boot Process & IPC",
     "question": "Which statement best summarizes the role of an operating system?",
     "options": [
@@ -7263,7 +6938,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "An operating system manages system resources efficiently while providing a clean execution environment for application software."
   },
   {
-    "id": 400,
+    "id": 375,
     "category": "Boot Process & IPC",
     "question": "Which statement is correct?",
     "options": [
