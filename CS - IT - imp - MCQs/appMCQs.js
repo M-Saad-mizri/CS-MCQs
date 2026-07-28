@@ -529,10 +529,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </button>
         `;
       }).join("");
-
-      card.innerHTML = `
+      //google play icon
+      card.innerHTML = ` 
         <div class="fact-header">
-          <span class="fact-num">MCQ #${absoluteIndex}</span>
+        <a style="text-decoration: none;" class="fact-num" href="https://share.google/MWDnunmxWZwzvFXqe">MCQ #${absoluteIndex}</a>
+          
           <span class="fact-category">${mcq.category || 'General'}</span>
         </div>
         <h3 class="fact-question">${mcq.question}</h3>
