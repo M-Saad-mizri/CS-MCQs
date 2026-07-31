@@ -182,7 +182,8 @@ document.addEventListener("DOMContentLoaded", () => {
           ...state,
           ...parsed,
           comments: parsed.comments || {},
-          hideQuizHistory: !!parsed.hideQuizHistory
+          hideQuizHistory: !!parsed.hideQuizHistory,
+          lastUpdated: parsed.lastUpdated || state.lastUpdated || new Date().toISOString()
         };
       }
     } catch (e) {
@@ -192,7 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function saveState() {
     try {
+      state.lastUpdated = new Date().toISOString();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if (window.GoogleDriveSync && typeof window.GoogleDriveSync.scheduleAutoSync === "function") {
+        window.GoogleDriveSync.scheduleAutoSync();
+      }
     } catch (e) {
       console.error("Failed to save state", e);
     }
@@ -2456,6 +2461,40 @@ Instructions:
   globalShowAnswersToggle.checked = state.showAllAnswers;
   switchMode(state.activeMode || "practice");
   initSubjectView();
+
+  // --- GOOGLE DRIVE CLOUD SYNC INTEGRATION ---
+  function applyCloudState(cloudState) {
+    if (!cloudState || typeof cloudState !== "object") return;
+    state = {
+      ...state,
+      ...cloudState,
+      comments: cloudState.comments || {},
+      customSubjects: cloudState.customSubjects || {},
+      bookmarks: cloudState.bookmarks || {},
+      covered: cloudState.covered || {},
+      checkpoints: cloudState.checkpoints || {},
+      attempts: cloudState.attempts || {},
+      quizStats: cloudState.quizStats || {},
+      quizHistory: Array.isArray(cloudState.quizHistory) ? cloudState.quizHistory : []
+    };
+    // Save to localStorage directly without re-triggering cloud upload loop
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {
+      console.error("Failed to save state after cloud restore", e);
+    }
+    applyTheme();
+    if (globalShowAnswersToggle) globalShowAnswersToggle.checked = state.showAllAnswers;
+    switchMode(state.activeMode || "practice");
+    initSubjectView();
+  }
+
+  if (window.GoogleDriveSync && typeof window.GoogleDriveSync.init === "function") {
+    window.GoogleDriveSync.init({
+      getLocalState: () => state,
+      applyCloudState: applyCloudState
+    });
+  }
 
   // --- PWA SERVICE WORKER REGISTRATION & INSTALL PROMPT ---
   let deferredPrompt = null;

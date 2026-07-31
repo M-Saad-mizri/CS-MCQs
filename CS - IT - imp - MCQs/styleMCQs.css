@@ -2736,6 +2736,176 @@ body.light-mode .back-to-top-btn:hover {
   color: #34D399;
 }
 
+}
+
+/* ==========================================================================
+   Google Drive Cloud Synchronization Component Styles
+   ========================================================================== */
+
+/* Spinning icon animation */
+@keyframes spinSync {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin-icon {
+  animation: spinSync 1.2s linear infinite;
+  display: inline-block;
+  transform-origin: center;
+}
+
+/* Header Status Badge */
+.cloud-sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.cloud-sync-badge.sync-synced,
+.cloud-sync-badge.sync-connected {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+
+.cloud-sync-badge.sync-syncing,
+.cloud-sync-badge.sync-restoring {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  color: #818cf8;
+}
+
+.cloud-sync-badge.sync-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}
+
+.cloud-sync-badge.sync-disconnected {
+  background: var(--option-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+.cloud-sync-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sidebar Sync Panel */
+.cloud-sync-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  background: var(--option-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+}
+
+.cloud-sync-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.sidebar-sync-badge.sync-synced,
+.sidebar-sync-badge.sync-connected {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.sidebar-sync-badge.sync-syncing,
+.sidebar-sync-badge.sync-restoring {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+}
+
+.sidebar-sync-badge.sync-error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.sidebar-sync-badge.sync-disconnected {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+}
+
+.cloud-sync-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.gdrive-connect-btn {
+  width: 100%;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+
+.gdrive-connected-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sync-action-btn {
+  width: 100%;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+.danger-btn-subtle {
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.danger-btn-subtle:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+@media (max-width: 480px) {
+  .cloud-sync-text {
+    display: none;
+  }
+  .cloud-sync-badge {
+    padding: 6px;
+    border-radius: 50%;
+  }
+}
+
 /* ==========================================================================
    Printable PDF Worksheet Styles & @media print
    ========================================================================== */
