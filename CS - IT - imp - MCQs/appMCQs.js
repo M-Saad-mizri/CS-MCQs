@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ...parsed,
           comments: parsed.comments || {},
           hideQuizHistory: !!parsed.hideQuizHistory,
-          lastUpdated: parsed.lastUpdated || state.lastUpdated || new Date().toISOString()
+          lastUpdated: parsed.lastUpdated || null
         };
       }
     } catch (e) {
@@ -191,11 +191,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function saveState() {
+  function saveState(skipSyncAndTimestamp = false) {
     try {
-      state.lastUpdated = new Date().toISOString();
+      if (!skipSyncAndTimestamp) {
+        state.lastUpdated = new Date().toISOString();
+      }
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      if (window.GoogleDriveSync && typeof window.GoogleDriveSync.scheduleAutoSync === "function") {
+      if (!skipSyncAndTimestamp && window.GoogleDriveSync && typeof window.GoogleDriveSync.scheduleAutoSync === "function") {
         window.GoogleDriveSync.scheduleAutoSync();
       }
     } catch (e) {
@@ -291,9 +293,9 @@ document.addEventListener("DOMContentLoaded", () => {
     saveState();
   }
 
-  function switchMode(mode) {
+  function switchMode(mode, isInitial = false) {
     state.activeMode = mode;
-    saveState();
+    saveState(isInitial);
 
     if (mode === "practice") {
       btnModePractice.classList.add("active");
@@ -2459,7 +2461,7 @@ Instructions:
   loadState();
   applyTheme();
   globalShowAnswersToggle.checked = state.showAllAnswers;
-  switchMode(state.activeMode || "practice");
+  switchMode(state.activeMode || "practice", true);
   initSubjectView();
 
   // --- GOOGLE DRIVE CLOUD SYNC INTEGRATION ---
@@ -2475,7 +2477,8 @@ Instructions:
       checkpoints: cloudState.checkpoints || {},
       attempts: cloudState.attempts || {},
       quizStats: cloudState.quizStats || {},
-      quizHistory: Array.isArray(cloudState.quizHistory) ? cloudState.quizHistory : []
+      quizHistory: Array.isArray(cloudState.quizHistory) ? cloudState.quizHistory : [],
+      lastUpdated: cloudState.lastUpdated || state.lastUpdated
     };
     // Save to localStorage directly without re-triggering cloud upload loop
     try {
@@ -2485,7 +2488,7 @@ Instructions:
     }
     applyTheme();
     if (globalShowAnswersToggle) globalShowAnswersToggle.checked = state.showAllAnswers;
-    switchMode(state.activeMode || "practice");
+    switchMode(state.activeMode || "practice", true);
     initSubjectView();
   }
 
