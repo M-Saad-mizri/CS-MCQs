@@ -464,6 +464,105 @@
     updateUI("synced", `Synced ${formatTimeAgo(new Date(lastSyncedTime))}`);
   }
 
+  // --- TOAST NOTIFICATIONS SYSTEM ---
+  function showToast(message, type = "info", durationMs = 3500) {
+    const container = document.getElementById("toastContainer");
+    if (!container) return;
+
+    const toast = document.createElement("div");
+    toast.className = `toast-item toast-${type}`;
+
+    let iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`;
+    if (type === "success") {
+      iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+    } else if (type === "error") {
+      iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+    }
+
+    toast.innerHTML = `
+      <span class="toast-icon">${iconSvg}</span>
+      <span class="toast-message">${message}</span>
+    `;
+
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.classList.add("show");
+    });
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 300);
+    }, durationMs);
+  }
+
+  // --- ONBOARDING PROMO MODAL LOGIC ---
+  function checkOnboardingModal() {
+    const dismissed = localStorage.getItem("quickfacts_gdrive_modal_dismissed");
+    if (dismissed === "true" || isConnected) return;
+
+    const modal = document.getElementById("gdriveOnboardingModal");
+    if (!modal) return;
+
+    setTimeout(() => {
+      modal.style.display = "flex";
+    }, 1200);
+  }
+
+  function setupOnboardingModalListeners() {
+    const modal = document.getElementById("gdriveOnboardingModal");
+    const closeBtn = document.getElementById("btnModalCloseGDrive");
+    const skipBtn = document.getElementById("btnModalSkipGDrive");
+    const connectBtn = document.getElementById("btnModalConnectGDrive");
+    const chkDontShow = document.getElementById("chkDontShowGDriveModal");
+
+    function closeModal() {
+      if (modal) modal.style.display = "none";
+      if (chkDontShow && chkDontShow.checked) {
+        localStorage.setItem("quickfacts_gdrive_modal_dismissed", "true");
+      }
+    }
+
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (skipBtn) skipBtn.addEventListener("click", closeModal);
+    if (connectBtn) {
+      connectBtn.addEventListener("click", () => {
+        closeModal();
+        connect();
+      });
+    }
+  }
+
+  // --- ACCORDION TOGGLES LOGIC ---
+  function setupAccordions() {
+    const cloudToggle = document.getElementById("toggleCloudSyncAccordion");
+    const cloudContent = document.getElementById("cloudSyncAccordionContent");
+    const backupToggle = document.getElementById("toggleBackupAccordion");
+    const backupContent = document.getElementById("backupAccordionContent");
+
+    if (cloudToggle && cloudContent) {
+      cloudToggle.addEventListener("click", () => {
+        const isExpanded = cloudToggle.getAttribute("aria-expanded") === "true";
+        cloudToggle.setAttribute("aria-expanded", !isExpanded);
+        cloudContent.style.display = isExpanded ? "none" : "block";
+        cloudToggle.classList.toggle("active", !isExpanded);
+      });
+    }
+
+    if (backupToggle && backupContent) {
+      backupToggle.addEventListener("click", () => {
+        const isExpanded = backupToggle.getAttribute("aria-expanded") === "true";
+        backupToggle.setAttribute("aria-expanded", !isExpanded);
+        backupContent.style.display = isExpanded ? "none" : "block";
+        backupToggle.classList.toggle("active", !isExpanded);
+      });
+    }
+  }
+
   /**
    * Manual "Sync Now" action
    */
@@ -481,9 +580,11 @@
       }
 
       await performUpload(token, localState);
+      showToast("✓ Progress synced to Google Drive!", "success", 3000);
     } catch (err) {
       console.error("Manual sync failed:", err);
       updateUI("error", "Sync failed. Local data is safe.");
+      showToast("⚠ Sync failed. Local data remains safe.", "error", 3500);
     } finally {
       isSyncing = false;
     }
@@ -502,8 +603,8 @@
       let fileId = driveFileId || (await findCloudFile(token));
 
       if (!fileId) {
-        updateUI("error", "No cloud backup file found in Google Drive.");
-        alert("No backup file found in your Google Drive app data folder.");
+        updateUI("error", "No cloud backup file found.");
+        showToast("⚠ No cloud backup file found in Google Drive.", "error", 3500);
         return;
       }
 
@@ -521,11 +622,11 @@
       lastSyncedTime = new Date().toISOString();
       saveAuthMeta();
       updateUI("synced", "Progress restored successfully from cloud!");
-      alert("✓ Quiz progress restored successfully from Google Drive!");
+      showToast("✓ Quiz progress restored successfully from Google Drive!", "success", 4000);
     } catch (err) {
       console.error("Restore failed:", err);
       updateUI("error", "Restore failed: " + err.message);
-      alert("Failed to restore cloud backup: " + err.message);
+      showToast("⚠ Failed to restore cloud backup: " + err.message, "error", 4000);
     } finally {
       isSyncing = false;
     }
@@ -566,13 +667,14 @@
   }
 
   /**
-   * Perform silent startup check if user previously connected
+   * Perform silent startup check & AUTOMATIC restore if cloud is newer
    */
   async function startupCheck() {
     loadAuthMeta();
 
     if (!isConnected) {
       updateUI("disconnected");
+      checkOnboardingModal();
       return;
     }
 
@@ -591,7 +693,7 @@
         const cloudUpdated = cloudContent && cloudContent.lastUpdated ? new Date(cloudContent.lastUpdated).getTime() : 0;
 
         if (cloudContent && cloudContent.state && cloudUpdated > localUpdated) {
-          console.log("Cloud state is newer. Restoring...");
+          console.log("Cloud state is newer. Restoring automatically...");
           updateUI("restoring", "Restoring newer progress from Google Drive...");
           if (applyCloudStateCallback) {
             applyCloudStateCallback(cloudContent.state);
@@ -599,20 +701,25 @@
           lastSyncedTime = new Date().toISOString();
           saveAuthMeta();
           updateUI("synced", "Restored latest progress from Google Drive.");
+          showToast("☁ Progress automatically restored from Google Drive!", "success", 4000);
         } else if (localUpdated > cloudUpdated) {
-          console.log("Local state is newer. Uploading...");
+          console.log("Local state is newer. Syncing to cloud...");
           await performUpload(token, localState);
+          showToast("✓ Local quiz progress synced to Google Drive.", "success", 3000);
         } else {
           updateUI("synced", `Synced ${formatTimeAgo(new Date(lastSyncedTime || Date.now()))}`);
+          showToast("✓ Google Drive in sync (no new cloud changes).", "info", 2500);
         }
       } else {
         // No file yet, upload initial
         const localState = getLocalStateCallback ? getLocalStateCallback() : null;
         await performUpload(token, localState);
+        showToast("☁ Initialized Google Drive cloud backup.", "success", 3500);
       }
     } catch (err) {
       console.warn("Startup cloud check warning:", err);
-      updateUI("error", "Offline or cloud sync pending. Local data active.");
+      updateUI("error", "Offline or cloud sync pending.");
+      showToast("⚠ Offline — saved locally.", "error", 3500);
     }
   }
 
@@ -626,6 +733,8 @@
     }
 
     loadAuthMeta();
+    setupAccordions();
+    setupOnboardingModalListeners();
 
     // Attach click listeners if DOM is ready
     const connectBtn = document.getElementById("btnConnectGDrive");
@@ -673,7 +782,8 @@
     syncNow,
     restoreCloud,
     scheduleAutoSync,
-    updateUI
+    updateUI,
+    showToast
   };
 
 })(window);

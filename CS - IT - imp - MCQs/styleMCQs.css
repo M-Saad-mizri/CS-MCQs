@@ -2896,13 +2896,133 @@ body.light-mode .back-to-top-btn:hover {
   border-color: #ef4444;
 }
 
-@media (max-width: 480px) {
-  .cloud-sync-text {
-    display: none;
+/* Accordion / Collapsible Group Styles */
+.setting-label-accordion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--option-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.setting-label-accordion:hover {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--text-main);
+  border-color: var(--accent-color);
+}
+
+.setting-label-accordion .accordion-chevron {
+  transition: transform 0.25s ease;
+}
+
+.setting-label-accordion.active .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  margin-top: 8px;
+}
+
+/* Floating Toast Notification Component */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: var(--card-bg, #1e293b);
+  color: var(--text-main, #f8fafc);
+  border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+  border-radius: 14px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  font-size: 0.88rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.toast-item.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.toast-item.toast-success {
+  border-left: 4px solid #10b981;
+}
+
+.toast-item.toast-error {
+  border-left: 4px solid #ef4444;
+}
+
+.toast-item.toast-info {
+  border-left: 4px solid #6366F1;
+}
+
+.toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Onboarding GDrive Modal */
+.gdrive-modal-card {
+  max-width: 440px;
+  width: 92%;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background: var(--card-bg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.gdrive-modal-title-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gdrive-modal-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(99, 102, 241, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .toast-container {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    align-items: center;
   }
-  .cloud-sync-badge {
-    padding: 6px;
-    border-radius: 50%;
+  .toast-item {
+    width: 100%;
+    justify-content: center;
   }
 }
 
