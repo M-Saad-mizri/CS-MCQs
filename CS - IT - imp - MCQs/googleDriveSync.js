@@ -256,34 +256,51 @@
     }
   }
 
+  function isGISAvailable() {
+    return typeof window.google !== "undefined" && window.google && window.google.accounts && window.google.accounts.oauth2;
+  }
+
   // --- TOKEN CLIENT INITIALIZATION & AUTHORIZATION ---
   function initTokenClient(callbackOnSuccess, callbackOnError) {
-    if (typeof window.google === "undefined" || !window.google.accounts || !window.google.accounts.oauth2) {
+    if (!isGISAvailable()) {
       if (callbackOnError) callbackOnError("Google Identity Services script not loaded");
-      return;
+      return null;
     }
 
-    tokenClient = window.google.accounts.oauth2.initTokenClient({
-      client_id: CLIENT_ID,
-      scope: SCOPE,
-      callback: async (tokenResponse) => {
-        if (tokenResponse.error) {
-          console.error("GIS Token Error:", tokenResponse);
-          if (callbackOnError) callbackOnError(tokenResponse.error_description || tokenResponse.error);
-          return;
-        }
+    try {
+      tokenClient = window.google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPE,
+        callback: async (tokenResponse) => {
+          if (tokenResponse.error) {
+            console.error("GIS Token Error:", tokenResponse);
+            const errMsg = tokenResponse.error_description || tokenResponse.error;
+            if (callbackOnError) {
+              callbackOnError(errMsg);
+            } else {
+              updateUI("error", "Google auth error: " + errMsg);
+              alert("Google Auth Error: " + errMsg);
+            }
+            return;
+          }
 
-        accessToken = tokenResponse.access_token;
-        const expiresIn = tokenResponse.expires_in || 3600;
-        tokenExpirationTime = Date.now() + (expiresIn * 1000);
-        isConnected = true;
-        saveAuthMeta();
+          accessToken = tokenResponse.access_token;
+          const expiresIn = tokenResponse.expires_in || 3600;
+          tokenExpirationTime = Date.now() + (expiresIn * 1000);
+          isConnected = true;
+          saveAuthMeta();
 
-        if (callbackOnSuccess) {
-          callbackOnSuccess(accessToken);
+          if (callbackOnSuccess) {
+            callbackOnSuccess(accessToken);
+          }
         }
-      }
-    });
+      });
+      return tokenClient;
+    } catch (e) {
+      console.error("initTokenClient exception:", e);
+      if (callbackOnError) callbackOnError(e.message);
+      return null;
+    }
   }
 
   function getValidAccessToken() {
@@ -298,7 +315,6 @@
         return;
       }
 
-      // Token expired, request silently or prompt
       if (!tokenClient) {
         initTokenClient();
       }
@@ -333,27 +349,42 @@
    * User clicks "Connect Google Drive"
    */
   function connect() {
-    updateUI("syncing", "Connecting to Google Drive...");
-
-    if (!tokenClient) {
-      initTokenClient(
-        async (token) => {
-          updateUI("syncing", "Connected! Checking cloud backup...");
-          try {
-            await syncOnConnect(token);
-          } catch (err) {
-            console.error("Sync error after connect:", err);
-            updateUI("error", "Connected, but cloud sync failed: " + err.message);
-          }
-        },
-        (err) => {
-          updateUI("disconnected", "Authorization failed or cancelled.");
-        }
-      );
+    if (!isGISAvailable()) {
+      updateUI("disconnected", "Google Sign-In library not loaded.");
+      alert("Google Identity Services library is not loaded yet. If you are using an ad-blocker or privacy extension (e.g., uBlock, Brave Shield), please allow accounts.google.com and refresh the page.");
+      return;
     }
 
+    updateUI("syncing", "Connecting to Google Drive...");
+
+    initTokenClient(
+      async (token) => {
+        updateUI("syncing", "Connected! Checking cloud backup...");
+        try {
+          await syncOnConnect(token);
+        } catch (err) {
+          console.error("Sync error after connect:", err);
+          updateUI("error", "Connected, but cloud sync failed: " + err.message);
+          alert("Cloud sync failed after sign-in: " + err.message);
+        }
+      },
+      (err) => {
+        console.warn("Google authorization failed or cancelled:", err);
+        updateUI("disconnected", "Sign-in cancelled or failed.");
+        if (err !== "access_denied" && err !== "popup_closed_by_user") {
+          alert("Google Sign-In notice: " + err);
+        }
+      }
+    );
+
     if (tokenClient) {
-      tokenClient.requestAccessToken({ prompt: 'consent' });
+      try {
+        tokenClient.requestAccessToken({ prompt: 'consent' });
+      } catch (err) {
+        console.error("requestAccessToken error:", err);
+        updateUI("error", "Failed to launch Google auth: " + err.message);
+        alert("Failed to launch Google popup: " + err.message);
+      }
     }
   }
 
@@ -601,11 +632,27 @@
     const syncNowBtn = document.getElementById("btnSyncNowGDrive");
     const restoreBtn = document.getElementById("btnRestoreGDrive");
     const disconnectBtn = document.getElementById("btnDisconnectGDrive");
+    const headerBadge = document.getElementById("cloudSyncHeaderBadge");
 
     if (connectBtn) connectBtn.addEventListener("click", connect);
     if (syncNowBtn) syncNowBtn.addEventListener("click", syncNow);
     if (restoreBtn) restoreBtn.addEventListener("click", restoreCloud);
     if (disconnectBtn) disconnectBtn.addEventListener("click", disconnect);
+
+    if (headerBadge) {
+      headerBadge.style.cursor = "pointer";
+      headerBadge.addEventListener("click", () => {
+        const sidebar = document.getElementById("settingsSidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+        if (sidebar && overlay) {
+          sidebar.classList.add("active");
+          overlay.classList.add("active");
+        }
+        if (!isConnected) {
+          connect();
+        }
+      });
+    }
 
     // Initial UI state
     if (isConnected) {
