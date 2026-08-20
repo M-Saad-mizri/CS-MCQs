@@ -134,6 +134,10 @@
 
     if (headerText) headerText.textContent = badgeLabel;
     if (headerIcon) headerIcon.innerHTML = iconSvg;
+    if (headerBadge) {
+      headerBadge.setAttribute("title", `Cloud Sync: ${badgeLabel} (${message || ''})`);
+      headerBadge.setAttribute("aria-label", `Cloud Sync Status: ${badgeLabel}`);
+    }
 
     if (sidebarStatusBadge) {
       sidebarStatusBadge.innerHTML = `${iconSvg} <span>${badgeLabel}</span>`;

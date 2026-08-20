@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterBookmarks = document.getElementById("filterBookmarks");
   const filterUncovered = document.getElementById("filterUncovered");
   const filterMistakes = document.getElementById("filterMistakes");
+  const filterComments = document.getElementById("filterComments");
 
   // Checkpoint Banner
   const checkpointBanner = document.getElementById("checkpointBanner");
@@ -131,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Active Filter Modes
   let searchFilter = "";
-  let currentFilter = "all"; // "all" | "bookmarks" | "uncovered" | "mistakes"
+  let currentFilter = "all"; // "all" | "bookmarks" | "uncovered" | "mistakes" | "comments"
 
   // --- TOPIC COVERAGE HELPER ---
   function isTopicCovered(topic) {
@@ -481,6 +482,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentFilter === "mistakes") {
         const att = attempts[mcq.id];
         if (!att || att.isCorrect || !att.wrongOptions || att.wrongOptions.length === 0) return false;
+      }
+      if (currentFilter === "comments") {
+        const userComment = (state.comments && state.comments[state.activeSubject] && state.comments[state.activeSubject][mcq.id]) || "";
+        if (!userComment || !userComment.trim()) return false;
       }
 
       return true;
@@ -979,6 +984,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return att && !att.isCorrect && att.wrongOptions && att.wrongOptions.length > 0;
     }).length;
 
+    const commCount = topicMCQs.filter(m => {
+      const comm = state.comments && state.comments[state.activeSubject] && state.comments[state.activeSubject][m.id];
+      return comm && comm.trim();
+    }).length;
+
     // Define pool objects with SVG icons and filter only those with count > 0
     const poolDefs = [
       {
@@ -1004,6 +1014,12 @@ document.addEventListener("DOMContentLoaded", () => {
         label: `Mistakes (${mistCount})`,
         iconSVG: ``,
         count: mistCount
+      },
+      {
+        id: "comments",
+        label: `Notes (${commCount})`,
+        iconSVG: `<svg class="chip-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`,
+        count: commCount
       }
     ].filter(p => p.count > 0);
 
@@ -1363,6 +1379,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const att = attempts[m.id];
         return att && !att.isCorrect && att.wrongOptions && att.wrongOptions.length > 0;
       });
+    } else if (selectedQuizPool === "comments") {
+      const userSubjectComments = (state.comments && state.comments[state.activeSubject]) || {};
+      filtered = filtered.filter(m => userSubjectComments[m.id] && userSubjectComments[m.id].trim());
     }
 
     if (filtered.length === 0) {
@@ -1835,6 +1854,7 @@ document.addEventListener("DOMContentLoaded", () => {
     filterBookmarks.setAttribute("data-active", currentFilter === "bookmarks" ? "true" : "false");
     filterUncovered.setAttribute("data-active", currentFilter === "uncovered" ? "true" : "false");
     filterMistakes.setAttribute("data-active", currentFilter === "mistakes" ? "true" : "false");
+    if (filterComments) filterComments.setAttribute("data-active", currentFilter === "comments" ? "true" : "false");
   }
 
   filterAll.addEventListener("click", () => {
@@ -1864,6 +1884,15 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFactsList();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  if (filterComments) {
+    filterComments.addEventListener("click", () => {
+      currentFilter = currentFilter === "comments" ? "all" : "comments";
+      updateFilterChipUI();
+      renderFactsList();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
   // --- SEARCH BAR LOGIC ---
   searchInput.addEventListener("input", (e) => {
@@ -2620,6 +2649,11 @@ Instructions:
       const coveredList = state.covered[state.activeSubject] || [];
       const allMCQs = getActiveSubjectMCQs();
       pool = allMCQs.filter(m => !coveredList.includes(m.id));
+    } else if (sourceVal === "comments") {
+      titleSubject = `${state.activeSubject} (MCQs with Personal Notes)`;
+      const userSubjectComments = (state.comments && state.comments[state.activeSubject]) || {};
+      const allMCQs = getActiveSubjectMCQs();
+      pool = allMCQs.filter(m => userSubjectComments[m.id] && userSubjectComments[m.id].trim());
     } else {
       pool = getActiveSubjectMCQs();
     }
