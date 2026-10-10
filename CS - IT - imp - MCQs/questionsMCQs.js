@@ -6949,11 +6949,10 @@ const OPERATING_SYSTEMS_MCQS = [
     ],
     "answerIndex": 0,
     "explanation": "The OS comprehensively manages processing, memory, files, I/O, security, and IPC while interfacing with hardware."
-  }
-,
+  },
   {
     "id": 376,
-    "category": "Memory Management & Paging",
+    "category": "youtube",
     "question": "When does a page fault occur?",
     "options": [
       "When a required page is not present in memory",
@@ -6966,7 +6965,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 377,
-    "category": "OS Concepts & Booting",
+    "category": "youtube",
     "question": "What is the meaning of booting in an OS?",
     "options": [
       "To start the computer",
@@ -6979,7 +6978,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 378,
-    "category": "Deadlock Management",
+    "category": "youtube",
     "question": "What is the purpose of the Banker’s Algorithm?",
     "options": [
       "To prevent deadlock",
@@ -6992,7 +6991,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 379,
-    "category": "OS Concepts & Architectures",
+    "category": "youtube",
     "question": "Which type of operating system is Linux?",
     "options": [
       "Open source",
@@ -7005,7 +7004,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 380,
-    "category": "Memory Management & Paging",
+    "category": "youtube",
     "question": "What happens when page size increases?",
     "options": [
       "Internal fragmentation increases",
@@ -7018,7 +7017,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 381,
-    "category": "Memory Management & Paging",
+    "category": "youtube",
     "question": "What is it called when a page number is not found in the TLB?",
     "options": [
       "TLB miss",
@@ -7031,7 +7030,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 382,
-    "category": "Software Classification",
+    "category": "youtube",
     "question": "Which of the following is not application software?",
     "options": [
       "Windows 7",
@@ -7044,7 +7043,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 383,
-    "category": "Deadlock Management",
+    "category": "youtube",
     "question": "Which are conditions for a deadlock?",
     "options": [
       "All of these (Mutual exclusion, hold and wait, circular wait, no preemption)",
@@ -7057,7 +7056,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 384,
-    "category": "OS Concepts & System Calls",
+    "category": "youtube",
     "question": "What is the interface to access OS services?",
     "options": [
       "System calls",
@@ -7070,7 +7069,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 385,
-    "category": "Process Management & Scheduling",
+    "category": "youtube",
     "question": "Where are processes waiting for execution placed?",
     "options": [
       "Ready queue",
@@ -7083,7 +7082,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 386,
-    "category": "Software Classification",
+    "category": "youtube",
     "question": "Which of the following is system software?",
     "options": [
       "All of these (Operating system, Compilers, Utilities)",
@@ -7096,7 +7095,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 387,
-    "category": "Process Management & Scheduling",
+    "category": "youtube",
     "question": "How does preemptive scheduling work?",
     "options": [
       "Processes execute based on time quanta",
@@ -7109,7 +7108,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 388,
-    "category": "Process Synchronization",
+    "category": "youtube",
     "question": "Which condition must be satisfied to solve the critical section problem?",
     "options": [
       "All of these (Mutual exclusion, progress, bounded waiting)",
@@ -7122,7 +7121,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 389,
-    "category": "File System Management",
+    "category": "youtube",
     "question": "Which is the best file allocation method?",
     "options": [
       "Indexed allocation",
@@ -7135,7 +7134,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 390,
-    "category": "Memory Management & Paging",
+    "category": "youtube",
     "question": "What is paging?",
     "options": [
       "A memory management scheme",
@@ -7148,7 +7147,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 391,
-    "category": "Process Management & Scheduling",
+    "category": "youtube",
     "question": "Which scheduling algorithm reduces process flow time?",
     "options": [
       "Shortest Job First (SJF)",
@@ -7161,7 +7160,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 392,
-    "category": "Process Management & Scheduling",
+    "category": "youtube",
     "question": "What is the concept of FCFS scheduling?",
     "options": [
       "The process that arrives first is executed first",
@@ -7174,7 +7173,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 393,
-    "category": "OS Concepts & Architectures",
+    "category": "youtube",
     "question": "Which of the following represents a main classification/type of Operating System?",
     "options": [
       "All of these (Batch OS, Time-Sharing OS, Real-Time OS, Distributed OS)",
@@ -7187,7 +7186,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 394,
-    "category": "Memory Management & Storage",
+    "category": "youtube",
     "question": "Where are files and programs stored permanently in a computer system?",
     "options": [
       "Secondary Storage (Hard Disk / SSD)",
@@ -7200,7 +7199,7 @@ const OPERATING_SYSTEMS_MCQS = [
   },
   {
     "id": 395,
-    "category": "Deadlock Management",
+    "category": "youtube",
     "question": "Which algorithm is used to avoid deadlock?",
     "options": [
       "Banker’s Algorithm",
@@ -7212,6 +7211,7 @@ const OPERATING_SYSTEMS_MCQS = [
     "explanation": "The Banker's Algorithm is a deadlock avoidance algorithm used by operating systems to safely allocate resources by analyzing max claims and current allocations."
   }
 ];
+
 
 const MICROPROCESSOR_MCQS = [
   {
