@@ -6950,6 +6950,267 @@ const OPERATING_SYSTEMS_MCQS = [
     "answerIndex": 0,
     "explanation": "The OS comprehensively manages processing, memory, files, I/O, security, and IPC while interfacing with hardware."
   }
+,
+  {
+    "id": 376,
+    "category": "Memory Management & Paging",
+    "question": "When does a page fault occur?",
+    "options": [
+      "When a required page is not present in memory",
+      "Page is present in memory",
+      "Deadlock occurs",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "A page fault occurs when a program attempts to access a block of memory (page) that is mapped in virtual address space but not currently loaded into physical main memory (RAM)."
+  },
+  {
+    "id": 377,
+    "category": "OS Concepts & Booting",
+    "question": "What is the meaning of booting in an OS?",
+    "options": [
+      "To start the computer",
+      "Install programs",
+      "Scan files",
+      "Turn off the computer"
+    ],
+    "answerIndex": 0,
+    "explanation": "Booting refers to the initial process of starting up a computer system and loading the operating system kernel into main memory."
+  },
+  {
+    "id": 378,
+    "category": "Deadlock Management",
+    "question": "What is the purpose of the Banker’s Algorithm?",
+    "options": [
+      "To prevent deadlock",
+      "Deadlock recovery",
+      "To solve deadlock",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "The Banker's Algorithm is a deadlock avoidance algorithm that tests for safety before allocating requested resources to ensure the system remains in a safe state."
+  },
+  {
+    "id": 379,
+    "category": "OS Concepts & Architectures",
+    "question": "Which type of operating system is Linux?",
+    "options": [
+      "Open source",
+      "Private",
+      "Windows-based",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Linux is an open-source operating system kernel, meaning its source code is freely available for anyone to view, modify, and distribute under open-source licenses."
+  },
+  {
+    "id": 380,
+    "category": "Memory Management & Paging",
+    "question": "What happens when page size increases?",
+    "options": [
+      "Internal fragmentation increases",
+      "Fragmentation decreases",
+      "Fragmentation remains the same",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "As page size increases, internal fragmentation increases because the average unused space in the last page allocated to a process is equal to half the page size."
+  },
+  {
+    "id": 381,
+    "category": "Memory Management & Paging",
+    "question": "What is it called when a page number is not found in the TLB?",
+    "options": [
+      "TLB miss",
+      "TLB hit",
+      "Page fault",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "A TLB miss occurs when the translation lookaside buffer does not contain the page table entry corresponding to the requested virtual page address."
+  },
+  {
+    "id": 382,
+    "category": "Software Classification",
+    "question": "Which of the following is not application software?",
+    "options": [
+      "Windows 7",
+      "MS Word",
+      "MS Excel",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Windows 7 is an Operating System (System Software), whereas MS Word and MS Excel are Application Software."
+  },
+  {
+    "id": 383,
+    "category": "Deadlock Management",
+    "question": "Which are conditions for a deadlock?",
+    "options": [
+      "All of these (Mutual exclusion, hold and wait, circular wait, no preemption)",
+      "Only mutual exclusion",
+      "Only hold and wait",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "A deadlock can occur if and only if all four Coffman conditions hold simultaneously: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait."
+  },
+  {
+    "id": 384,
+    "category": "OS Concepts & System Calls",
+    "question": "What is the interface to access OS services?",
+    "options": [
+      "System calls",
+      "Assembly instructions",
+      "Libraries",
+      "API"
+    ],
+    "answerIndex": 0,
+    "explanation": "System calls serve as the programmatic interface between user-level application programs and kernel-level services provided by the operating system."
+  },
+  {
+    "id": 385,
+    "category": "Process Management & Scheduling",
+    "question": "Where are processes waiting for execution placed?",
+    "options": [
+      "Ready queue",
+      "Job queue",
+      "Process queue",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Processes that are loaded in main memory and ready to be assigned to the CPU for execution are kept in the Ready Queue."
+  },
+  {
+    "id": 386,
+    "category": "Software Classification",
+    "question": "Which of the following is system software?",
+    "options": [
+      "All of these (Operating system, Compilers, Utilities)",
+      "Operating system",
+      "Compilers",
+      "Utilities"
+    ],
+    "answerIndex": 0,
+    "explanation": "System software consists of low-level software designed to manage computer hardware and application environments, including Operating Systems, Compilers, and Utilities."
+  },
+  {
+    "id": 387,
+    "category": "Process Management & Scheduling",
+    "question": "How does preemptive scheduling work?",
+    "options": [
+      "Processes execute based on time quanta",
+      "Processes complete fully without interruption",
+      "No scheduling is used",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Preemptive scheduling allocates CPU time to processes in time slots (time quanta) or based on priority, interrupting running processes when higher-priority processes arrive or time expires."
+  },
+  {
+    "id": 388,
+    "category": "Process Synchronization",
+    "question": "Which condition must be satisfied to solve the critical section problem?",
+    "options": [
+      "All of these (Mutual exclusion, progress, bounded waiting)",
+      "Only mutual exclusion",
+      "Only progress",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Any valid solution to the Critical Section Problem must satisfy three mandatory requirements: Mutual Exclusion, Progress, and Bounded Waiting."
+  },
+  {
+    "id": 389,
+    "category": "File System Management",
+    "question": "Which is the best file allocation method?",
+    "options": [
+      "Indexed allocation",
+      "Sequential allocation",
+      "Linked allocation",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Indexed allocation is widely considered the best file allocation method because it supports direct access without external fragmentation and avoids space overhead inside individual data blocks."
+  },
+  {
+    "id": 390,
+    "category": "Memory Management & Paging",
+    "question": "What is paging?",
+    "options": [
+      "A memory management scheme",
+      "A file system",
+      "A process scheduler",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Paging is a memory management scheme that allows physical address space of a process to be non-contiguous by dividing secondary storage and main memory into fixed-size blocks (pages and frames)."
+  },
+  {
+    "id": 391,
+    "category": "Process Management & Scheduling",
+    "question": "Which scheduling algorithm reduces process flow time?",
+    "options": [
+      "Shortest Job First (SJF)",
+      "FCFS",
+      "Round Robin",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "Shortest Job First (SJF) scheduling provides the optimal minimum average turnaround time and flow time for a given set of processes."
+  },
+  {
+    "id": 392,
+    "category": "Process Management & Scheduling",
+    "question": "What is the concept of FCFS scheduling?",
+    "options": [
+      "The process that arrives first is executed first",
+      "The shortest job first",
+      "Random execution",
+      "None of the above"
+    ],
+    "answerIndex": 0,
+    "explanation": "First-Come, First-Served (FCFS) scheduling operates on a First-In, First-Out (FIFO) queue order where the CPU is assigned to the process that arrives first."
+  },
+  {
+    "id": 393,
+    "category": "OS Concepts & Architectures",
+    "question": "Which of the following represents a main classification/type of Operating System?",
+    "options": [
+      "All of these (Batch OS, Time-Sharing OS, Real-Time OS, Distributed OS)",
+      "Batch OS",
+      "Time-Sharing OS",
+      "Real-Time OS"
+    ],
+    "answerIndex": 0,
+    "explanation": "Operating systems are categorized into types including Batch Operating Systems, Time-Sharing Operating Systems, Real-Time Operating Systems (RTOS), and Distributed Operating Systems."
+  },
+  {
+    "id": 394,
+    "category": "Memory Management & Storage",
+    "question": "Where are files and programs stored permanently in a computer system?",
+    "options": [
+      "Secondary Storage (Hard Disk / SSD)",
+      "RAM",
+      "Cache Memory",
+      "Registers"
+    ],
+    "answerIndex": 0,
+    "explanation": "Secondary storage devices such as Hard Disk Drives (HDD) and Solid State Drives (SSD) store files, applications, and system files non-volatiles and permanently."
+  },
+  {
+    "id": 395,
+    "category": "Deadlock Management",
+    "question": "Which algorithm is used to avoid deadlock?",
+    "options": [
+      "Banker’s Algorithm",
+      "FCFS",
+      "SJF",
+      "Round Robin"
+    ],
+    "answerIndex": 0,
+    "explanation": "The Banker's Algorithm is a deadlock avoidance algorithm used by operating systems to safely allocate resources by analyzing max claims and current allocations."
+  }
 ];
 
 const MICROPROCESSOR_MCQS = [

@@ -2121,6 +2121,30 @@ Windows Registry = System configuration
 Linux supports multiple shells
 BIOS/UEFI = Initializes hardware and starts boot process
 Primary goal of OS = Efficient resource management
+
+
+## High-Yield YouTube OS MCQs (Questions 197–216)
+
+197. When does a page fault occur? → When a required page is not present in main memory (RAM).
+198. What is the meaning of booting in an OS? → To start or restart the computer system and load the kernel into memory.
+199. What is the purpose of the Banker’s Algorithm? → To prevent and avoid deadlocks by ensuring safe states.
+200. Which type of operating system is Linux? → Open source operating system.
+201. What happens when page size increases? → Internal fragmentation increases.
+202. What is it called when a page number is not found in the TLB? → TLB miss.
+203. Which of the following is not application software? → Windows 7 (It is System Software / OS).
+204. Which are conditions for a deadlock? → All of these (Mutual exclusion, hold and wait, circular wait, no preemption).
+205. What is the interface to access OS services? → System calls.
+206. Where are processes waiting for execution placed? → Ready queue.
+207. Which of the following is system software? → All of these (Operating systems, Compilers, Utilities).
+208. How does preemptive scheduling work? → Processes execute based on time quanta / can be interrupted.
+209. Which condition must be satisfied to solve the critical section problem? → All of these (Mutual exclusion, progress, bounded waiting).
+210. Which is the best file allocation method? → Indexed allocation.
+211. What is paging? → A non-contiguous memory management scheme.
+212. Which scheduling algorithm reduces process flow time? → Shortest Job First (SJF).
+213. What is the concept of FCFS scheduling? → The process that arrives first is executed first.
+214. What are the main classifications/types of Operating Systems? → Batch OS, Time-Sharing OS, Real-Time OS (RTOS), and Distributed OS.
+215. Where are programs and files stored permanently in a computer system? → Secondary Storage (Hard Disk / SSD).
+216. Which algorithm is used to avoid deadlock? → Banker’s Algorithm.
 `
 };
 
