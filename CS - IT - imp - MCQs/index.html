@@ -45,14 +45,16 @@
     <!-- Mode Switcher (Practice vs Quiz Test) -->
     <div class="mode-switch-container">
       <button class="mode-btn active" id="btnModePractice" title="Practice Mode" aria-label="Practice Mode">
-        <svg class="mode-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="mode-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
           <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
         </svg>
         <span class="mode-text">Practice</span>
       </button>
       <button class="mode-btn" id="btnModeQuiz" title="Quiz & Mock Test" aria-label="Quiz & Mock Test">
-        <svg class="mode-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="mode-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
           <polyline points="14 2 14 8 20 8"></polyline>
           <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -166,7 +168,8 @@
             Mistakes
           </button>
 
-          <button class="filter-chip" id="filterComments" data-active="false" title="Notes / Comments Filter" aria-label="Notes / Comments Filter">
+          <button class="filter-chip" id="filterComments" data-active="false" title="Notes / Comments Filter"
+            aria-label="Notes / Comments Filter">
             <svg class="chip-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -772,6 +775,17 @@
       <!-- Reset & Data Management -->
       <div class="setting-group danger-zone">
         <label class="setting-label">Danger Zone</label>
+        <div class="danger-options-card">
+          <span class="danger-options-heading">Options</span>
+          <label class="danger-checkbox-item">
+            <input type="checkbox" id="dangerDeleteComments">
+            <span>Also delete comments / notes</span>
+          </label>
+          <label class="danger-checkbox-item">
+            <input type="checkbox" id="dangerDeleteQuizInfo">
+            <span>Also delete quiz info & history</span>
+          </label>
+        </div>
         <button class="danger-btn-outline" id="resetProgressBtn">
           <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -129,6 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const addFactsBtn = document.getElementById("addFactsBtn");
   const resetProgressBtn = document.getElementById("resetProgressBtn");
   const clearAllDataBtn = document.getElementById("clearAllDataBtn");
+  const dangerDeleteComments = document.getElementById("dangerDeleteComments");
+  const dangerDeleteQuizInfo = document.getElementById("dangerDeleteQuizInfo");
 
   // Active Filter Modes
   let searchFilter = "";
@@ -2415,27 +2417,90 @@ Instructions:
     });
   }
 
-  resetProgressBtn.addEventListener("click", () => {
-    if (confirm(`Reset progress for "${state.activeSubject}"?`)) {
-      state.covered[state.activeSubject] = [];
-      state.bookmarks[state.activeSubject] = [];
-      state.checkpoints[state.activeSubject] = null;
-      state.attempts[state.activeSubject] = {};
-      state.revealedAnswers[state.activeSubject] = [];
-      if (state.comments) state.comments[state.activeSubject] = {};
-      if (state.quizStats) state.quizStats[state.activeSubject] = { totalAttempted: 0, totalCorrect: 0 };
-      saveState();
-      initSubjectView();
-      closeSidebar();
-    }
-  });
+  if (resetProgressBtn) {
+    resetProgressBtn.addEventListener("click", () => {
+      const deleteComments = !!(dangerDeleteComments && dangerDeleteComments.checked);
+      const deleteQuiz = !!(dangerDeleteQuizInfo && dangerDeleteQuizInfo.checked);
 
-  clearAllDataBtn.addEventListener("click", () => {
-    if (confirm("Reset ALL application data and progress?")) {
-      localStorage.removeItem(STORAGE_KEY);
-      window.location.reload();
-    }
-  });
+      let msg = `Reset progress for "${state.activeSubject}"?`;
+      const extras = [];
+      if (deleteComments) extras.push("notes & comments");
+      if (deleteQuiz) extras.push("quiz history & stats");
+      if (extras.length > 0) {
+        msg += `\n(Also deleting: ${extras.join(", ")})`;
+      } else {
+        msg += `\n(Your notes/comments and quiz info will be preserved)`;
+      }
+
+      if (confirm(msg)) {
+        state.covered[state.activeSubject] = [];
+        state.bookmarks[state.activeSubject] = [];
+        state.checkpoints[state.activeSubject] = null;
+        state.attempts[state.activeSubject] = {};
+        state.revealedAnswers[state.activeSubject] = [];
+
+        if (deleteComments && state.comments) {
+          state.comments[state.activeSubject] = {};
+        }
+
+        if (deleteQuiz) {
+          if (state.quizStats) state.quizStats[state.activeSubject] = { totalAttempted: 0, totalCorrect: 0 };
+          state.quizHistory = (state.quizHistory || []).filter(h => h.subject !== state.activeSubject);
+          if (typeof renderQuizHistoryList === "function") renderQuizHistoryList();
+          if (typeof renderTopicPills === "function") renderTopicPills();
+        }
+
+        // Reset danger checkboxes back to safe unchecked default
+        if (dangerDeleteComments) dangerDeleteComments.checked = false;
+        if (dangerDeleteQuizInfo) dangerDeleteQuizInfo.checked = false;
+
+        saveState();
+        initSubjectView();
+        closeSidebar();
+      }
+    });
+  }
+
+  if (clearAllDataBtn) {
+    clearAllDataBtn.addEventListener("click", () => {
+      const deleteComments = !!(dangerDeleteComments && dangerDeleteComments.checked);
+      const deleteQuiz = !!(dangerDeleteQuizInfo && dangerDeleteQuizInfo.checked);
+
+      let msg = "Reset ALL application data and progress?";
+      const extras = [];
+      if (deleteComments) extras.push("all comments & notes");
+      if (deleteQuiz) extras.push("all quiz history & stats");
+      if (extras.length > 0) {
+        msg += `\n(Also deleting: ${extras.join(", ")})`;
+      } else {
+        msg += `\n(Your comments/notes and quiz history will be preserved)`;
+      }
+
+      if (confirm(msg)) {
+        if (deleteComments && deleteQuiz) {
+          localStorage.removeItem(STORAGE_KEY);
+          window.location.reload();
+        } else {
+          // Reset practice progress and custom subjects while preserving unchecked items
+          state.customSubjects = {};
+          state.bookmarks = {};
+          state.covered = {};
+          state.checkpoints = {};
+          state.attempts = {};
+          state.revealedAnswers = {};
+          if (deleteComments) {
+            state.comments = {};
+          }
+          if (deleteQuiz) {
+            state.quizStats = {};
+            state.quizHistory = [];
+          }
+          saveState();
+          window.location.reload();
+        }
+      }
+    });
+  }
 
   // --- BACK TO TOP FLOATING BUTTON LOGIC ---
   const backToTopBtn = document.getElementById("backToTopBtn");

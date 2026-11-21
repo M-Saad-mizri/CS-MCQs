@@ -1535,6 +1535,53 @@ input:checked+.slider:before {
   outline: none;
 }
 
+/* Danger Zone Options Card */
+.danger-options-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px dashed rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+}
+
+.danger-options-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #F87171;
+}
+
+body.light-mode .danger-options-heading {
+  color: #DC2626;
+}
+
+.danger-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.danger-checkbox-item:hover {
+  color: var(--text-main);
+}
+
+.danger-checkbox-item input[type="checkbox"] {
+  accent-color: #EF4444;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  margin: 0;
+}
+
 .danger-btn-outline {
   display: flex;
   align-items: center;
