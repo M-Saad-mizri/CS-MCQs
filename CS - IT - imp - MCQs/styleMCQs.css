@@ -1311,11 +1311,84 @@ body.light-mode .card-action-btn {
 }
 
 .sidebar-content {
-  padding: 20px;
+  flex: 1;
+  padding: 16px 20px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+}
+
+.sidebar-footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-sidebar);
+  flex-shrink: 0;
+}
+
+.sidebar-settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-settings-btn:hover {
+  background: rgba(99, 102, 241, 0.16);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.sidebar-settings-btn svg {
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-settings-btn:hover svg {
+  transform: rotate(45deg);
+}
+
+/* Settings & Preferences Modal Card */
+.settings-modal-card {
+  max-width: 560px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  text-align: left;
+  padding: 24px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settings-modal-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.settings-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .setting-group {
@@ -1793,6 +1866,12 @@ body.light-mode .danger-options-heading {
 
   .settings-sidebar {
     width: 290px;
+  }
+
+  .settings-modal-card {
+    padding: 18px 14px;
+    max-height: 92vh;
+    border-radius: 16px;
   }
 }
 

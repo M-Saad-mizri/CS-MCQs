@@ -755,11 +755,11 @@
     if (headerBadge) {
       headerBadge.style.cursor = "pointer";
       headerBadge.addEventListener("click", () => {
-        const sidebar = document.getElementById("settingsSidebar");
-        const overlay = document.getElementById("sidebarOverlay");
-        if (sidebar && overlay) {
-          sidebar.classList.add("active");
-          overlay.classList.add("active");
+        if (typeof window.openSettingsModal === "function") {
+          window.openSettingsModal();
+        } else {
+          const modal = document.getElementById("appSettingsModal");
+          if (modal) modal.style.display = "flex";
         }
         if (!isConnected) {
           connect();

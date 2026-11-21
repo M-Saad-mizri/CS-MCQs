@@ -41,6 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebarOverlay = document.getElementById("sidebarOverlay");
   const sidebarToggleBtn = document.getElementById("sidebarToggle");
   const sidebarCloseBtn = document.getElementById("sidebarClose");
+  const appSettingsModal = document.getElementById("appSettingsModal");
+  const openSettingsModalBtn = document.getElementById("openSettingsModalBtn");
+  const settingsModalClose = document.getElementById("settingsModalClose");
   const themeToggleTopBtn = document.getElementById("themeToggleTop");
   const darkModeToggle = document.getElementById("darkModeToggle");
   const globalShowAnswersToggle = document.getElementById("globalShowAnswersToggle");
@@ -331,6 +334,22 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.remove("active");
     sidebarOverlay.classList.remove("active");
   }
+
+  function openSettingsModal() {
+    closeSidebar();
+    if (appSettingsModal) {
+      appSettingsModal.style.display = "flex";
+    }
+  }
+
+  function closeSettingsModal() {
+    if (appSettingsModal) {
+      appSettingsModal.style.display = "none";
+    }
+  }
+
+  window.openSettingsModal = openSettingsModal;
+  window.closeSettingsModal = closeSettingsModal;
 
   // --- TOPIC & CATEGORY PILLS ---
   function renderTopicPills() {
@@ -1944,6 +1963,21 @@ document.addEventListener("DOMContentLoaded", () => {
   sidebarOverlay.addEventListener("click", closeSidebar);
   themeToggleTopBtn.addEventListener("click", toggleTheme);
 
+  // Settings Modal Handlers
+  if (openSettingsModalBtn) {
+    openSettingsModalBtn.addEventListener("click", openSettingsModal);
+  }
+  if (settingsModalClose) {
+    settingsModalClose.addEventListener("click", closeSettingsModal);
+  }
+  if (appSettingsModal) {
+    appSettingsModal.addEventListener("click", (e) => {
+      if (e.target === appSettingsModal) {
+        closeSettingsModal();
+      }
+    });
+  }
+
   if (darkModeToggle) {
     darkModeToggle.addEventListener("change", () => {
       state.theme = darkModeToggle.checked ? "dark" : "light";
@@ -2457,6 +2491,7 @@ Instructions:
         saveState();
         initSubjectView();
         closeSidebar();
+        closeSettingsModal();
       }
     });
   }

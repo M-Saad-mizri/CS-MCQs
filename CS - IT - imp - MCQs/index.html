@@ -616,193 +616,226 @@
   <!-- Floating Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
 
+  <!-- Settings & Data Management Modal -->
+  <div class="modal-overlay" id="appSettingsModal" style="display: none;">
+    <div class="modal-card modal-large settings-modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="settings-modal-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <h2 style="font-size: 1.25rem; margin: 0;">Settings & Preferences</h2>
+        </div>
+        <button class="close-btn" id="settingsModalClose">&times;</button>
+      </div>
+
+      <div class="modal-body settings-modal-body">
+        <!-- Global Controls -->
+        <div class="setting-group">
+          <label class="setting-label">Global Controls</label>
+          <div class="control-card">
+            <div class="control-row">
+              <div class="control-info">
+                <span class="control-title">Show All Answers</span>
+                <span class="control-desc">Reveal all answers and explanations</span>
+              </div>
+              <label class="switch-toggle">
+                <input type="checkbox" id="globalShowAnswersToggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Drive Cloud Synchronization Panel -->
+        <div class="setting-group collapsible-group">
+          <button class="setting-label-accordion" id="toggleCloudSyncAccordion" type="button" aria-expanded="false">
+            <span class="accordion-title">☁ Cloud Synchronization</span>
+            <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="collapsible-content" id="cloudSyncAccordionContent" style="display: none;">
+            <div class="cloud-sync-panel">
+              <div class="cloud-sync-status-row">
+                <span class="sidebar-sync-badge sync-disconnected" id="cloudSyncSidebarStatusBadge">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                  </svg>
+                  <span>Not connected</span>
+                </span>
+              </div>
+              <p class="cloud-sync-desc" id="cloudSyncSidebarInfoMsg">
+                Connect Google Drive to automatically sync your quiz progress across devices.
+              </p>
+
+              <!-- Action Buttons when Disconnected -->
+              <button class="primary-btn gdrive-connect-btn" id="btnConnectGDrive">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                </svg>
+                <span>Connect Google Drive</span>
+              </button>
+
+              <!-- Action Buttons when Connected (Hidden by default) -->
+              <div class="gdrive-connected-controls" id="gdriveConnectedControls" style="display: none;">
+                <button class="secondary-btn sync-action-btn" id="btnSyncNowGDrive">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                  </svg>
+                  <span>Sync Now</span>
+                </button>
+                <button class="secondary-btn sync-action-btn" id="btnRestoreGDrive">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  <span>Restore Cloud</span>
+                </button>
+                <button class="danger-btn-subtle" id="btnDisconnectGDrive" title="Disconnect Google Drive sync">
+                  Disconnect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backup & Transfer Progress (Collapsible - Closed by default) -->
+        <div class="setting-group collapsible-group">
+          <button class="setting-label-accordion" id="toggleBackupAccordion" type="button" aria-expanded="false">
+            <span class="accordion-title">Backup & Local Transfer</span>
+            <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="collapsible-content" id="backupAccordionContent" style="display: none;">
+            <div class="add-facts-panel">
+              <p class="add-desc">Transfer your complete history (covered, bookmarked, checkpoints, attempts, accuracy,
+                custom MCQs) to another device via JSON file.</p>
+              <div class="backup-btn-group flex w-full flex-row gap-4">
+                <button class="card-action-btn flex-1" id="exportProgressBtn"
+                  style="display: inline-flex; justify-content: center; align-items: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span>Export</span>
+                </button>
+
+                <button class="card-action-btn flex-1" id="importProgressBtn"
+                  style="display: inline-flex; justify-content: center; align-items: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Import</span>
+                </button>
+
+                <input type="file" id="importFileInput" accept=".json,.txt" style="display: none;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Custom Facts / Subject Panel (Hidden) -->
+        <div class="setting-group" style="display: none;">
+          <input type="text" id="newSubjectName">
+          <textarea id="rawFactsPaste"></textarea>
+          <button id="addFactsBtn"></button>
+        </div>
+
+        <!-- Reset & Data Management -->
+        <div class="setting-group danger-zone">
+          <label class="setting-label">Danger Zone</label>
+          <div class="danger-options-card">
+            <span class="danger-options-heading">Options</span>
+            <label class="danger-checkbox-item">
+              <input type="checkbox" id="dangerDeleteComments">
+              <span>Also delete comments / notes</span>
+            </label>
+            <label class="danger-checkbox-item">
+              <input type="checkbox" id="dangerDeleteQuizInfo">
+              <span>Also delete quiz info & history</span>
+            </label>
+          </div>
+          <button class="danger-btn-outline" id="resetProgressBtn">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+            Reset Subject Progress
+          </button>
+          <button class="danger-btn-outline" id="clearAllDataBtn" style="margin-top: 10px;">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Reset All Custom Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Sidebar Overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- Responsive Settings Sidebar -->
+  <!-- Responsive Subjects Sidebar -->
   <aside class="settings-sidebar" id="settingsSidebar">
     <div class="sidebar-header">
-      <h3>Revision Control</h3><a href="../index.html">1 Liners</a>
-      <button class="close-btn" id="sidebarClose" aria-label="Close sidebar">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
         </svg>
-      </button>
+        <h3 style="margin: 0;">Subjects</h3>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="../index.html" class="one-liner-btn" title="Switch to One-Liners">1 Liners</a>
+        <button class="close-btn" id="sidebarClose" aria-label="Close sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <div class="sidebar-content">
       <!-- Subjects Management -->
-      <div class="setting-group">
+      <div class="setting-group" style="gap: 8px;">
         <label class="setting-label">Select Subject</label>
         <div class="subject-list" id="sidebarSubjectList">
           <!-- Dynamically populated subjects -->
         </div>
       </div>
+    </div>
 
-      <!-- Quick Toggle Show/Hide All -->
-      <div class="setting-group">
-        <label class="setting-label">Global Controls</label>
-        <div class="control-card">
-          <div class="control-row">
-            <div class="control-info">
-              <span class="control-title">Show All Answers</span>
-              <span class="control-desc">Reveal all answers and explanations</span>
-            </div>
-            <label class="switch-toggle">
-              <input type="checkbox" id="globalShowAnswersToggle">
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <!-- Google Drive Cloud Synchronization Panel (Collapsible - Closed by default) -->
-      <div class="setting-group collapsible-group">
-        <button class="setting-label-accordion" id="toggleCloudSyncAccordion" type="button" aria-expanded="false">
-          <span class="accordion-title">☁ Cloud Synchronization</span>
-          <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
-        <div class="collapsible-content" id="cloudSyncAccordionContent" style="display: none;">
-          <div class="cloud-sync-panel">
-            <div class="cloud-sync-status-row">
-              <span class="sidebar-sync-badge sync-disconnected" id="cloudSyncSidebarStatusBadge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-                </svg>
-                <span>Not connected</span>
-              </span>
-            </div>
-            <p class="cloud-sync-desc" id="cloudSyncSidebarInfoMsg">
-              Connect Google Drive to automatically sync your quiz progress across devices.
-            </p>
-
-            <!-- Action Buttons when Disconnected -->
-            <button class="primary-btn gdrive-connect-btn" id="btnConnectGDrive">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-              </svg>
-              <span>Connect Google Drive</span>
-            </button>
-
-            <!-- Action Buttons when Connected (Hidden by default) -->
-            <div class="gdrive-connected-controls" id="gdriveConnectedControls" style="display: none;">
-              <button class="secondary-btn sync-action-btn" id="btnSyncNowGDrive">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
-                </svg>
-                <span>Sync Now</span>
-              </button>
-              <button class="secondary-btn sync-action-btn" id="btnRestoreGDrive">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                <span>Restore Cloud</span>
-              </button>
-              <button class="danger-btn-subtle" id="btnDisconnectGDrive" title="Disconnect Google Drive sync">
-                Disconnect
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Backup & Transfer Progress (Collapsible - Closed by default) -->
-      <div class="setting-group collapsible-group">
-        <button class="setting-label-accordion" id="toggleBackupAccordion" type="button" aria-expanded="false">
-          <span class="accordion-title">Backup & Local Transfer</span>
-          <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
-        <div class="collapsible-content" id="backupAccordionContent" style="display: none;">
-          <div class="add-facts-panel">
-            <p class="add-desc">Transfer your complete history (covered, bookmarked, checkpoints, attempts, accuracy,
-              custom MCQs) to another device via JSON file.</p>
-            <div class="backup-btn-group flex w-full flex-row gap-4">
-              <button class="card-action-btn flex-1" id="exportProgressBtn"
-                style="display: inline-flex; justify-content: center; align-items: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="17 8 12 3 7 8"></polyline>
-                  <line x1="12" y1="3" x2="12" y2="15"></line>
-                </svg>
-                <span>Export</span>
-              </button>
-
-              <button class="card-action-btn flex-1" id="importProgressBtn"
-                style="display: inline-flex; justify-content: center; align-items: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                <span>Import</span>
-              </button>
-
-              <input type="file" id="importFileInput" accept=".json,.txt" style="display: none;">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add Custom Facts / Subject Panel (Hidden for now) -->
-      <div class="setting-group" style="display: none;">
-        <label class="setting-label">Import Custom MCQs</label>
-        <div class="add-facts-panel">
-          <p class="add-desc">Paste new MCQs or revision facts here. Duplicates will be skipped automatically!</p>
-          <input type="text" id="newSubjectName" placeholder="Subject (e.g. Operating Systems)" class="text-input">
-          <textarea id="rawFactsPaste"
-            placeholder="1. Which OSI layer handles framing?&#10;a) Physical Layer&#10;b) Data Link Layer ✅&#10;c) Network Layer&#10;d) Transport Layer"
-            rows="6" class="textarea-input"></textarea>
-          <button class="primary-btn" id="addFactsBtn">Import & Append</button>
-        </div>
-      </div>
-
-      <!-- Reset & Data Management -->
-      <div class="setting-group danger-zone">
-        <label class="setting-label">Danger Zone</label>
-        <div class="danger-options-card">
-          <span class="danger-options-heading">Options</span>
-          <label class="danger-checkbox-item">
-            <input type="checkbox" id="dangerDeleteComments">
-            <span>Also delete comments / notes</span>
-          </label>
-          <label class="danger-checkbox-item">
-            <input type="checkbox" id="dangerDeleteQuizInfo">
-            <span>Also delete quiz info & history</span>
-          </label>
-        </div>
-        <button class="danger-btn-outline" id="resetProgressBtn">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-            <path d="M3 3v5h5"></path>
-          </svg>
-          Reset Subject Progress
-        </button>
-        <button class="danger-btn-outline" id="clearAllDataBtn" style="margin-top: 10px;">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-          </svg>
-          Reset All Custom Data
-        </button>
-      </div>
+    <div class="sidebar-footer">
+      <button class="sidebar-settings-btn" id="openSettingsModalBtn" title="Open Settings & Data Management">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        <span>Settings & Backup</span>
+      </button>
     </div>
   </aside>
 
