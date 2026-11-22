@@ -1207,6 +1207,13 @@ body.light-mode .card-action-btn {
   flex: 1;
 }
 
+/* Prevent Background Scrolling When Sidebar or Modal is Open */
+html.sidebar-open,
+body.sidebar-open {
+  overflow: hidden !important;
+  height: 100% !important;
+}
+
 /* Sidebar Drawer Styling (Opens from Left) */
 .settings-sidebar {
   position: fixed;
@@ -1215,6 +1222,7 @@ body.light-mode .card-action-btn {
   right: auto;
   width: 320px;
   height: 100vh;
+  height: 100dvh;
   background-color: var(--bg-sidebar);
   border-right: 1px solid var(--border-color);
   border-left: none;
@@ -1223,6 +1231,7 @@ body.light-mode .card-action-btn {
   flex-direction: column;
   transition: left 0.3s ease;
   box-shadow: var(--shadow-lg);
+  overscroll-behavior: contain;
 }
 
 .settings-sidebar.active {
@@ -1242,6 +1251,7 @@ body.light-mode .card-action-btn {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  touch-action: none;
 }
 
 .sidebar-overlay.active {
@@ -1265,23 +1275,42 @@ body.light-mode .card-action-btn {
   -webkit-text-fill-color: transparent;
 }
 
-.one-liner-btn,
-.sidebar-header a,
-.sidebar-header span a {
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 12px;
-  background: rgba(99, 102, 241, 0.15);
+.sidebar-settings-icon-btn {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
   color: var(--accent-color);
-  text-decoration: none;
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  margin-left: 6px;
+  transition: all 0.25s ease;
+  padding: 0;
 }
 
-.one-liner-btn:hover,
-.sidebar-header a:hover,
-.sidebar-header span a:hover {
+.sidebar-settings-icon-btn:hover {
+  background: var(--accent-color);
+  color: #ffffff;
+  transform: rotate(35deg);
+  border-color: var(--accent-color);
+}
+
+.sidebar-settings-icon-btn svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+body.light-mode .sidebar-settings-icon-btn {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.2);
+  color: var(--accent-color);
+}
+
+body.light-mode .sidebar-settings-icon-btn:hover {
   background: var(--accent-color);
   color: #ffffff;
 }

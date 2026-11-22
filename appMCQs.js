@@ -342,23 +342,31 @@ document.addEventListener("DOMContentLoaded", () => {
   function openSidebar() {
     sidebar.classList.add("active");
     sidebarOverlay.classList.add("active");
+    document.body.classList.add("sidebar-open");
+    document.documentElement.classList.add("sidebar-open");
   }
 
   function closeSidebar() {
     sidebar.classList.remove("active");
     sidebarOverlay.classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+    document.documentElement.classList.remove("sidebar-open");
   }
 
   function openSettingsModal() {
     closeSidebar();
     if (appSettingsModal) {
       appSettingsModal.style.display = "flex";
+      document.body.classList.add("sidebar-open");
+      document.documentElement.classList.add("sidebar-open");
     }
   }
 
   function closeSettingsModal() {
     if (appSettingsModal) {
       appSettingsModal.style.display = "none";
+      document.body.classList.remove("sidebar-open");
+      document.documentElement.classList.remove("sidebar-open");
     }
   }
 
