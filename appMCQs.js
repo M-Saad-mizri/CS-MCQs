@@ -299,6 +299,19 @@ document.addEventListener("DOMContentLoaded", () => {
     saveState();
   }
 
+  function updateDocumentTitle() {
+    if (!state.activeSubject) {
+      document.title = "QuickFacts - CS MCQs";
+      return;
+    }
+    const topicSuffix = (state.selectedTopic && state.selectedTopic !== "ALL") ? ` (${state.selectedTopic})` : "";
+    if (state.activeMode === "quiz") {
+      document.title = `${state.activeSubject}${topicSuffix} [Quiz] - QuickFacts CS MCQs`;
+    } else {
+      document.title = `${state.activeSubject}${topicSuffix} - QuickFacts CS MCQs`;
+    }
+  }
+
   function switchMode(mode, isInitial = false) {
     state.activeMode = mode;
     saveState(isInitial);
@@ -322,6 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderTopicPills();
       initQuizSetup();
     }
+    updateDocumentTitle();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -1882,6 +1896,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentFilter = "all";
     updateFilterChipUI();
     renderFactsList();
+    updateDocumentTitle();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
@@ -1889,6 +1904,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentFilter = currentFilter === "bookmarks" ? "all" : "bookmarks";
     updateFilterChipUI();
     renderFactsList();
+    updateDocumentTitle();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
@@ -1896,6 +1912,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentFilter = currentFilter === "uncovered" ? "all" : "uncovered";
     updateFilterChipUI();
     renderFactsList();
+    updateDocumentTitle();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
@@ -1903,6 +1920,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentFilter = currentFilter === "mistakes" ? "all" : "mistakes";
     updateFilterChipUI();
     renderFactsList();
+    updateDocumentTitle();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
@@ -1927,6 +1945,7 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.value = "";
     searchClear.style.display = "none";
     renderFactsList();
+    updateDocumentTitle();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
@@ -2584,6 +2603,7 @@ Instructions:
     } else {
       initQuizSetup();
     }
+    updateDocumentTitle();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -2775,7 +2795,7 @@ Instructions:
         <div class="print-header-top">
           <div>
             <h1 class="print-title">${titleSubject}</h1>
-            <div class="print-subtitle">QuickFacts CS & IT MCQs Practice Worksheet • ${pool.length} Questions</div>
+            <div class="print-subtitle">QuickFacts CS MCQs Practice Worksheet • ${pool.length} Questions</div>
           </div>
           <div style="text-align: right; font-size: 0.85rem; font-weight: 600;">Date: ${todayStr}</div>
         </div>

@@ -1,7 +1,7 @@
 {
-  "name": "QuickFacts Revision Portal",
-  "short_name": "QuickFacts",
-  "description": "Mobile-First Revision Portal for CS & IT Core Subjects & MCQs",
+  "name": "QuickFacts - CS MCQs",
+  "short_name": "CS MCQs",
+  "description": "Mobile-First Practice & Quiz Portal for CS MCQs",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

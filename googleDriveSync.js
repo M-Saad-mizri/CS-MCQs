@@ -1,5 +1,5 @@
 /**
- * Google Drive Cloud Sync Module for QuickFacts CS & IT MCQ Quiz
+ * Google Drive Cloud Sync Module for QuickFacts CS MCQs
  * Uses Google Identity Services (GIS) and Google Drive API appDataFolder.
  */
 (function (window) {
