@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuickFacts - Mobile-First Revision Portal</title>
+  <title>QuickFacts - CS & IT MCQs Practice & Quiz Portal</title>
 
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,10 @@
     rel="stylesheet">
 
   <!-- CSS Styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styleMCQs.css">
+
+  <!-- Google Identity Services Library -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <!-- Web App Manifest & PWA Installation Support -->
   <link rel="manifest" href="manifest.json">
@@ -39,13 +42,46 @@
         <line x1="4" y1="18" x2="20" y2="18"></line>
       </svg>
     </button>
-    <div class="logo">
-      <span class="logo-accent">Quick</span>Facts
+    <!-- Mode Switcher (Practice vs Quiz Test) -->
+    <div class="mode-switch-container">
+      <button class="mode-btn active" id="btnModePractice" title="Practice Mode" aria-label="Practice Mode">
+        <svg class="mode-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span class="mode-text">Practice</span>
+      </button>
+      <button class="mode-btn" id="btnModeQuiz" title="Quiz & Mock Test" aria-label="Quiz & Mock Test">
+        <svg class="mode-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span class="mode-text">Quiz</span>
+      </button>
     </div>
+
     <div class="header-actions">
+      <!-- Cloud Sync Header Status Badge -->
+      <div class="cloud-sync-badge sync-disconnected" id="cloudSyncHeaderBadge" title="Google Drive Cloud Sync Status">
+        <span class="cloud-sync-icon" id="cloudSyncHeaderIcon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+          </svg>
+        </span>
+        <span class="cloud-sync-text" id="cloudSyncHeaderText">Not connected</span>
+      </div>
+
       <!-- PWA Install Application Button (shows when Chrome install prompt is ready) -->
-      <button class="icon-btn pwa-install-btn" id="pwaInstallBtn" aria-label="Install App" title="Install Site as Application" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="icon-btn pwa-install-btn" id="pwaInstallBtn" aria-label="Install App"
+        title="Install Site as Application" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
           <line x1="8" y1="21" x2="16" y2="21"></line>
           <line x1="12" y1="17" x2="12" y2="21"></line>
@@ -84,8 +120,16 @@
           <div class="progress-bar-fill" id="progressBarFill" style="width: 0%"></div>
         </div>
         <div class="stats-counter">
-          <span id="progressCount">0 / 0 facts covered</span>
+          <span id="progressCount">0 / 220 MCQs covered</span>
+          <span class="accuracy-stat" id="accuracyStat">Accuracy: 0%</span>
           <span class="bookmark-stat" id="bookmarkCount">0 bookmarked</span>
+        </div>
+      </div>
+
+      <!-- Horizontal Topics Filter Bar -->
+      <div class="topics-bar-container">
+        <div class="topics-scroll" id="topicsScroll">
+          <!-- Dynamically populated topic pills -->
         </div>
       </div>
 
@@ -97,11 +141,16 @@
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" id="searchInput" placeholder="Search facts..." aria-label="Search facts">
+          <input type="text" id="searchInput" placeholder="Search MCQs by question or protocol..."
+            aria-label="Search MCQs">
           <button class="clear-btn" id="searchClear" style="display: none;">&times;</button>
         </div>
 
         <div class="filter-toggles">
+          <button class="filter-chip" id="filterAll" data-active="true">
+            All
+          </button>
+
           <button class="filter-chip" id="filterBookmarks" data-active="false" title="Bookmarks" aria-label="Bookmarks">
             <svg class="chip-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -114,6 +163,29 @@
           <button class="filter-chip" id="filterUncovered" data-active="false">
             Uncovered
           </button>
+
+          <button class="filter-chip chip-mistakes" id="filterMistakes" data-active="false">
+            Mistakes
+          </button>
+
+          <button class="filter-chip" id="filterComments" data-active="false" title="Notes / Comments Filter"
+            aria-label="Notes / Comments Filter">
+            <svg class="chip-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </button>
+
+          <button class="filter-chip chip-print" id="btnPrintWorksheet" title="Generate PDF Practice Worksheet"
+            aria-label="Generate PDF Practice Worksheet">
+            <svg class="chip-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            pdf
+          </button>
         </div>
       </div>
 
@@ -125,29 +197,615 @@
             <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          <span>Last pinned at fact <strong id="checkpointNumber">#0</strong></span>
+          <span>Last pinned at MCQ <strong id="checkpointNumber">#0</strong></span>
         </div>
         <button class="jump-btn" id="jumpToCheckpoint">Resume</button>
       </div>
     </section>
 
-    <!-- Facts List Area -->
+    <!-- Practice Mode Container: MCQs List -->
     <section class="facts-list" id="factsList">
       <!-- Loading state / fallback -->
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Loading your facts portal...</p>
+        <p>Wait a while, Loading MCQ...</p>
+      </div>
+    </section>
+
+    <!-- Quiz Test Mode Container -->
+    <section class="quiz-container" id="quizContainer" style="display: none;">
+      <!-- Setup Panel -->
+      <div class="quiz-setup-card" id="quizSetupCard">
+        <h2>Quiz & Mock Exam</h2>
+
+        <!-- Quiz Mode Selection Tabs -->
+        <div class="quiz-type-tabs">
+          <button class="quiz-type-tab active" id="tabSingleSubjectQuiz">
+            Single Quiz
+          </button>
+          <button class="quiz-type-tab" id="tabMultiSubjectMock">
+            Custom Exam
+          </button>
+        </div>
+
+        <!-- Single Subject Panel -->
+        <div id="singleSubjectPanel">
+          <div class="form-group">
+            <label>Select Category</label>
+            <select id="quizTopicSelect" class="form-select">
+              <!-- Dynamically populated topics -->
+            </select>
+          </div>
+
+          <div id="quizOptionsWrapper" style="display: none; flex-direction: column; gap: 18px;">
+            <div class="form-group">
+              <label>Question Pool</label>
+              <div class="pool-selector" id="quizPoolSelector">
+                <!-- Dynamically populated pool chips -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Number of Questions</label>
+              <div class="count-selector" id="quizCountSelector">
+                <!-- Dynamically populated count chips -->
+              </div>
+            </div>
+
+            <button class="primary-btn start-quiz-btn" id="startQuizBtn">
+              Start Quiz Test
+            </button>
+          </div>
+        </div>
+
+        <!-- Multi-Subject Mock Exam Panel -->
+        <div id="multiSubjectMockPanel" style="display: none; flex-direction: column; gap: 20px;">
+          <!-- Presets -->
+          <div class="form-group">
+            <label>One-Click Exam Presets</label>
+            <div class="mock-preset-grid">
+              <button class="preset-card" id="presetFullMockBtn">
+                <div class="preset-header">
+                  <span class="preset-title">100-Mark Full Mock</span>
+                  <span class="preset-badge">90 Mins</span>
+                </div>
+                <p class="preset-desc">20 questions from each subject, fully shuffled (100 total MCQs).</p>
+              </button>
+              <button class="preset-card" id="presetMiniMockBtn">
+                <div class="preset-header">
+                  <span class="preset-title">50-Mark Mini Paper</span>
+                  <span class="preset-badge">45 Mins</span>
+                </div>
+                <p class="preset-desc">10 questions from each subject evenly distributed (50 total MCQs).</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Custom Subject Distribution Grid -->
+          <div class="form-group">
+            <div class="dist-header">
+              <label>Customization</label>
+              <span class="total-mcq-counter" id="mockTotalCounter">Total: 0 MCQs</span>
+            </div>
+            <div class="subject-dist-container" id="subjectDistContainer">
+              <!-- Dynamically populated subject rows -->
+            </div>
+          </div>
+
+          <!-- Timer Configuration -->
+          <div class="form-group">
+            <label>Timer Mode & Duration</label>
+            <div class="timer-config-row">
+              <div class="timer-chip-selector" id="mockTimerSelector">
+                <button class="timer-chip" data-seconds="900">15 Mins</button>
+                <button class="timer-chip" data-seconds="1800">30 Mins</button>
+                <button class="timer-chip active" data-seconds="2700">45 Mins</button>
+                <button class="timer-chip" data-seconds="3600">60 Mins</button>
+                <button class="timer-chip" data-seconds="5400">90 Mins</button>
+                <button class="timer-chip" data-seconds="7200">120 Mins</button>
+                <button class="timer-chip" data-seconds="0">Stopwatch</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="primary-btn start-quiz-btn" id="startMockExamBtn">
+            Start Exam
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Attempt History Card -->
+      <div class="quiz-history-card" id="quizHistoryCard">
+        <div class="quiz-history-header">
+          <div class="quiz-history-title-group">
+            <h3>Attempt History</h3>
+            <button class="icon-btn-subtle toggle-history-vis-btn" id="toggleQuizHistoryVisBtn" title="Hide History"
+              aria-label="Toggle Attempt History Visibility">
+              <svg class="eye-open-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="eye-closed-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="display: none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.52 13.52 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+          <button class="danger-btn-outline btn-sm" id="clearQuizHistoryBtn">Clear History</button>
+        </div>
+        <div class="quiz-history-list" id="quizHistoryList">
+          <!-- Dynamically populated history entries -->
+        </div>
+      </div>
+
+      <!-- Active Quiz Card -->
+      <div class="quiz-active-card" id="quizActiveCard" style="display: none;">
+        <div class="quiz-top-meta">
+          <div class="quiz-progress-info">
+            <span id="quizQuestionCounter">Question 1 of 10</span>
+            <span class="quiz-timer" id="quizTimer">Time: 00:00</span>
+          </div>
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quizProgressFill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="quiz-question-body">
+          <div class="quiz-badge-group">
+            <span class="quiz-subject-badge" id="quizQuestionSubject" style="display: none;">DSD</span>
+            <span class="quiz-topic-badge" id="quizQuestionCategory">OSI Model</span>
+          </div>
+          <h3 class="quiz-question-statement" id="quizQuestionStatement">Question Statement</h3>
+          <div class="quiz-options-grid" id="quizOptionsGrid">
+            <!-- Dynamic A, B, C, D option buttons -->
+          </div>
+          <div class="quiz-explanation-box" id="quizExplanationBox" style="display: none;">
+            <!-- Explanation content -->
+          </div>
+        </div>
+
+        <div class="quiz-nav-footer">
+          <button class="secondary-btn quiz-nav-icon-btn" id="quizPrevBtn" disabled title="Previous Question"
+            aria-label="Previous Question">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="secondary-btn quiz-nav-icon-btn" id="quizCheckBtn" disabled title="Check Answer"
+            aria-label="Check Answer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
+          <button class="primary-btn quiz-nav-icon-btn" id="quizNextBtn" title="Next Question"
+            aria-label="Next Question">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- Quiz Results Modal -->
+  <div class="modal-overlay" id="quizResultsModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Quiz Test Complete!</h2>
+        <button class="close-btn" id="quizModalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="score-circle">
+          <span class="score-number" id="modalScorePercent">0%</span>
+          <span class="score-label" id="modalScoreFraction">0 / 10 Correct</span>
+        </div>
+        <div class="result-stats-grid">
+          <div class="res-stat-item green">
+            <span class="res-val" id="modalCorrectCount">0</span>
+            <span class="res-lbl">Correct</span>
+          </div>
+          <div class="res-stat-item red">
+            <span class="res-val" id="modalWrongCount">0</span>
+            <span class="res-lbl">Wrong</span>
+          </div>
+          <div class="res-stat-item blue">
+            <span class="res-val" id="modalTimeSpent">00:00</span>
+            <span class="res-lbl">Time Taken</span>
+          </div>
+        </div>
+        <div id="modalSubjectBreakdownBox" style="display: none;" class="subject-breakdown-card">
+          <span class="breakdown-title">Subject Accuracy Breakdown</span>
+          <div class="breakdown-grid" id="modalSubjectBreakdownGrid"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" id="modalReviewMistakesBtn">Review Details</button>
+        <button class="primary-btn" id="modalRetakeQuizBtn">Retake Quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz History Detail Breakdown Modal -->
+  <div class="modal-overlay" id="quizHistoryDetailModal" style="display: none;">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h2 id="historyDetailTitle">Quiz Attempt Details</h2>
+        <button class="close-btn" id="historyDetailModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="historyDetailModalBody">
+        <!-- Dynamic Breakdown -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Printable PDF Worksheet Modal -->
+  <div class="modal-overlay" id="printWorksheetModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>🖨️ PDF Practice Sheet Generator</h2>
+        <button class="close-btn" id="printModalClose">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: left;">
+        <p class="modal-desc" style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.9rem;">
+          Generate a formatted, ink-friendly printable worksheet with an Answer Key & Explanations at the bottom.
+        </p>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Question Source</label>
+          <select id="printSourceSelect" class="form-select">
+            <option value="subject" selected>Current Subject (Active MCQs)</option>
+            <option value="topic" id="printOptionTopic">Active Topic Only</option>
+            <option value="bookmarks">Bookmarked MCQs Only</option>
+            <option value="mistakes">Mistakes / Missed Questions Only</option>
+            <option value="uncovered">Uncovered Questions Only</option>
+            <option value="comments">Has Personal Notes / Comments Only</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Number of Questions</label>
+          <select id="printCountSelect" class="form-select">
+            <option value="25" selected>25 MCQs (Compact 2-Page Sheet)</option>
+            <option value="50">50 MCQs (Standard Practice Sheet)</option>
+            <option value="100">100 MCQs (Full Exam Sheet)</option>
+            <option value="ALL">All Available MCQs</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Worksheet Options</label>
+          <div class="control-card" style="display: flex; flex-direction: column; gap: 10px; padding: 12px 14px;">
+            <label
+              style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 500;">
+              <input type="checkbox" id="printIncludeHeader" checked style="accent-color: var(--accent-color);">
+              <span>Include Student Name, Date & Score Header</span>
+            </label>
+            <label
+              style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 500;">
+              <input type="checkbox" id="printIncludeAnswerKey" checked style="accent-color: var(--accent-color);">
+              <span>Include Answer Key Table at Bottom</span>
+            </label>
+            <label
+              style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 500;">
+              <input type="checkbox" id="printIncludeExplanations" checked style="accent-color: var(--accent-color);">
+              <span>Include Explanations in Answer Key</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" id="printModalCancelBtn">Cancel</button>
+        <button class="primary-btn" id="printConfirmBtn">🖨️ Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Printable Worksheet Container -->
+  <div id="printableWorksheetArea" class="printable-area"></div>
+
+  <!-- Backup Import Selection Modal -->
+  <div class="modal-overlay" id="importBackupModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Import Backup Data</h2>
+        <button class="close-btn" id="importModalClose">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: left;">
+        <p class="modal-desc" style="margin-bottom: 16px; color: var(--text-muted, #94a3b8); font-size: 0.95rem;">
+          How would you like to handle your existing progress on this device?
+        </p>
+
+        <div class="import-options-group" style="display: flex; flex-direction: column; gap: 12px;">
+          <label class="import-option-card"
+            style="display: flex; gap: 12px; padding: 14px; border: 2px solid var(--accent-color, #6366F1); border-radius: 14px; background: rgba(99, 102, 241, 0.08); cursor: pointer; transition: all 0.2s ease;">
+            <input type="radio" name="importModeChoice" value="merge" checked
+              style="margin-top: 3px; accent-color: #6366F1;">
+            <div>
+              <strong
+                style="display: flex; align-items: center; color: var(--text-main, #f8fafc); font-size: 0.98rem; gap: 6px;">
+                Merge with Current Data
+                <span
+                  style="font-size: 0.72rem; background: rgba(99, 102, 241, 0.25); color: #818cf8; padding: 2px 8px; border-radius: 10px; font-weight: 600;">Recommended</span>
+              </strong>
+              <span
+                style="font-size: 0.84rem; color: var(--text-muted, #94a3b8); margin-top: 4px; display: block; line-height: 1.4;">
+                Combines covered MCQs, bookmarks, attempts, checkpoints, and quiz history from both devices so no data
+                is lost.
+              </span>
+            </div>
+          </label>
+
+          <label class="import-option-card"
+            style="display: flex; gap: 12px; padding: 14px; border: 2px solid var(--border-color, rgba(255,255,255,0.1)); border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
+            <input type="radio" name="importModeChoice" value="overwrite"
+              style="margin-top: 3px; accent-color: #ef4444;">
+            <div>
+              <strong style="display: block; color: #F87171; font-size: 0.98rem;">
+                Replace / Overwrite Current Data
+              </strong>
+              <span
+                style="font-size: 0.84rem; color: var(--text-muted, #94a3b8); margin-top: 4px; display: block; line-height: 1.4;">
+                Deletes existing data on this device completely and restores strictly from the imported backup file.
+              </span>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px;">
+        <button class="secondary-btn" id="importModalCancelBtn">Cancel</button>
+        <button class="primary-btn" id="importModalConfirmBtn">Apply Import</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Drive Cloud Sync Onboarding Modal -->
+  <div class="modal-overlay" id="gdriveOnboardingModal" style="display: none;">
+    <div class="modal-card gdrive-modal-card">
+      <div class="modal-header">
+        <div class="gdrive-modal-title-box">
+          <div class="gdrive-modal-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+            </svg>
+          </div>
+          <div>
+            <h2 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--text-main);">Google Cloud Sync
+              Integrated</h2>
+            <span style="font-size: 0.78rem; color: #818cf8; font-weight: 600;">Cross-Device Auto Backup</span>
+          </div>
+        </div>
+        <button class="close-btn" id="btnModalCloseGDrive" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 14px 0;">
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
+          Automatically backup your quiz progress, bookmarked MCQs, test history, and accuracy stats to your private
+          Google Drive app folder. Continue seamlessly on any device!
+        </p>
+
+        <label
+          style="display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-muted); cursor: pointer; user-select: none; margin-top: 10px;">
+          <input type="checkbox" id="chkDontShowGDriveModal"
+            style="accent-color: #6366F1; width: 16px; height: 16px; cursor: pointer;">
+          <span>Do not show this notification again</span>
+        </label>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px;">
+        <button class="secondary-btn" id="btnModalSkipGDrive">Skip for now</button>
+        <button class="primary-btn" id="btnModalConnectGDrive" style="gap: 6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+          </svg>
+          <span>Connect Google Drive</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Settings & Data Management Modal -->
+  <div class="modal-overlay" id="appSettingsModal" style="display: none;">
+    <div class="modal-card modal-large settings-modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="settings-modal-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <h2 style="font-size: 1.25rem; margin: 0;">Settings & Preferences</h2>
+        </div>
+        <button class="close-btn" id="settingsModalClose">&times;</button>
+      </div>
+
+      <div class="modal-body settings-modal-body">
+        <!-- Global Controls -->
+        <div class="setting-group">
+          <label class="setting-label">Global Controls</label>
+          <div class="control-card">
+            <div class="control-row">
+              <div class="control-info">
+                <span class="control-title">Show All Answers</span>
+                <span class="control-desc">Reveal all answers and explanations</span>
+              </div>
+              <label class="switch-toggle">
+                <input type="checkbox" id="globalShowAnswersToggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Drive Cloud Synchronization Panel -->
+        <div class="setting-group collapsible-group">
+          <button class="setting-label-accordion" id="toggleCloudSyncAccordion" type="button" aria-expanded="false">
+            <span class="accordion-title">☁ Cloud Synchronization</span>
+            <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="collapsible-content" id="cloudSyncAccordionContent" style="display: none;">
+            <div class="cloud-sync-panel">
+              <div class="cloud-sync-status-row">
+                <span class="sidebar-sync-badge sync-disconnected" id="cloudSyncSidebarStatusBadge">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                  </svg>
+                  <span>Not connected</span>
+                </span>
+              </div>
+              <p class="cloud-sync-desc" id="cloudSyncSidebarInfoMsg">
+                Connect Google Drive to automatically sync your quiz progress across devices.
+              </p>
+
+              <!-- Action Buttons when Disconnected -->
+              <button class="primary-btn gdrive-connect-btn" id="btnConnectGDrive">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                </svg>
+                <span>Connect Google Drive</span>
+              </button>
+
+              <!-- Action Buttons when Connected (Hidden by default) -->
+              <div class="gdrive-connected-controls" id="gdriveConnectedControls" style="display: none;">
+                <button class="secondary-btn sync-action-btn" id="btnSyncNowGDrive">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                  </svg>
+                  <span>Sync Now</span>
+                </button>
+                <button class="secondary-btn sync-action-btn" id="btnRestoreGDrive">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  <span>Restore Cloud</span>
+                </button>
+                <button class="danger-btn-subtle" id="btnDisconnectGDrive" title="Disconnect Google Drive sync">
+                  Disconnect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backup & Transfer Progress (Collapsible - Closed by default) -->
+        <div class="setting-group collapsible-group">
+          <button class="setting-label-accordion" id="toggleBackupAccordion" type="button" aria-expanded="false">
+            <span class="accordion-title">Backup & Local Transfer</span>
+            <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="collapsible-content" id="backupAccordionContent" style="display: none;">
+            <div class="add-facts-panel">
+              <p class="add-desc">Transfer your complete history (covered, bookmarked, checkpoints, attempts, accuracy,
+                custom MCQs) to another device via JSON file.</p>
+              <div class="backup-btn-group flex w-full flex-row gap-4">
+                <button class="card-action-btn flex-1" id="exportProgressBtn"
+                  style="display: inline-flex; justify-content: center; align-items: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span>Export</span>
+                </button>
+
+                <button class="card-action-btn flex-1" id="importProgressBtn"
+                  style="display: inline-flex; justify-content: center; align-items: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Import</span>
+                </button>
+
+                <input type="file" id="importFileInput" accept=".json,.txt" style="display: none;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Custom Facts / Subject Panel (Hidden) -->
+        <div class="setting-group" style="display: none;">
+          <input type="text" id="newSubjectName">
+          <textarea id="rawFactsPaste"></textarea>
+          <button id="addFactsBtn"></button>
+        </div>
+
+        <!-- Reset & Data Management -->
+        <div class="setting-group danger-zone">
+          <label class="setting-label">Danger Zone</label>
+          <div class="danger-options-card">
+            <span class="danger-options-heading">Options</span>
+            <label class="danger-checkbox-item">
+              <input type="checkbox" id="dangerDeleteComments">
+              <span>Also delete comments / notes</span>
+            </label>
+            <label class="danger-checkbox-item">
+              <input type="checkbox" id="dangerDeleteQuizInfo">
+              <span>Also delete quiz info & history</span>
+            </label>
+          </div>
+          <button class="danger-btn-outline" id="resetProgressBtn">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+            Reset Subject Progress
+          </button>
+          <button class="danger-btn-outline" id="clearAllDataBtn" style="margin-top: 10px;">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Reset All Custom Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Sidebar Overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- Responsive Settings Sidebar -->
+  <!-- Responsive Subjects Sidebar -->
   <aside class="settings-sidebar" id="settingsSidebar">
     <div class="sidebar-header">
-      <h3>Revision Control</h3><a href="CS - IT - imp - MCQs/index.html">MCQs</a>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <h3 style="margin: 0;">Subjects</h3>
+      </div>
       <button class="close-btn" id="sidebarClose" aria-label="Close sidebar">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -159,96 +817,22 @@
 
     <div class="sidebar-content">
       <!-- Subjects Management -->
-      <div class="setting-group">
+      <div class="setting-group" style="gap: 8px;">
         <label class="setting-label">Select Subject</label>
         <div class="subject-list" id="sidebarSubjectList">
           <!-- Dynamically populated subjects -->
         </div>
       </div>
+    </div>
 
-      <!-- Quick Toggle Show/Hide All -->
-      <div class="setting-group">
-        <label class="setting-label">Global Controls</label>
-        <div class="control-card">
-          <div class="control-row">
-            <div class="control-info">
-              <span class="control-title">Show All Answers</span>
-              <span class="control-desc">Reveal all answers by default</span>
-            </div>
-            <label class="switch-toggle">
-              <input type="checkbox" id="globalShowAnswersToggle">
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <!-- Backup & Transfer Progress -->
-      <div class="setting-group">
-        <label class="setting-label">Backup & Transfer Progress</label>
-        <div class="add-facts-panel">
-          <p class="add-desc">Transfer your complete history (covered, bookmarked, checkpoints, custom subjects) to
-            another device.</p>
-          <div class="backup-btn-group flex w-full flex-col gap-4">
-            <button class="card-action-btn" id="exportProgressBtn"
-              style="justify-content: center; width: 40%; display: inline-flex; margin-left: 3  0px; margin-right: 30px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-              </svg>
-              <span>Export</span>
-            </button>
-            <button class="card-action-btn" id="importProgressBtn"
-              style="justify-content: center; width: 40%; display: inline-flex;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              <span>Import</span>
-            </button>
-            <input type="file" id="importFileInput" accept=".json,.txt" style="display: none;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Add Custom Facts / Subject Panel (Hidden for now) -->
-      <div class="setting-group" style="display: none;">
-        <label class="setting-label">Add Questions & Subjects</label>
-        <div class="add-facts-panel">
-          <p class="add-desc">Paste new revision facts here. They will be parsed and duplicates will be skipped
-            automatically!</p>
-          <input type="text" id="newSubjectName" placeholder="Subject (e.g. Operating Systems)" class="text-input">
-          <textarea id="rawFactsPaste"
-            placeholder="1. Fact Question = Fact Answer&#10;2. Another Fact Question&#10;Answer of another fact"
-            rows="6" class="textarea-input"></textarea>
-          <button class="primary-btn" id="addFactsBtn">Import & Append</button>
-        </div>
-      </div>
-
-      <!-- Reset & Data Management -->
-      <div class="setting-group danger-zone">
-        <label class="setting-label">Danger Zone</label>
-        <button class="danger-btn-outline" id="resetProgressBtn">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-            <path d="M3 3v5h5"></path>
-          </svg>
-          Reset Subject Progress
-        </button>
-        <button class="danger-btn-outline" id="clearAllDataBtn" style="margin-top: 10px;">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-          </svg>
-          Reset All Custom Data
-        </button>
-      </div>
+    <div class="sidebar-footer">
+      <button class="sidebar-settings-btn" id="openSettingsModalBtn" title="Open Settings & Data Management">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        <span>Settings & Backup</span>
+      </button>
     </div>
   </aside>
 
@@ -261,8 +845,9 @@
   </button>
 
   <!-- External JS Scripts -->
-  <script src="questions.js"></script>
-  <script src="app.js"></script>
+  <script src="questionsMCQs.js"></script>
+  <script src="googleDriveSync.js"></script>
+  <script src="appMCQs.js"></script>
 </body>
 
 </html>

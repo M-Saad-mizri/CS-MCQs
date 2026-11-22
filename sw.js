@@ -1,15 +1,12 @@
-// QuickFacts Service Worker for PWA Offline Support & Chrome Installation
-const CACHE_NAME = 'quickfacts-pwa-v1';
+// QuickFacts CS MCQs Service Worker for PWA Offline Support & Chrome Installation
+const CACHE_NAME = 'quickfacts-mcqs-pwa-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-  './style.css',
-  './app.js',
-  './questions.js',
-  './CS - IT - imp - MCQs/index.html',
-  './CS - IT - imp - MCQs/styleMCQs.css',
-  './CS - IT - imp - MCQs/appMCQs.js',
-  './CS - IT - imp - MCQs/mcqsData.js',
+  './styleMCQs.css',
+  './appMCQs.js',
+  './questionsMCQs.js',
+  './googleDriveSync.js',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
